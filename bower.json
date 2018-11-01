@@ -1,0 +1,25 @@
+{
+  "name": "project1",
+  "description": "hero.com",
+  "main": "",
+  "authors": [
+    "frog.dbsk.cass"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Redhero1996",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "Font-Awesome": "^5.3.1",
+    "MDBootstrap": "^4.5.11",
+    "jquery-confirm2": "craftpip/jquery-confirm#^3.3.2",
+    "ckeditor5-build-classic": "ckeditor/ckeditor5-build-classic#^11.1.1"
+  }
+}

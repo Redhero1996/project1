@@ -1,0 +1,84 @@
+<?php
+
+return [
+    'category' => 'Danh mục',
+    'title_topic' => 'Đề thi về',
+    'title_question_num' => 'Bài thi gồm :count câu hỏi',
+    'empty_data' => 'Không có câu hỏi',
+    'start_test' => 'Làm bài thi',
+    'restart_test' => 'Làm lại bài',
+    'number' => 'Câu :number.',
+    'time_clock' => ':time phút',
+
+    // login-register
+    'login' => 'Đăng nhập',
+    'register' => 'Đăng ký',
+    'logout' => 'Đăng xuất',
+    'forget_pass' => 'Quên mật khẩu?',
+    'remember' => 'Nhớ mật khẩu',
+    'not' => 'Bạn chưa có tài khoản?',
+    'haven' => 'Bạn đã có tài khoản?',
+    'login_social' => 'hoặc đăng nhập với:',
+    'register_social' => 'hoặc đăng ký với:',
+    'permission' => 'Bạn phải <a href="/login">Đăng nhập</a> mới xem được đề thi',
+    'password' => 'Mật khẩu',
+    'confirm_password' => 'Xác nhận mật khẩu',
+
+    //homepage
+    'about' => 'Về chúng tôi',
+    'homepage' => 'Trang chủ',
+    'contact' => 'Liên hệ',
+    'submit' => 'Nộp bài',
+    'account' => 'Tài khoản',
+    'question' => 'Câu',
+    'rank' => 'Thứ hạng',
+    'member' => 'Thành viên',
+    'top' => 'Bảng xếp hạng',
+    'count_topic' => 'Số đề thi đã làm',
+    'create_topic' => 'Tạo đề thi',
+    'manage_topic' => 'Quản lý đề thi',
+    'question_num' => 'Số câu hỏi',
+    'create' => 'Tạo bài',
+    'answer' => 'Đáp án',
+
+    // test page
+    'alert' => 'Những thay đổi sẽ không được lưu. Bạn chắc muốn rời không?',
+    'score' => 'Bạn đúng:',
+    'total' => 'Tổng điểm:',
+    'oops' => 'Cảnh báo!',
+    'warn_alert' => 'Bạn đã hết thời gian làm bài',
+    'try_again' => 'Bạn phải đạt 70% mới xem được đáp án! Cố lên!',
+    'explain' => 'Giải thích',
+    'no_explain' => 'Không có lời giải thích',
+
+    // proflie
+    'avatar' => 'Avatar',
+    'upload' => 'Tải ảnh lên',
+    'info_account' => 'Thông tin tài khoản',
+    'change_password' => 'Thay đổi mật khẩu',
+    'username' => 'Tên người dùng',
+    'first_name' => 'Tên',
+    'last_name' => 'Họ',
+    'phone_number' => 'Số điện thoại',
+    'address' => 'Địa chỉ',
+    'update_account' => 'Lưu thông tin',
+    'succ_acount' => 'Tài khoản đã được cập nhật',
+    'numb_topic' => 'Lần thi',
+    'topic' => 'Đề thi',
+    'total_profile' => 'Điểm',
+
+    // social
+    'error_login' => 'Không thể đăng nhập, hãy thử lại với tài khoản khác.',
+    'not_support' => 'không được hỗ trợ',
+
+    // admin
+    'admin' => 'Admin',
+    'save' => 'Lưu',
+    'edit' => 'Sửa',
+    'view' => 'Xem',
+    'delete' => 'Xóa',
+    'cancel' => 'Hủy', 
+    'return' => 'Quay lại',
+    'close' => 'Đóng',
+    'send' => 'Gửi bài',
+];

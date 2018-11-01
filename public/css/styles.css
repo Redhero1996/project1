@@ -1,0 +1,475 @@
+div.container-fluid {
+	font-family: Rotoco;
+}
+
+div.container-fluid.login,  div.container-fluid.register{
+    width: 50%; 
+    margin-top: 20px;
+}
+
+input.username, input.email, input.password, input.password-confirm, button.login, button.register, {
+    border-radius: 20px;
+}
+
+p.help-block.validated {
+    color: red;
+    font-style: italic;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.chip.chip-md {
+    height: 42px;
+    line-height: 42px;
+    border-radius: 21px;
+}
+
+.chip.chip-md img {
+    height: 42px;
+    width: 42px;
+}
+
+a.chip.chip-lg {
+	width: 100% ;
+    height: 55px ;
+    border-radius: 26px ;
+    padding-left: 20px ;
+    padding-top: 3px ;
+    font-weight: bold ;
+    color: #000 ;
+}
+
+.chip.chip-lg img {
+    height: 52px;
+    width: 52px;
+}
+
+span.span-radius {
+    display: inline-block;
+    /*font-size: 10px;*/
+    text-align: center;
+    height: 50px;
+    width: 52px;
+    border-radius: 26px;
+    border: 1px solid grey;
+}
+p.row-space {
+    margin: 10px 0px;
+}
+
+ul#menu > li:hover {
+    cursor: pointer;
+    background-color: #ccc;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#active {
+    background-color: #ccc;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.calendar {
+    display: inline-block;
+    background-color: #ffffff;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    float: left;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.year {
+    height: 18px;
+    font-size: 10px;
+    background-color: red;
+    border-bottom: solid 1px #000;
+    color: #ffffff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.day {
+    font-size: 13px;
+}
+
+.month {
+    font-size: 10px;
+}
+
+div.div-content {
+    float: left;
+    display: inline-block; 
+    width: 300px;
+    margin-top: 14px;
+}
+
+div.div-quest {
+    float: left;
+    display: inline-block;  
+}
+
+div.quest {
+    color: #663300;
+    width: 100px;
+    height: 25px;
+    background-color: #33abe5;
+    border-radius: 50px;
+    text-align: center;
+}
+
+div.time {
+    color: #663300;
+    text-align: center;
+    width: 100px;
+    height: 25px;
+    background-color: #7bd7b1;
+    border-radius: 50px;
+}
+
+div#line {
+    width: 20px; 
+    height: 1px; 
+    background: #000; 
+    margin-left: 15px;
+}
+
+div#paginate {
+    padding-left: 40%;
+}
+
+div.quiz {
+    margin: auto;
+    margin-top: 65px;
+    width: 76%;
+}
+
+h3#currentQuestionNumberText {
+    font-family: Western, cursive ;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+a.btn-refresh, span.btn-refresh {
+    float: right;
+    padding: 10px;
+    margin: 0;
+    border-radius: 20px; 
+}
+
+button.btn-test {
+    border-radius: 20px;
+}
+
+a#restart-test {
+    color: #fff;
+}
+
+li.timer {
+    display: none; 
+    margin: 13px 10px 0px 0px;
+    line-height: 17px;
+    font-family: Western, cursive;
+    font-weight: bold;
+    color: #fff;
+}
+
+h3#title-quiz {
+    text-align: center; 
+    color: #31678f; 
+    background-color: #f2f5f7; 
+    border-color: #bce8f1;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 24px;
+    font-family: inherit;
+    font-weight: 500;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+div.btn-test {
+    font-family: Western, cursive;
+    border-radius: 20px;
+}
+
+div.do-test {
+    display: none;
+}
+
+div#score {
+    margin-left: 36px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 20px;
+    font-family: Rotoco;
+}
+
+span.alert-link {
+    display: block;
+}
+
+ol.questions {
+    list-style: none;
+}
+
+ol > li.title-question {
+    padding: 15px 10px 0px 10px;
+    border-radius: 10px;    
+}
+
+button.btn-submit {
+    display: none;
+    border-radius: 20px;
+    margin: 2px 40px 25px 0px;
+    padding: 9px 15px;
+}
+
+div a#btn-menu {
+    float: left; 
+    padding: 7px 15px;
+    margin-left: 52px;
+}
+
+ul.answer {
+    list-style: none; 
+    margin-bottom: 15px;
+}
+
+span.question-num {
+    font-size: 18px; 
+    float: left;
+}
+
+span.question {
+    display: inline-block; 
+}
+
+span.answers {
+    margin: 4px 5px 0px 5px; 
+    display: block; 
+}
+
+ul.nav.navbar-nav.test {
+    right: 100px; 
+    position: absolute; 
+    margin: 10px 20px 0px 0px;
+}
+
+/* checkbox */
+input[type="checkbox"] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    background: #ffffff;
+    height: 16px;
+    width: 16px;
+    border: 1px solid #BBBBBB;
+    outline: none;
+}
+
+input[type="checkbox"]:checked {
+    background: #007aff;
+    outline: none;
+}
+
+input[type="checkbox"]:after {
+    content: '';
+    position: relative;
+    color: #ffffff;
+    outline: none;
+}
+
+input[type="checkbox"]:checked:after {
+    content: "✓";
+    font-size: 14px;
+    top: -4px;
+    left: 3px;
+}
+
+label.form-check-label {
+    margin-bottom: 8px;
+    padding-left: 20px !important;
+    font-weight: 200;
+}
+
+input.form-check-input {
+    display: none;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 4px;
+    margin-right: 10px !important;
+}
+
+img.avatar {
+    height: 25px;
+    border-radius: 50% 50%;
+}
+
+img.avatar.profile {
+    height: 200px !important;
+    width: 200px;
+}
+
+main.main {
+    margin-top: 6%;
+}
+
+h5.font-weight-bold {
+    text-align: center;
+    line-height: 70px;
+    color: #fff;
+    font-family: Western, cursive;
+}
+
+div.view.view-cascade.gradient-card-header.mdb-color {
+    height: 75px;
+    background-color: #929fba;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: -25px;
+    position: relative;
+    z-index: 1000;
+    border-radius: 5px;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+}
+
+div.view.view-cascade.gradient-card-header.mdb-color.avatar {
+    width: 90%;
+}
+
+div.view.view-cascade.gradient-card-header.mdb-color.account {
+    width: 95%;
+}
+
+div.card.card-cascade.narrower {
+    top: 30px;
+}
+
+div.row.password {
+    margin: 12px 0px 0px 0px;
+    line-height: 16px;
+}
+
+input.change {
+    margin-right: 9px;
+}
+
+.btn.btn-info.btn-rounded.btn-sm.waves-effect.waves-light, .waves-input-wrapper {
+    border-radius: 50px;
+}
+
+input.btn.btn-info.waves-effect.waves-light, .waves-input-wrapper {
+    padding: 6px 20px;
+}
+
+.row.flex-center.upfile {
+    position: relative;
+    overflow: hidden;
+}
+
+input.upload-file {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+a.review {
+    color: #33b5e5 !important;
+}
+
+a.btn-refresh.review {
+    display: inline-block;
+    color: #fff !important;
+}
+
+input.form-check-input.answer {
+    display: inline-block;
+}
+
+div.card.card-cascade.narrower {
+    top: 0px !important;
+}
+
+svg.svg-inline--fa.fa-check-circle.fa-w-16 {
+    margin-left: 15%;
+}
+
+div.rank {
+    font-family: Western, cursive ;
+}
+
+thead.rank-top {
+    background-color: #87c52e;
+}
+
+thead.rank-top > tr > th {
+    font-weight: bold;
+    color: #fff;
+}
+
+li.explain { 
+    display: none;
+}
+
+h4.explain {
+    color: blue;
+}
+
+.active-pink-2 input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #f48fb1;
+    box-shadow: 0 1px 0 0 #f48fb1;
+}
+.active-pink input[type=text] {
+    border-bottom: 1px solid #f48fb1;
+    box-shadow: 0 1px 0 0 #f48fb1;
+}
+
+.active-pink .fa, .active-pink-2 .fa {
+    color: #f48fb1;
+}
+
+svg.svg-inline--fa.fa-search.fa-w-16 {
+    color: #f48fb1;
+}
+
+form.form-inline.md-form.form-sm {
+    margin-bottom: 0.5em !important;
+}
+
+div.mt-lg-5.reset-password {
+    margin-top: 5rem!important;
+}
+
+label.question {
+    font-weight: bold;
+    color: red;
+}
+
+a.btn-light.submit, a.btn-warning.edit {
+    border-radius: 20px;
+}
+
+h3.manage {
+    font-family: Western, cursive !important;
+    font-weight: bold !important;
+    color: lightblue;
+}
+
+td.status {
+    color: #6c757d;
+}
+
+span.content {
+    font-weight: bold;
+}
+
+div.modal-header.delete {
+    display: inline-block;
+}
