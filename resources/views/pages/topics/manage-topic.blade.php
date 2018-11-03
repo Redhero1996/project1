@@ -41,22 +41,6 @@
                     <tbody>
                         @foreach ( $topics as $key => $topic )
                             @if (Auth::user()->id == $topic->user_id)
-                                @if ($topic->status == 2)
-                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        {{ __('Need to edit: Bạn có bài cần sửa lại cho phù hợp') }}
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                           <span aria-hidden="true">&times;</span>
-                                         </button>
-                                    </div>
-                                 @endif
-                                @if ($topic->status == 3)                                       
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        {{ __('Close: Bạn có bài đã bị đóng') }}
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div> 
-                                @endif
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $topic->name }}</td>
@@ -154,8 +138,11 @@
     </div>
 @endsection
 @section('scripts')
+    {!! Html::script('bower_components/MDBootstrap/js/addons/datatables.min.js') !!}
 	<script type="text/javascript">
 		$(document).ready(function() {
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
     		$("#message").fadeTo(2000, 500).slideUp(500, function(){
                 $("#message").slideUp(500);
             });

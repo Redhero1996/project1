@@ -5,6 +5,7 @@ namespace App;
 use App\Models\Comment;
 use App\Models\Role;
 use App\Models\Topic;
+use App\Models\Like;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -58,5 +59,10 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }

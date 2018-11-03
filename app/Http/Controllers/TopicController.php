@@ -110,8 +110,8 @@ class TopicController extends Controller
     public function update(TopicEditRequest $request, $id)
     {
         $topic = Topic::findOrFail($id);
-        $topic->name = $request->name;
-        $topic->slug = str_slug($request->name);
+        $topic->name = $request->topic_name;
+        $topic->slug = str_slug($request->topic_name);
         $topic->category_id = $request->category_id;
         $topic->status = $request->status;
         $topic->save();          
@@ -152,8 +152,11 @@ class TopicController extends Controller
     public function destroy($id)
     {
         $topic = Topic::findOrFail($id);
-        $topic->questions()->detach();
-        $topic->users()->detach();
+        foreach ($topic->questions()->get() as $question) {
+            $answer = Answer::where('question_id', $question->id)->delete();
+            $question->topics()->detach();
+            $question->delete();
+        }
         $topic->delete();
         Session::flash('success', 'The topic was successfully deleted!');
 

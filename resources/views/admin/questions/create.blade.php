@@ -6,6 +6,13 @@
             <div class="card-body">
                 <h3 class="page-title">Create Question</h3>
                 <div class="portlet-body form">
+                    @if(count($errors) > 0)
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $err)
+                                {{$err}}<br>
+                            @endforeach
+                        </div>
+                    @endif
                     <!-- BEGIN FORM-->
                     {!! Form::open(['method' => 'POST', 'route' => 'questions.store', 'class' => 'form-horizontal']) !!}
                         <div class="form-body">
@@ -25,11 +32,6 @@
                                 {!! Form::label('content', 'Content', ['class' => 'col-md-3 control-label']) !!}
                                 <div class="col-md-12">
                                     {!! Form::textarea('content', old('content'), ['class' => 'editor']) !!}
-                                    @if($errors->has('content'))
-                                        <span class="help-block" style="color: red;">
-                                            <strong>{{ $errors->first('content') }}</strong>
-                                        </span>
-                                    @endif
                                 </div>
                             </div>
                             <div class="form-group ml-3">

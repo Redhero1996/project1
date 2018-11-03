@@ -25,10 +25,21 @@ class HandleCreateTopicRequest extends FormRequest
     {
         return [
             'topic_name' => 'required|min:3|max:255',
-            'content.*' => 'required|min:3',
+            'content.*' => 'required',
             'answer.*' => 'required',
-            'correct_ans.*' => 'required|min:1',
+            'correct_ans.*' => 'required',
             'explain.*' => '',
         ];
     }
+
+    // public function messages()
+    // {
+    //     return [
+    //         'topic_name.req' => 'required|min:3|max:255',
+    //         'content.*' => 'required|min:3',
+    //         'answer.*' => 'required',
+    //         'correct_ans.*' => 'required|min:1',
+    //         'explain.*' => '',
+    //     ];
+    // }
 }

@@ -21,12 +21,7 @@
                             <div class="form-group last">
                                 {!! Form::label('name', 'Name', ['class' => 'col-md-3 control-label']) !!}
                                 <div class="col-md-12">
-                                    {!! Form::text('name', $topic->name, ['class' => 'form-control input-circle', 'placeholder' => 'Enter name']) !!}
-                                    {{-- @if($errors->has('name'))
-                                        <span class="help-block" style="color: red;">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
-                                    @endif --}}
+                                    {!! Form::text('topic_name', $topic->name, ['class' => 'form-control input-circle', 'placeholder' => 'Enter name', 'required' => 'required']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -40,24 +35,14 @@
                                     <div class="form-group">
                                         <label for="question" class="col-md-3 control-label question">{!! __('translate.question'). ' ' . $k+=1 !!}</label>
                                         <div class="col-md-12">
-                                            {!! Form::textarea("content[$question->id]", $question->content, ['class' => 'editor']) !!}
-{{--                                             @if($errors->has('content'))
-                                                <span class="help-block" style="color: red;">
-                                                    <strong>{{ $errors->first('content') }}</strong>
-                                                </span>
-                                            @endif --}}
+                                            {!! Form::textarea("content[$question->id]", strip_tags(htmlspecialchars_decode($question->content)), ['class' => 'editor', 'required' => 'required']) !!}
                                         </div>
                                     </div>
                                     @foreach ($question->answers as $key => $answer)
                                         <div class="form-group ml-4">
                                             {!! Form::checkbox("correct_ans[$question->id][]", $answer->id, in_array($answer->id, $question->correct_ans) ?? true) !!}
                                             <label>{{ __('translate.answer'). ' ' .$alphabet[$key] }}</label>
-                                            {!! Form::text("answer[$question->id][]", $answer->content, ['class' => 'form-control']) !!}
-                                            {{-- @if($errors->has('correct_ans'))
-                                                <span class="help-block" style="color: red;">
-                                                    <strong>{{ $errors->first('correct_ans') }}</strong>
-                                                </span>
-                                            @endif --}}
+                                            {!! Form::text("answer[$question->id][]", $answer->content, ['class' => 'form-control', 'required' => 'required']) !!}
                                         </div>
                                     @endforeach
                                 <div class="form-group ml-3">

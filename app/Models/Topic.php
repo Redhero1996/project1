@@ -17,6 +17,10 @@ class Topic extends Model
         'status',
     ];
 
+    protected $withCount = [
+        'likes',
+    ];
+
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
@@ -40,6 +44,11 @@ class Topic extends Model
             'answered',
             'total',
         ]);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 
     public function getCreatedAtAttribute()

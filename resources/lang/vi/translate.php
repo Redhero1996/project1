@@ -37,7 +37,7 @@ return [
     'count_topic' => 'Số đề thi đã làm',
     'create_topic' => 'Tạo đề thi',
     'manage_topic' => 'Quản lý đề thi',
-    'question_num' => 'Số câu hỏi',
+    'question_num' => 'Thêm câu hỏi',
     'create' => 'Tạo bài',
     'answer' => 'Đáp án',
 

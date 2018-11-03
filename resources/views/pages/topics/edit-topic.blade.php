@@ -1,9 +1,16 @@
 @extends('main')
-@section('title', __('translate.create_topic'))
+@section('title', '| '.__('translate.create_topic'))
 @section('content')
     <div class="form-group quiz">
         <div class="form-group">
             <h3 id="title-quiz">{!! __('translate.create_topic') !!} </h3>
+            @if(count($errors) > 0)
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $err)
+                        {{$err}}<br>
+                    @endforeach
+                </div>
+            @endif
             @if(Session::has('success'))
                 <div class="portlet-title" id="message">
                     <div class="alert alert-success">
@@ -32,6 +39,10 @@
                     </div>
                     <div class="form-body question-form">
                         @foreach ($questions as $k => $question)
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                            </button>
                             <div class="form-group">
                                 <label for="question" class="col-md-3 control-label question">{!! __('translate.question'). ' ' . $k+=1 !!}</label>
                                 <div class="col-md-12">
@@ -48,19 +59,15 @@
                                     {!! Form::checkbox("correct_ans[$question->id][]", $answer->id, in_array($answer->id, $question->correct_ans) ?? true) !!}
                                     <label>{{ __('translate.answer'). ' ' .$alphabet[$key] }}</label>
                                     {!! Form::text("answer[$question->id][]", $answer->content, ['class' => 'form-control']) !!}
-                                    @if($errors->has('correct_ans'))
-                                        <span class="help-block" style="color: red;">
-                                            <strong>{{ $errors->first('correct_ans') }}</strong>
-                                        </span>
-                                    @endif
                                 </div>
                             @endforeach
-                        <div class="form-group ml-3">
+                            <div class="form-group ml-3">
                             <label for="explain"><i>{{ __('translate.explain') }}:</i> </label>
                             <div class="col-md-12">
                                 {!! Form::textarea("explain[$question->id][]", $question->explain, ['class' => 'editor']) !!}
                             </div>
-                        </div>
+                            </div>  
+                        </div>    
                         @endforeach
                     </div>
                 </div>
@@ -79,8 +86,14 @@
     </div>
 @endsection
 @section('scripts')
+    {!! Html::script('bower_components/ckeditor5-build-classic/build/ckeditor.js') !!}
     <script type="text/javascript">
+        var allEditors = document.querySelectorAll('.editor');
+        for (var i = 0; i < allEditors.length; ++i) {
+          ClassicEditor.create(allEditors[i]);
+        }
         $(document).ready(function() {
+            var number_quest = {!! count($questions) !!}
             $("#message").fadeTo(2000, 500).slideUp(500, function(){
                 $("#message").slideUp(500);
             });

@@ -12,9 +12,21 @@
                         <p class="pb-1">Click {!! Form::button(trans('translate.start_test'), ['class' => 'btn btn-warning btn-test']) !!} để bắt đầu làm bài</p>
                     </div>
                     <div class="form-group do-test">
-                        <div class="fb-share-button text-center" data-href="http://localhost:8000/{{ $topic->category->slug }}/{{ $topic->slug }}" data-layout="button_count" data-size="small" data-mobile-iframe="true">
-                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+                        <div class="fb-share-button" data-href="{{route('quiz', [$topic->category->slug, $topic->slug])}}" data-layout="button_count" data-size="small" data-mobile-iframe="false">
+                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{route('quiz', [$topic->category->slug, $topic->slug])}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
                         </div>
+                        <span class="ml-5 icon-like">
+                            <i class="far fa-eye"></i>
+                            <span>0</span>
+                        </span>
+                        <span class="ml-3">
+                            <i class="far fa-thumbs-up"></i>
+                            <span>0</span>
+                        </span>
+                        <span class="ml-3">
+                            <i class="far fa-thumbs-down"></i>
+                            <span>0</span>
+                        </span>
                         <h3 class="mt-3" id="currentQuestionNumberText"> {!! trans('translate.title_question_num', ['count' => count($data)]) !!}
                             <span class="btn btn-default btn-refresh" id="restart-test">{!! trans('translate.restart_test') !!}</span>
                         </h3>
@@ -58,7 +70,7 @@
     </div>
 @endsection
 @section('scripts')
-
+    {!! Html::script('bower_components/jquery-confirm2/dist/jquery-confirm.min.js') !!}
     <script type="text/javascript">
         var config = @json(config('constants'));
         $(document).ready(function() {
@@ -80,46 +92,46 @@
                 }
 
                 // Timer countdown
-                var interval = setInterval(function() {
-                    var timer = $('li.timer').html();
-                    timer = timer.split(':');
-                    var minutes = parseInt(timer[0], parseInt(config.ten));
-                    var seconds = parseInt(timer[1], parseInt(config.ten));
-                    seconds--;
-                    if (minutes < parseInt(config.zero)) {
-                        return clearInterval(interval);
-                    }
-                    if (minutes < parseInt(config.ten)) {
-                        minutes = '0' + minutes;
-                    }
-                    if (seconds < parseInt(config.zero) && minutes != parseInt(config.zero)) {
-                        minutes--;
-                        seconds = parseInt(config.fifty_nine);
-                    } else if (seconds < parseInt(config.ten)) {
-                        seconds = '0' + seconds;
-                    }
-                    $('li.timer').html(minutes + ':' + seconds);
-                    if (minutes == parseInt(config.zero) && seconds <= parseInt(config.ten)) {
-                        $('li.timer').css('color', 'red');
-                        $('li.timer').fadeOut(parseInt(config.fifty));
-                        $('li.timer').fadeIn(parseInt(config.fifty));
-                        if (minutes == parseInt(config.zero) && seconds == parseInt(config.zero)) {
-                            clearInterval(interval);
-                            $.confirm({
-                                icon: 'fas fa-warning',
-                                type: 'red',
-                                title: '{{ trans('translate.oops') }}',
-                                content: '{{ trans('translate.warn_alert') }}',
-                                buttons: {
-                                    ok: function () {
-                                        $('div#check-all').submit();
-                                        checkSubmit();
-                                    },
-                                }
-                            });
-                        }
-                    }
-                }, parseInt(config.one_thousand));
+                // var interval = setInterval(function() {
+                //     var timer = $('li.timer').html();
+                //     timer = timer.split(':');
+                //     var minutes = parseInt(timer[0], parseInt(config.ten));
+                //     var seconds = parseInt(timer[1], parseInt(config.ten));
+                //     seconds--;
+                //     if (minutes < parseInt(config.zero)) {
+                //         return clearInterval(interval);
+                //     }
+                //     if (minutes < parseInt(config.ten)) {
+                //         minutes = '0' + minutes;
+                //     }
+                //     if (seconds < parseInt(config.zero) && minutes != parseInt(config.zero)) {
+                //         minutes--;
+                //         seconds = parseInt(config.fifty_nine);
+                //     } else if (seconds < parseInt(config.ten)) {
+                //         seconds = '0' + seconds;
+                //     }
+                //     $('li.timer').html(minutes + ':' + seconds);
+                //     if (minutes == parseInt(config.zero) && seconds <= parseInt(config.ten)) {
+                //         $('li.timer').css('color', 'red');
+                //         $('li.timer').fadeOut(parseInt(config.fifty));
+                //         $('li.timer').fadeIn(parseInt(config.fifty));
+                //         if (minutes == parseInt(config.zero) && seconds == parseInt(config.zero)) {
+                //             clearInterval(interval);
+                //             $.confirm({
+                //                 icon: 'fas fa-warning',
+                //                 type: 'red',
+                //                 title: '{{ trans('translate.oops') }}',
+                //                 content: '{{ trans('translate.warn_alert') }}',
+                //                 buttons: {
+                //                     ok: function () {
+                //                         $('div#check-all').submit();
+                //                         checkSubmit();
+                //                     },
+                //                 }
+                //             });
+                //         }
+                //     }
+                // }, parseInt(config.one_thousand));
 
                 // handle submit
                 $('.btn-submit').click(function() {

@@ -473,3 +473,38 @@ span.content {
 div.modal-header.delete {
     display: inline-block;
 }
+
+.alert-dismissible.add {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /*padding: .75rem 1.25rem;*/
+    color: #c2ab6a !important; 
+}
+
+button.add {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}
+
+.add {
+    float: right;
+    font-size: 1.5rem;
+    color: #795e12;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: none; 
+}
+
+button.add:hover {
+    cursor: pointer;
+    color: #000;
+}
+
+.icon-like {
+    color: #4267b2;
+}
