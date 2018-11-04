@@ -61,7 +61,11 @@ Route::get('category/{category_id}', 'QuizController@category');
 
 // Quiz page
 Route::get('{category}/{topic}', 'QuizController@quiz')->name('quiz');
+
 Route::get('{category}/{topic}/{id}', 'QuizController@reviewQuiz')->name('review');
 
 // handle question
 Route::get('question', 'QuizController@handleQuestion');
+
+// Like
+Route::post('like', 'LikeController@likeTopic')->name('like');

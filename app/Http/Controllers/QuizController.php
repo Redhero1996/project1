@@ -44,6 +44,10 @@ class QuizController extends Controller
             'U', 'V', 'W', 'X', 'Y',
             'Z',
         ];
+        $like = Auth::user()->likes()->where([
+            ['user_id', Auth::user()->id],
+            ['topic_id', $topic->id],
+        ])->first();
         $questions = $topic->questions()->where('topic_id', $topic->id)->get();
         $data = [];
         foreach ($questions as $key => $question) {
@@ -54,7 +58,7 @@ class QuizController extends Controller
             ];
         }
 
-        return view('pages.quiz', compact('topic', 'data', 'alphabet'));
+        return view('pages.quiz', compact('topic', 'data', 'alphabet', 'like'));
     }
 
     public function handleQuestion(Request $request)

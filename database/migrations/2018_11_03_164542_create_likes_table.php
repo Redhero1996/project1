@@ -17,6 +17,8 @@ class CreateLikesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('topic_id')->unsigned();
+            $table->integer('status');
+            // $table->boolean('like');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
             $table->timestamps();

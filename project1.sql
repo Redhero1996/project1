@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 30, 2018 at 02:12 AM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Host: localhost
+-- Generation Time: Nov 04, 2018 at 04:20 PM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -228,7 +228,7 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALU
 (3, 'Toán', 'toan', '2018-09-26 14:33:43', '2018-09-26 14:33:43'),
 (4, 'Ngữ văn', 'ngu-van', '2018-09-26 14:33:43', '2018-09-28 02:15:35'),
 (5, 'Lịch sử', 'lich-su', '2018-09-26 14:33:43', '2018-09-26 14:33:43'),
-(6, 'Lập trình web', 'lap-trinh-web', '2018-09-26 14:33:43', '2018-09-26 14:33:43');
+(6, 'Lập trình', 'lap-trinh', '2018-09-26 14:33:43', '2018-10-30 03:33:21');
 
 -- --------------------------------------------------------
 
@@ -244,6 +244,31 @@ CREATE TABLE `comments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `topic_id` int(10) UNSIGNED NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`id`, `user_id`, `topic_id`, `status`, `created_at`, `updated_at`) VALUES
+(28, 4, 18, 1, '2018-11-04 10:02:44', '2018-11-04 13:24:45'),
+(31, 6, 18, 0, '2018-11-04 13:23:59', '2018-11-04 13:44:35'),
+(45, 7, 18, 1, '2018-11-04 14:32:46', '2018-11-04 14:32:46'),
+(47, 7, 2, 1, '2018-11-04 14:36:05', '2018-11-04 14:36:05');
 
 -- --------------------------------------------------------
 
@@ -279,7 +304,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2018_10_09_135312_add_answered_col_to_topic_user_table', 8),
 (25, '2018_10_19_104532_add_provider_col_to_users_table', 9),
 (26, '2018_10_20_202716_add_status_col_to_topics_table', 10),
-(27, '2018_10_27_142700_add_col_user_id_to_topics_table', 11);
+(27, '2018_10_27_142700_add_col_user_id_to_topics_table', 11),
+(31, '2018_11_03_164542_create_likes_table', 12);
 
 -- --------------------------------------------------------
 
@@ -330,27 +356,27 @@ INSERT INTO `questions` (`id`, `content`, `correct_ans`, `explain`, `created_at`
 (17, '<p><span style=\"color:rgba(0,0,0,.87);font-family:Arial, sans-serif;font-size:15px;\">Thẻ <strong>&lt;datalist&gt;</strong> và <strong>&lt;select&gt;</strong> giống và khác nhau ở đâu?</span></p>', '[72]', '', '2018-09-28 02:05:04', '2018-09-28 02:05:04'),
 (18, '<p><span style=\"color:rgba(0,0,0,.87);font-family:Arial, sans-serif;font-size:15px;font-weight:bold;\"> Các thẻ từ &lt;h1&gt; đến &lt;h6&gt; dùng để làm gì?</span></p>', '[73]', '', '2018-09-28 02:07:46', '2018-09-28 02:07:46'),
 (19, '<p>Thẻ <em>&lt;input type=”Submit”</em>  dùng để làm gì?</p>', '[78]', '', '2018-09-28 02:10:02', '2018-09-28 02:12:01'),
-(20, '<p><span style=\"font-size:13pt;font-family:\'Times New Roman\', serif;\">Trong những câu sau câu nào nêu <em>khái niệm</em> về văn học dân gian?</span></p>', '[81,82,84]', '', '2018-09-28 02:19:32', '2018-09-28 02:19:33'),
-(21, '<p><span style=\"font-size:13pt;font-family:\'Times New Roman\', serif;\">Điền khuyết: <em>“Văn học dân gian gắn bó với đời sống và……… của quần chúng lao động đông đảo trong xã hội.”</em></span></p>', '[88,89]', '', '2018-09-28 02:21:48', '2018-09-28 02:21:48'),
-(22, '<p><span style=\"font-size:13pt;font-family:\'Times New Roman\', serif;\">Văn học dân gian được đánh giá như:</span></p>', '[93]', '', '2018-09-28 02:24:00', '2018-09-28 02:24:00'),
-(23, '<p>Những tác phẩm sau, tác phẩm nào là tác phẩm văn học dân gian?</p>', '[97,98,99]', '', '2018-09-28 02:26:43', '2018-09-28 02:26:44'),
-(24, '<p><span style=\"font-size:13pt;font-family:\'Times New Roman\', serif;\">Điền khuyết: “Về phương diện nội dung…………”</span></p>', '[104]', '', '2018-09-28 02:30:08', '2018-09-28 02:30:09'),
-(25, '<p><span style=\"font-size:13pt;font-family:\'Times New Roman\', serif;\">Điền khuyết: “Về phương diện hình thức…………”</span></p>', '[106]', '', '2018-09-28 02:31:18', '2018-09-28 02:31:18'),
+(20, '<p>Trong những câu sau câu nào nêu khái niệm về văn học dân gian?</p>', '[81,82,84]', '<p>Văn học dân gian là những sáng tác tập thể, được truyền miệng, lưu truyền trong nhân dân</p>', '2018-09-28 02:19:32', '2018-11-02 15:58:34'),
+(21, '<p>Điền khuyết: “Văn học dân gian gắn bó với đời sống và……… của quần chúng lao động đông đảo trong xã hội.”</p>', '[88,89]', '<p><i>Văn học dân gian gắn bó với đời sống và </i><strong>tư tưởng, kinh nghiệm</strong> <i>của quần chúng lao động đông đảo trong xã hội.</i></p>', '2018-09-28 02:21:48', '2018-11-02 15:58:34'),
+(22, '<p>Văn học dân gian được đánh giá như:</p>', '[93]', '<p> </p>', '2018-09-28 02:24:00', '2018-10-31 08:00:15'),
+(23, '<p>Những tác phẩm sau, tác phẩm nào là tác phẩm văn học dân gian?</p>', '[97,98,99]', '<p> </p>', '2018-09-28 02:26:43', '2018-10-31 08:00:15'),
+(24, '<p>Điền khuyết: “Về phương diện nội dung…………”</p>', '[104]', '<p> </p>', '2018-09-28 02:30:08', '2018-10-31 08:00:15'),
+(25, '<p>Điền khuyết: “Về phương diện hình thức…………”</p>', '[106]', '<p> </p>', '2018-09-28 02:31:18', '2018-10-31 08:00:15'),
 (45, '<p>Hội nghị thành lập Đảng Cộng sản Việt Nam được triệu tập (3/2/1930) tại Hương Cảng vì nhiều lí do. Lí do nào sau đây không đúng?</p>', '[112]', '', '2018-10-17 08:37:51', '2018-10-17 08:37:51'),
 (46, '<p>Hội nghị thành lập Đảng Cộng sản Việt Nam (3/2/1930) họp tại đâu?</p>', '[115]', '', '2018-10-17 08:38:47', '2018-10-17 08:38:48'),
-(47, '<p>Tại hội nghị hợp nhất ba tổ chức cộng sản, có sự tham gia của các tổ chức cộng sản nào?</p>', '[117,119]', '', '2018-10-17 08:41:17', '2018-10-17 08:41:18'),
-(48, '<p>Vai trò của Nguyễn Ái Quốc trong hội nghị hợp nhất ba tổ chức cộng sản (3/2/1930) được thể hiện như thế nào?</p>', '[123,124]', '', '2018-10-17 08:42:34', '2018-10-17 08:42:34'),
-(49, '<p>Con đường cách mạng Việt Nam được xác định trong Cương lĩnh chính trị đầu tiên do Nguyễn Ái Quốc khởi thảo là gì?</p>', '[129,129]', '', '2018-10-17 08:44:15', '2018-10-17 08:44:15'),
-(50, '<p> Lực lượng cách mạng để đánh đổ đế quốc và phong kiến được nêu trong Cương lĩnh chính trị đầu tiên của Đảng do Nguyễn Ái Quốc khởi thảo là gì?</p>', '[131,134,134]', '', '2018-10-17 08:46:16', '2018-10-17 08:46:17'),
-(51, '<p> Nội dung của Hội nghị thành lập Đảng:</p>', '[136,137,138]', '', '2018-10-17 08:47:25', '2018-10-17 08:47:26'),
-(52, '<p>Có tổ chức nào không tham gia Hội nghị thành lập Đảng?</p>', '[143]', '', '2018-10-17 08:48:40', '2018-10-17 08:48:40'),
-(53, '<p>Đảng Cộng sản Việt Nam ra đời là sản phẩm của sự kết hợp của chủ nghĩa Mác-Lê nin với:</p>', '[146,147]', '', '2018-10-17 08:51:57', '2018-10-17 08:51:57'),
-(54, '<p> Đảng Cộng sản ra đời do tác động của nhiều yếu tố, yếu tố nào sau đây không đúng?</p>', '[151]', '', '2018-10-17 08:53:37', '2018-10-17 08:53:37'),
-(55, '<p>Nội dung chủ yếu của cương lĩnh Chính trị đầu tiên của Đảng do Nguyễn Ái Quốc khởi thảo là gì?</p>', '[155]', '', '2018-10-17 09:10:12', '2018-10-17 09:10:12'),
-(56, '<p>Điều gì chứng tỏ Cương lĩnh chính trị đầu tiên của Đảng do Nguyễn Ái Quốc khởi thảo là đúng đắn, sáng tạo, thắm đượm tính dân tộc và nhân văn?</p>', '[158,160,161]', '', '2018-10-17 09:11:37', '2018-10-17 09:11:38'),
-(57, '<p>Tính chất của cách mạng Đông Dương lúc đầu là một cuộc cách mạng tư sản dân quyền, sau khi cách mạng tư sản dân quyền thắng lợi sẽ tiếp tục phát triển, bỏ qua thời kỳ tư bản mà tiến thẳng lên chủ nghĩa xã hội. Đó là nội dung của:</p>', '[165]', '', '2018-10-17 09:13:19', '2018-10-17 09:13:19'),
-(58, '<p>Nhiệm vụ cốt yếu của cách mạng tư sản dân quyền ở Việt Nam là gì?</p>', '[169,170]', '', '2018-10-17 09:15:17', '2018-10-17 09:16:28'),
-(59, '<p> Những điểm hạn chế cơ bản của Luận cương chính trị 1930?</p>', '[171,172,173]', '<p>Những điểm hạn chế cơ bản của Luận cương chính trị 1930 là:</p>\r\n\r\n<p> - Chưa nhận thức được tầm quan trọng của nhiệm vụ chống đế quốc giành độc lập dân tộc. </p>\r\n\r\n<p>- Nặng về đấu tranh giai cấp. </p>\r\n\r\n<p>- Chưa thấy rõ được khả năng cách mạng của các tầng lớp khác ngoài công nông.</p>', '2018-10-17 09:17:47', '2018-10-20 18:49:40');
+(47, 'Tại hội nghị hợp nhất ba tổ chức cộng sản, có sự tham gia của các tổ chức cộng sản nào?', '[117,119]', '', '2018-10-17 08:41:17', '2018-10-17 08:41:18'),
+(48, 'Vai trò của Nguyễn Ái Quốc trong hội nghị hợp nhất ba tổ chức cộng sản (3/2/1930) được thể hiện như thế nào?', '[123,124]', '', '2018-10-17 08:42:34', '2018-10-17 08:42:34'),
+(49, 'Con đường cách mạng Việt Nam được xác định trong Cương lĩnh chính trị đầu tiên do Nguyễn Ái Quốc khởi thảo là gì?', '[129,129]', '', '2018-10-17 08:44:15', '2018-10-17 08:44:15'),
+(50, 'Lực lượng cách mạng để đánh đổ đế quốc và phong kiến được nêu trong Cương lĩnh chính trị đầu tiên của Đảng do Nguyễn Ái Quốc khởi thảo là gì?', '[131,134,134]', '', '2018-10-17 08:46:16', '2018-10-17 08:46:17'),
+(51, 'Nội dung của Hội nghị thành lập Đảng:', '[136,137,138]', '', '2018-10-17 08:47:25', '2018-10-17 08:47:26'),
+(52, 'Có tổ chức nào không tham gia Hội nghị thành lập Đảng?', '[143]', '', '2018-10-17 08:48:40', '2018-10-17 08:48:40'),
+(53, 'Đảng Cộng sản Việt Nam ra đời là sản phẩm của sự kết hợp của chủ nghĩa Mác-Lê nin với:', '[146,147]', '', '2018-10-17 08:51:57', '2018-10-17 08:51:57'),
+(54, 'Đảng Cộng sản ra đời do tác động của nhiều yếu tố, yếu tố nào sau đây không đúng?', '[151]', '', '2018-10-17 08:53:37', '2018-10-17 08:53:37'),
+(55, 'Nội dung chủ yếu của cương lĩnh Chính trị đầu tiên của Đảng do Nguyễn Ái Quốc khởi thảo là gì?', '[155]', '', '2018-10-17 09:10:12', '2018-10-17 09:10:12'),
+(56, 'Điều gì chứng tỏ Cương lĩnh chính trị đầu tiên của Đảng do Nguyễn Ái Quốc khởi thảo là đúng đắn, sáng tạo, thắm đượm tính dân tộc và nhân văn?', '[158,160,161]', '', '2018-10-17 09:11:37', '2018-10-17 09:11:38'),
+(57, 'Tính chất của cách mạng Đông Dương lúc đầu là một cuộc cách mạng tư sản dân quyền, sau khi cách mạng tư sản dân quyền thắng lợi sẽ tiếp tục phát triển, bỏ qua thời kỳ tư bản mà tiến thẳng lên chủ nghĩa xã hội. Đó là nội dung của:', '[165]', '', '2018-10-17 09:13:19', '2018-10-17 09:13:19'),
+(58, 'Nhiệm vụ cốt yếu của cách mạng tư sản dân quyền ở Việt Nam là gì?', '[169,170]', '', '2018-10-17 09:15:17', '2018-10-17 09:16:28'),
+(59, 'Những điểm hạn chế cơ bản của Luận cương chính trị 1930?', '[171,172,173]', '<p>Những điểm hạn chế cơ bản của Luận cương chính trị 1930 là:</p>\r\n\r\n<p> - Chưa nhận thức được tầm quan trọng của nhiệm vụ chống đế quốc giành độc lập dân tộc. </p>\r\n\r\n<p>- Nặng về đấu tranh giai cấp. </p>\r\n\r\n<p>- Chưa thấy rõ được khả năng cách mạng của các tầng lớp khác ngoài công nông.</p>', '2018-10-17 09:17:47', '2018-10-20 18:49:40');
 
 -- --------------------------------------------------------
 
@@ -457,20 +483,20 @@ INSERT INTO `topics` (`id`, `name`, `slug`, `category_id`, `user_id`, `status`, 
 (2, 'Luyện tập ngữ pháp', 'luyen-tap-ngu-phap', 1, 4, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
 (3, 'Câu bị động', 'cau-bi-dong', 1, 4, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
 (4, 'Câu điều kiện', 'cau-dieu-kien', 1, 6, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
-(5, 'Động lực học chất điểm', 'dong-luc-hoc-chat-diem', 2, 6, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
-(6, 'Các định luật bảo toàn', 'cac-dinh-luat-bao-toan', 2, 6, 1, '2018-09-26 14:55:55', '2018-10-20 15:29:26'),
-(7, 'Phương trình bậc nhất', 'phuong-trinh-bac-nhat', 3, 4, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
-(8, 'Giải phương trình bậc hai', 'giai-phuong-trinh-bac-hai', 3, 6, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
+(6, 'Các định luật bảo toàn', 'cac-dinh-luat-bao-toan', 2, 6, 2, '2018-09-26 14:55:55', '2018-10-31 16:33:14'),
+(7, 'Phương trình bậc nhất', 'phuong-trinh-bac-nhat', 3, 4, 3, '2018-09-26 14:55:55', '2018-10-31 16:10:30'),
+(8, 'Giải phương trình bậc hai', 'giai-phuong-trinh-bac-hai', 3, 6, 0, '2018-09-26 14:55:55', '2018-10-30 07:38:50'),
 (9, 'Hệ phương trình bậc nhất', 'he-phuong-trinh-bac-nhat', 3, 6, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
-(10, 'Tập làm văn', 'tap-lam-van', 4, 4, 1, '2018-09-26 14:55:55', '2018-10-29 02:20:36'),
+(10, 'Tập làm văn', 'tap-lam-van', 4, 4, 0, '2018-09-26 14:55:55', '2018-11-02 15:58:12'),
 (11, 'Thơ văn', 'tho-van', 4, 4, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
 (12, 'Đảng cộng sản Việt Nam ra đời', 'dang-cong-san-viet-nam-ra-doi', 5, 5, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:56'),
-(13, 'Trận chiến sông Bạch Đằng', 'tran-chien-song-bach-dang', 5, 7, 1, '2018-09-26 14:55:56', '2018-09-26 14:55:56'),
+(13, 'Trận chiến sông Bạch Đằng', 'tran-chien-song-bach-dang', 5, 7, 3, '2018-09-26 14:55:56', '2018-10-31 17:39:28'),
 (14, 'HTML', 'html', 6, 4, 1, '2018-09-26 14:55:56', '2018-09-26 14:55:56'),
 (15, 'PHP', 'php', 6, 6, 1, '2018-09-26 14:55:56', '2018-09-26 14:55:56'),
 (16, 'CSS', 'csc', 6, 8, 1, '2018-09-26 14:55:56', '2018-09-26 14:55:56'),
 (17, 'Javascript', 'javascript', 6, 10, 1, '2018-09-26 14:55:56', '2018-09-26 14:55:56'),
-(18, 'Văn học dân gian', 'van-hoc-dan-gian', 4, 4, 1, '2018-09-28 02:16:00', '2018-09-28 02:22:38');
+(18, 'Văn học dân gian', 'van-hoc-dan-gian', 4, 7, 1, '2018-09-28 02:16:00', '2018-11-02 15:58:34'),
+(40, 'Động lực học chất điểm', 'dong-luc-hoc-chat-diem', 2, 4, 1, '2018-11-01 14:09:44', '2018-11-01 14:09:44');
 
 -- --------------------------------------------------------
 
@@ -536,12 +562,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `first_name`, `last_name`, `avatar`, `phone_number`, `address`, `email`, `provider`, `provider_id`, `access_token`, `email_verified_at`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(4, 'Hero Gustin', 'Hero', 'Gustin', '1539843929.jpg', NULL, 'New York', 'herogustin@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$l6/UnAkFE1hbvs.mzg1t8eAlrnTt6rqKHBPcm9914JhHWVr2BabMS', 1, 'Sb5O2nNccHZMD8Vvb7pRTovS3mOM61ieUI2CfkLhuH8kshI6l2Z5DTNCUs68', '2018-10-09 06:15:56', '2018-10-23 01:44:46'),
+(4, 'Hero Gustin', 'Hero', 'Gustin', '1539843929.jpg', NULL, 'New York', 'herogustin@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$l6/UnAkFE1hbvs.mzg1t8eAlrnTt6rqKHBPcm9914JhHWVr2BabMS', 1, 'LLDcsBuZpRtO8XcyFgHqTrACWKyjrncllxQN75kgeNx1xheN2PaccUuHjPHI', '2018-10-09 06:15:56', '2018-10-23 01:44:46'),
 (5, 'RedHero', NULL, NULL, '1539481851.jpg', NULL, NULL, 'redhero@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$1aqt1DAweey00Y05PTMO/uE1CQzGGbeVV7rpALFtVVUKhCkMEaKda', 2, 'c8DXhvwHjYLodW1G58OsZgV0NTlWRR7GeRpxM2tDXbM5Wj2RMsrEjbvf2d8T', '2018-10-09 07:23:58', '2018-10-14 01:50:52'),
-(6, 'Emma', 'Emma', 'Watson', '1539482138.jpg', NULL, 'London, England', 'emma@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$/VMssU.mqL2mniwlTLmzAOoDw4TiKIPKR0XY1snvNL.cYdxTE6FLS', 1, 'SvZecDijcYI62rGpovqOIWyTvpGWdSjHO1K6mIDNcWDnBg1MLhnJ1gIGz4Wn', '2018-10-14 01:54:10', '2018-10-14 01:55:38'),
-(7, 'Taylor', NULL, NULL, '1539843744.jpg', NULL, NULL, 'frog.dbsk.cass@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$rF1a3m9OL.H1Cr92e3BI6.TmYbpn05Yov.h0WvEHISd6vzEXwXQeq', 2, 'aLl64izUkK53TTxGy4rErBPzDbwZMOKiIW9kY9TPxz1XB5NK5S7ridHw2OhA', '2018-10-18 04:37:23', '2018-10-18 08:48:16'),
+(6, 'Emma', 'Emma', 'Watson', '1539482138.jpg', NULL, 'London, England', 'emma@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$/VMssU.mqL2mniwlTLmzAOoDw4TiKIPKR0XY1snvNL.cYdxTE6FLS', 1, 'fzKkxp0v8uXVHeoUInv0X0O3k81PapvHjpXUCAruZd0o75Rwq7H7GCYu76RA', '2018-10-14 01:54:10', '2018-10-14 01:55:38'),
+(7, 'Taylor', NULL, NULL, '1539843744.jpg', NULL, NULL, 'frog.dbsk.cass@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$LaEZbqTE48KyLSabe0MGf.Sv76.GyVxyJWZzoPIQzmc8O/fPAF.lS', 2, 'NtfS7PsTzfOf90atzjOXXDEoSOVlgzqFLRtYzBaMYs9VwHMbo6ox1uILlco7', '2018-10-18 04:37:23', '2018-11-03 01:56:45'),
 (8, 'Red', NULL, NULL, NULL, NULL, NULL, 'redhero1996@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$zbTIZl9s3XJLSCw0CaZ4Te2ipmV.qNHrEYrbmmuj2djShU6PcsnyS', 2, '7FOxD6E8lKXCxNgOquJF7LNe9vilXRPn9DPmjCWXdDoOQD1rTkONPejd9cYj', '2018-10-18 16:08:18', '2018-10-18 16:08:18'),
-(10, 'Hero Gustin', NULL, NULL, '', NULL, NULL, 'herogustin1986@gmail.com', 'facebook', '197856630991177', 'EAASEY7vs0qMBANar8xaNL6KwRl0J6oY69hyzm4iY4HEEqZBO21UZAuB8yBKSbiHJdscZCRB2Weg0FL8238xtSuqhx4s4WEzpXNCZAZCvTu4yF5E9JwL4K1w49Ckpmj1OwYO076fSh26wgs4xT4klW2PIfMzFFNNNGZAPrsz1FF7wZDZD', NULL, '', 2, 'oA3sZam7xAsrUNqjDz6QtPg5OTkqyAF61DmFmreQYA02Jm3sMzuNdoRXG3AD', '2018-10-19 04:53:40', '2018-10-19 04:53:40');
+(10, 'Hero Gustin', NULL, NULL, '', NULL, NULL, 'herogustin1986@gmail.com', 'facebook', '197856630991177', 'EAASEY7vs0qMBANar8xaNL6KwRl0J6oY69hyzm4iY4HEEqZBO21UZAuB8yBKSbiHJdscZCRB2Weg0FL8238xtSuqhx4s4WEzpXNCZAZCvTu4yF5E9JwL4K1w49Ckpmj1OwYO076fSh26wgs4xT4klW2PIfMzFFNNNGZAPrsz1FF7wZDZD', NULL, '', 2, 'oA3sZam7xAsrUNqjDz6QtPg5OTkqyAF61DmFmreQYA02Jm3sMzuNdoRXG3AD', '2018-10-19 04:53:40', '2018-10-19 04:53:40'),
+(11, 'Chi Nguyen', NULL, NULL, '1541344722.jpg', NULL, 'Bắc Ninh', 'chinguyen270296@gmail.com', 'google', '103433988440606455875', 'ya29.GltKBiI7K7wCBfJaa51V7lzne1HAdzYgEjLeSVLha7IacseBEWEIR9enJMjhQC1VuWlSOdD5zjBeP3G5OgZu888xm3aikWXuVR2FhCYEQ4uTHEiGpyaPteNzf6uL', NULL, '$2y$10$9D5EawF1lygYHGYhRve0s.7aqMX/HSZsdVVOcsu.2YBWid3o8lknW', 2, 'xaFUqaA0RHkAHjyQlN1nsnC2eUTGWDOJ6dXk1M49RUnOCFVWRWyVZ96B5eWS', '2018-11-04 14:45:52', '2018-11-04 15:18:42');
 
 --
 -- Indexes for dumped tables
@@ -567,6 +594,14 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `comments_user_id_foreign` (`user_id`),
   ADD KEY `comments_question_id_foreign` (`question_id`);
+
+--
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `likes_user_id_foreign` (`user_id`),
+  ADD KEY `likes_topic_id_foreign` (`topic_id`);
 
 --
 -- Indexes for table `migrations`
@@ -646,10 +681,16 @@ ALTER TABLE `comments`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `questions`
@@ -673,7 +714,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `topics`
 --
 ALTER TABLE `topics`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `topic_user`
@@ -685,7 +726,7 @@ ALTER TABLE `topic_user`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -703,6 +744,13 @@ ALTER TABLE `answers`
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_question_id_foreign` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `comments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `likes`
+--
+ALTER TABLE `likes`
+  ADD CONSTRAINT `likes_topic_id_foreign` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `likes_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `question_topic`
