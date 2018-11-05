@@ -6,6 +6,7 @@ use App\Http\Requests\UserProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Topic;
+use App\Models\Question;
 use App\User;
 use Image;
 use Session;
@@ -54,6 +55,14 @@ class HomePageController extends Controller
         Session::flash('success', trans('translate.succ_acount'));
 
         return redirect()->route('user.profile', [$user->name, $user->id]);
+    }
+
+    public function comments(Question $question)
+    {
+        $topic = $question->topics()->firstOrFail();
+        $user = $topic->users()->where('user_id', Auth::user()->id)->first();
+
+        return view('pages.comments', compact('topic', 'question', 'user'));
     }
 
     public function logout()

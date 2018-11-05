@@ -21,6 +21,7 @@
             <div class="form-group" id="check-all">
                 @foreach ($data['topic'] as $key => $value)
                     <ol class="questions">
+                        <li class="mr-2 comment"><a href="{{ route('comments', $value['question']->id) }}"><i class="fas fa-reply-all"></i>Hỏi và đáp</a></li>
                         <li class="alert alert-info title-question">
                             <span class="question-num">{!! trans('translate.number', ['number' => $key + config('constants.number_ques')]) !!} </span>
                             <span id="question"> {!! $value['question']->content !!}</span>
@@ -42,7 +43,7 @@
                         </ul>
                         <li class="alert alert-secondary explain">
                             <h4 class="font-weight-bold font-italic explain">{{ trans('translate.explain') }}</h4>
-                            <span class="ml-4">{{ $value['question']->explain }}</span>
+                            <span class="ml-4">{!! strip_tags(htmlspecialchars_decode($value['question']->explain)) !!}</span>
                         </li>
                     </ol>
                 @endforeach

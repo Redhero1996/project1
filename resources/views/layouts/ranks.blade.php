@@ -19,8 +19,8 @@
                         <td>{{ round($rank['total'], config('constants.two')) }}</td>
                     </tr>
                 @endforeach
+                {{-- {!! $ranks->links() !!} --}}
             </tbody>
-
         </table>
     </div>
 </div>

@@ -30,7 +30,7 @@ return [
     'contact' => 'Liên hệ',
     'submit' => 'Nộp bài',
     'account' => 'Tài khoản',
-    'question' => 'Câu',
+    'question' => 'Câu hỏi',
     'rank' => 'Thứ hạng',
     'member' => 'Thành viên',
     'top' => 'Bảng xếp hạng',
@@ -81,4 +81,5 @@ return [
     'return' => 'Quay lại',
     'close' => 'Đóng',
     'send' => 'Gửi bài',
+    'add' => 'Thêm',
 ];

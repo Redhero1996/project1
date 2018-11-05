@@ -44,11 +44,13 @@ class QuizController extends Controller
             'U', 'V', 'W', 'X', 'Y',
             'Z',
         ];
-        $like = Auth::user()->likes()->where([
-            ['user_id', Auth::user()->id],
-            ['topic_id', $topic->id],
-        ])->first();
         $questions = $topic->questions()->where('topic_id', $topic->id)->get();
+        if (Auth::check()) {
+            $like = Auth::user()->likes()->where([
+                ['user_id', Auth::user()->id],
+                ['topic_id', $topic->id],
+            ])->first();
+        }
         $data = [];
         foreach ($questions as $key => $question) {
             $answers = Answer::where('question_id', $question->id)->get();

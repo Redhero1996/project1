@@ -82,4 +82,5 @@ return [
     'return' => 'Return',
     'close' => 'Close',
     'send' => 'Send',
+    'add' => 'Add',
 ];

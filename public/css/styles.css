@@ -218,7 +218,13 @@ ol.questions {
 
 ol > li.title-question {
     padding: 15px 10px 0px 10px;
-    border-radius: 10px;    
+    border-radius: 10px;  
+    clear: both;  
+}
+
+ol > li.comment {
+    float: right;
+    color: #000 !important;
 }
 
 button.btn-submit {
@@ -506,4 +512,15 @@ button.add:hover {
 
 .icon-like {
     color: #4267b2;
+}
+
+h4>span.question {
+    color: red;
+    font-size: 32px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+h4>span.content {
+    font-weight: bold;
 }

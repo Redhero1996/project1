@@ -44,7 +44,7 @@
                     <div class="form-body question-form">
                     </div>
                     <div class="col-md-3 addQuest">
-                        <span class="btn btn-primary btn-sm addQuest"><i class="fas fa-plus"></i> Thêm</span>
+                        <span class="btn btn-primary btn-sm addQuest"><i class="fas fa-plus"></i>{{ __('translate.add') }}</span>
                     </div>
                 </div>
                 <div class="form-actions pl-2">
@@ -87,6 +87,10 @@
                     $('input#number-quest').prop('disabled', true);
                     $('div.addQuest').show();
                     checkAdd(number_quest);                 
+                    $('button.close').click(function() {
+                        number_quest -= 1;
+                        $('input#number-quest').val(number_quest);
+                    });
                 }
                 $('div.addQuest').click(function() {
                     number_quest += 1;

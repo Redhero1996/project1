@@ -31,7 +31,10 @@ Route::get('/', 'HomePageController@home');
 Route::view('about', 'pages.about');
 Route::view('contact', 'pages.contact');
 
-// OAuth Routes
+// Comment 
+Route::get('comments/{question}', 'HomePageController@comments')->name('comments');
+
+// OAuth Routes (Social)
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.oauth');
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback')->name('social.callback');
 

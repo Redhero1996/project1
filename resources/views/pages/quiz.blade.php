@@ -13,9 +13,7 @@
                     </div>
                     <div class="form-group do-test">
                         <div class="social">
-                            <div class="fb-share-button" data-href="{{route('quiz', [$topic->category->slug, $topic->slug])}}" data-layout="button_count" data-size="small" data-mobile-iframe="false">
-                                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{route('quiz', [$topic->category->slug, $topic->slug])}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
-                            </div>
+                            <div class="fb-share-button" data-href="{!! route('quiz', [$topic->category->slug, $topic->slug])!!}" data-layout="button_count" data-size="small" data-mobile-iframe="true">Share</div>
                             <span class="ml-5 icon-like" >
                                 <i class="far fa-eye"></i>
                                 <span>0</span>
@@ -87,17 +85,16 @@
             data : @json($data),
             topic : {!! $topic->id !!},
             trans: {
-                alert: '{{__('translate.alert') }}',
-                opps: '{{__('translate.oops') }}',
-                warn_alert: '{{__('translate.warn_alert') }}',
-                score: '{{__('translate.score') }}',
-                total: '{{__('translate.total') }}',
-                try_again: '{{__('translate.try_again') }}',
+                alert: '{{ __('translate.alert') }}',
+                opps: '{{ __('translate.oops') }}',
+                warn_alert: '{{ __('translate.warn_alert') }}',
+                score: '{{ __('translate.score') }}',
+                total: '{{ __('translate.total') }}',
+                try_again: '{{ __('translate.try_again') }}',
             }
         }
         var token = '{{ Session::token() }}';
         var urlLike = '{{ route('like') }}';
-
     </script>
     {!! Html::script('js/quiz.js') !!}
     {!! Html::script('js/like.js') !!}
