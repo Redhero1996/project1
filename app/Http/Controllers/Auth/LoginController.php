@@ -16,15 +16,6 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/';
 
-    // public function redirectTo()
-    // {
-    //     if ($this->request->has('previous')) {
-    //         $this->redirectTo = $this->request->get('previous');
-    //     }
-
-    //     return $this->redirectTo ?? '/';
-    // }
-
     /**
      * Create a new controller instance.
      *

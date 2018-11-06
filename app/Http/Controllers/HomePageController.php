@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\UserProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;

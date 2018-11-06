@@ -70,7 +70,7 @@ return [
 
     // social
     'error_login' => 'Login error! Try another account.',
-    'not_support' => 'have not support',
+    'not_support' => 'Have not support',
 
     // admin
     'admin' => 'Admin',

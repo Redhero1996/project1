@@ -16,7 +16,7 @@
                             <div class="fb-share-button" data-href="{!! route('quiz', [$topic->category->slug, $topic->slug])!!}" data-layout="button_count" data-size="small" data-mobile-iframe="true">Share</div>
                             <span class="ml-5 icon-like" >
                                 <i class="far fa-eye"></i>
-                                <span>0</span>
+                                <span class="view">0</span>
                             </span>
                             <span class="ml-3 like" value="1">
                                 @if ($like != null && $like->status == 1)

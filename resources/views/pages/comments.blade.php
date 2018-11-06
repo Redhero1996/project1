@@ -8,7 +8,7 @@
                 <span class="question">{{ __('translate.question') }}</span>: <span class="content">{!! strip_tags(htmlspecialchars_decode($question->content)) !!}</span>
             </h4>
             <hr>
-            <div class="fb-comments" data-href="{{ route('comments', $question->id) }}" data-width="100%" data-numposts="10" data-include-parent="true"></div>
+            <div class="fb-comments" data-href="{{ route('comments', $question->id) }}" data-width="100%" data-numposts="10" data-order-by="time"></div>
         </div>
         <div></div>
     </div>

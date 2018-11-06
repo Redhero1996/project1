@@ -26,7 +26,7 @@
         </div>
         <div class="col-md-6 mt-3" id="topics">
             @foreach ($topics as $topic)
-                <a class="chip chip-lg light-blue lighten-4" href="{{ route('quiz', [$topic->category->slug, $topic->slug]) }}">
+                <a class="chip chip-lg light-blue lighten-4 topic" id="{{ $topic->id }}" href="{{ route('quiz', [$topic->category->slug, $topic->slug]) }}">
                     <div class="calendar">
                         <div class="year">{{ $topic->created_at['year'] }}</div>
                         <div class="day">{{ $topic->created_at['day'] }}

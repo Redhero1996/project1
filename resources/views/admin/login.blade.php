@@ -11,6 +11,10 @@
         <!-- Default form login -->
         {!! Form::open(['url' => 'admin/login', 'method' => 'POST', 'class' => 'text-center border border-light p-5']) !!}
             <p class="h4 mb-4">{{ trans('translate.login') }}</p>
+            @if(Session::has('error'))
+                <div class="alert alert-danger">{{Session::get('error')}}
+                </div>
+            @endif
             <!-- Email -->
             {!! Form::email('email', null, ['class' => 'form-control email', 'id' => 'defaultLoginFormEmail', 'placeholder' => 'E-mail']) !!}
             @if ($errors->has('email'))
