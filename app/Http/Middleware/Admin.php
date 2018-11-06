@@ -19,7 +19,7 @@ class Admin
         if (Auth::check() && (Auth::user()->role_id == 1)) {
             return $next($request);
         } else {
-            return redirect('admin/login')->with('wrong', 'You have not admin access');
+            return redirect('admin/login')->with('error', __('translate.account_error'));
         }
     }
 }

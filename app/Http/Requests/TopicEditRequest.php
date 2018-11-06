@@ -25,8 +25,6 @@ class TopicEditRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            // 'topic_name' => '',
-            // 'content' => '',
             'answer' => '',
             'correct_ans' => '',
             'explain.*.*' => '',
@@ -53,12 +51,12 @@ class TopicEditRequest extends FormRequest
             foreach ($topic[0]->questions as $key => $question) {
                 // $messages["content.required"] = __('Nội dung câu hỏi không được bỏ trống');
                 // $messages["content.min"] = __('Nội dung câu hỏi cần tối thiểu 3 ký tự');
-                $messages["correct_ans.$question->id.required"] = __('Có câu hỏi chưa có đáp án đúng');
+                $messages["correct_ans.$question->id.required"] = __('translate.request_correct_ans');
             }
         } else {
-            $messages['topic_name.required'] = __('Topic không được bỏ trống');
-            $messages['topic_name.min'] =  __('Topic phải tối tiểu 3 ký tự');
-            $messages['topic_name.max'] =  __('Topic tối đa 255 ký tự');
+            $messages['topic_name.required'] = __('validation.required');
+            $messages['topic_name.min'] =  __('validation.min');
+            $messages['topic_name.max'] =  __('validation.max');
         }    
         return $messages;
     }

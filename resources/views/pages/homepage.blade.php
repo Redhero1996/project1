@@ -5,7 +5,7 @@
             <nav id="nav-sidebar" class="bg-faded mt-3">
                 <div class="sidebar-content hidden-sm-down">
                     <ul class="nav nav-pills flex-column" id="menu">
-                            <a class="nav-link active" href="{{ url('/') }}">{{ trans('translate.category') }} </a>
+                            <a class="nav-link active" href="{{ url('/') }}">{{ __('translate.category') }} </a>
                             <!-- Search form -->
                             <form class="form-inline md-form form-sm active-pink-2 mt-2">
                               <input class="form-control form-control-sm w-90 search" id="search" type="text" placeholder="Search" aria-label="Search">
@@ -40,11 +40,11 @@
                     <div class="div-quest">
                         <div class="quest">
                             <i class="fas fa-pencil-alt"></i>
-                            <span>{{ count($topic->questions) }} {{ trans('translate.question') }}</span>
+                            <span>{{ count($topic->questions) }} {{ __('translate.question') }}</span>
                         </div>
                         <div class="time">
                             <i class="far fa-clock"></i>
-                            <span>{{ trans('translate.time_clock', ['time' => config('constants.minute')]) }}</span>
+                            <span>{{ __('translate.time_clock', ['time' => config('constants.minute')]) }}</span>
                         </div>
                     </div>
                     @foreach ($topic->users as $user)
@@ -113,11 +113,11 @@
                                         <div class="div-quest">
                                             <div class="quest">
                                                 <i class="fas fa-pencil-alt"></i>
-                                                <span>` + topic.count + ` {{ trans('translate.question') }}` + `</span>
+                                                <span>` + topic.count + ` {{ __('translate.question') }}` + `</span>
                                             </div>
                                             <div class="time">
                                                 <i class="far fa-clock"></i>
-                                                <span>{{ trans('translate.time_clock', ['time' => config('constants.minute')]) }}</span>
+                                                <span>{{ __('translate.time_clock', ['time' => config('constants.minute')]) }}</span>
                                             </div>
                                         </div>
                                         <i class="fas fa-check-circle text-success"></i>
@@ -140,11 +140,11 @@
                                         <div class="div-quest">
                                             <div class="quest">
                                                 <i class="fas fa-pencil-alt"></i>
-                                                <span>` + topic.count + ` {{ trans('translate.question') }}` + `</span>
+                                                <span>` + topic.count + ` {{ __('translate.question') }}` + `</span>
                                             </div>
                                             <div class="time">
                                                 <i class="far fa-clock"></i>
-                                                <span>{{ trans('translate.time_clock', ['time' => config('constants.minute')]) }}</span>
+                                                <span>{{ __('translate.time_clock', ['time' => config('constants.minute')]) }}</span>
                                             </div>
                                         </div>
                                     </a>

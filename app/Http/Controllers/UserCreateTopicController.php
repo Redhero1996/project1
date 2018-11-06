@@ -86,7 +86,7 @@ class UserCreateTopicController extends Controller
                 }
             }
         }
-        Session::flash('success', 'Yêu cầu của bạn đã được gửi');
+        Session::flash('success', __('translate.request'));
 
         return redirect()->route('create-topics.index', $topic->user_id);
     }
@@ -174,7 +174,7 @@ class UserCreateTopicController extends Controller
                 }
             }
         }
-        Session::flash('success', 'The topic was successfully updated!');
+        Session::flash('success', __('translate.topic_updated'));
 
         return redirect()->route('create-topics.show', [$topic->category->slug, $topic->slug, $topic->id]);
     }
@@ -194,7 +194,7 @@ class UserCreateTopicController extends Controller
             $question->delete();
         }
         $topic->delete();
-        Session::flash('success', 'The topic was successfully deleted!');
+        Session::flash('success', __('translate.topic_deleted'));
         return redirect()->route('create-topics.index', Auth::user()->id);
     }
 }

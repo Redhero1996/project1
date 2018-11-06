@@ -18,13 +18,13 @@
                     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <th class="th-sm">#ID
+                        <th class="th-sm">{{ __('translate.id') }}
                             <i class="fa fa-sort float-right" aria-hidden="true"></i>
                         </th>
-                        <th class="th-sm">Tên 
+                        <th class="th-sm">{{ __('translate.name') }} 
                             <i class="fa fa-sort float-right" aria-hidden="true"></i>
                         </th>
-                        <th class="th-sm">Trạng thái
+                        <th class="th-sm">{{ __('translate.status') }} 
                             <i class="fa fa-sort float-right" aria-hidden="true"></i>
                         </th>
                         <th class="th-sm">{{ __('translate.view') }}
@@ -49,23 +49,23 @@
                                         ( $topic->status == 2 ? '<span class="badge badge-default">Need to edit</span>' : 
                                         '<span class="badge badge-danger">Close</span>' )) !!}</td>
                                     <td><a class="show" href="{{ route('create-topics.show', [$topic->category->slug, $topic->slug, $topic->id]) }}">
-                                        <i class="far fa-eye"></i> View
+                                        <i class="far fa-eye"></i> {{ __('translate.view') }} 
                                         </a>
                                     </td>
                                     @if ($topic->status == 1)
                                         <td class="status">
-                                            <i class="fas fa-edit"></i> Edit
+                                            <i class="fas fa-edit"></i> {{ __('translate.edit') }} 
                                         </td>
                                         <td class="status">
-                                            <i class="fas fa-trash"></i> Delete
+                                            <i class="fas fa-trash"></i> {{ __('translate.delete') }} 
                                         </td>
                                     @elseif ($topic->status == 3)
                                         <td class="status">
-                                            <i class="fas fa-edit"></i> Edit
+                                            <i class="fas fa-edit"></i> {{ __('translate.edit') }} 
                                         </td>
                                         <td>
                                             <a class="delete" data-toggle="modal" href="#delete-{{$topic->id}}">
-                                            <i class="fas fa-trash"></i> Delete
+                                            <i class="fas fa-trash"></i> {{ __('translate.delete') }} 
                                             </a>
                                             <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
                                             <div class="modal fade" id="delete-{{$topic->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -75,16 +75,16 @@
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
-                                                            <h4 class="modal-title">Delete Confirmation</h4>
+                                                            <h4 class="modal-title">{{ __('translate.del_confirm') }}</h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <h5>Are you sure you want to delete this topic?</h5>
+                                                            <h5>{{ __('translate.del_alert') }}</h5>
                                                         </div>
                                                         <div class="modal-footer">
                                                             {!! Form::open(['route' => ['create-topics.destroy', $topic->id], 'method' => 'DELETE']) !!}
-                                                            <button type="submit" class="btn btn-danger mb-1">DELETE</button>
+                                                            <button type="submit" class="btn btn-danger mb-1">{{ __('translate.delete') }}</button>
                                                             {!! Form::close() !!}
-                                                            <button type="button" class="btn btn-light" data-dismiss="modal" >Close</button>
+                                                            <button type="button" class="btn btn-light" data-dismiss="modal" >{{ __('translate.close') }}</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -93,12 +93,12 @@
                                         </td>
                                     @else
                                         <td><a class="edit" href="{{ route('create-topics.edit', $topic->id) }}">
-                                            <i class="fas fa-edit"></i> Edit
+                                            <i class="fas fa-edit"></i> {{ __('translate.edit') }}
                                             </a>
                                         </td>
                                         <td>
                                             <a class="delete" data-toggle="modal" href="#delete-{{$topic->id}}">
-                                            <i class="fas fa-trash"></i> Delete
+                                            <i class="fas fa-trash"></i> {{ __('translate.delete') }}
                                             </a>
                                             <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
                                             <div class="modal fade" id="delete-{{$topic->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -108,16 +108,16 @@
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
-                                                            <h4 class="modal-title">Delete Confirmation</h4>
+                                                            <h4 class="modal-title">{{ __('translate.del_confirm') }}</h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <h5>Are you sure you want to delete this topic?</h5>
+                                                            <h5>{{ __('translate.del_alert') }}</h5>
                                                         </div>
                                                         <div class="modal-footer">
                                                             {!! Form::open(['route' => ['create-topics.destroy', $topic->id], 'method' => 'DELETE']) !!}
-                                                            <button type="submit" class="btn btn-danger mb-1">DELETE</button>
+                                                            <button type="submit" class="btn btn-danger mb-1">{{ __('translate.delete') }}</button>
                                                             {!! Form::close() !!}
-                                                            <button type="button" class="btn btn-light" data-dismiss="modal" >Close</button>
+                                                            <button type="button" class="btn btn-light" data-dismiss="modal" >{{ __('translate.close') }}</button>
                                                         </div>
                                                     </div>
                                                 </div>

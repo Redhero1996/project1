@@ -53,7 +53,7 @@ class HomePageController extends Controller
             }
         }
         $user->save();
-        Session::flash('success', trans('translate.succ_acount'));
+        Session::flash('success', __('translate.succ_acount'));
 
         return redirect()->route('user.profile', [$user->name, $user->id]);
     }

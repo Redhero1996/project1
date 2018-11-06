@@ -53,7 +53,7 @@ class TopicController extends Controller
             'user_id' => Auth::user()->id,
             'status' => $request->status,
         ]);
-        Session::flash('success', 'The topic was successfully save!');
+        Session::flash('success', __('translate.topic_store'));
         return redirect()->route('topics.index');
     }
 
@@ -138,7 +138,7 @@ class TopicController extends Controller
                 }
             }
         }
-        Session::flash('success', 'The topic was successfully updated!');
+        Session::flash('success', __('translate.topic_updated'));
 
         return redirect()->route('topics.index');
     }
@@ -158,7 +158,7 @@ class TopicController extends Controller
             $question->delete();
         }
         $topic->delete();
-        Session::flash('success', 'The topic was successfully deleted!');
+        Session::flash('success', __('translate.topic_deleted'));
 
         return redirect()->route('topics.index');
     }

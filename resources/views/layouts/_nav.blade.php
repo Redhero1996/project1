@@ -6,15 +6,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent-3">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item homepage {{ Request::is('/') ? 'active' : "" }}">
+            <li class="nav-item homepage {{ Request::is('/') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('/') }}">{{ __('translate.homepage') }}
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
-            <li class="nav-item about {{ Request::is('about') ? 'active' : "" }}">
+            <li class="nav-item about {{ Request::is('about') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('about') }}">{{ __('translate.about') }}</a>
             </li>
-            <li class="nav-item contact {{ Request::is('contact') ? 'active' : "" }}">
+            <li class="nav-item contact {{ Request::is('contact') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('contact') }}">{{ __('translate.contact') }}</a>
             </li>
         </ul>
@@ -29,9 +29,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @if (Auth::user()->avatar == null)
-                            <img class="avatar" src="{{ config('view.image_paths.images') }}"> {{ Auth::user()->name }}
+                            <img class="avatar" src="{{ config('view.image_paths.images') . 'avatar-default-icon.png' }}"> {{ Auth::user()->name }}
                         @else
-                            <img class="avatar" src="{{ asset('images/' . Auth::user()->avatar) }}"> {{ Auth::user()->name }}
+                            <img class="avatar" src="{{ config('view.image_paths.images') . Auth::user()->avatar }}"> {{ Auth::user()->name }}
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-default ml-5" aria-labelledby="navbarDropdownMenuLink">

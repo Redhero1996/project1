@@ -79,7 +79,7 @@
                 }
                 var number_quest = parseInt($('input#number-quest').val()); 
                 if (number_quest <= 0) {
-                    alert('Bạn phải nhập câu hỏi lớn hơn 0');
+                    alert('{{ __('translate.input_numb') }}');
                 }
                 else {
                     $('input[type=submit]').prop('disabled', false);

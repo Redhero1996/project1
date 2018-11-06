@@ -44,7 +44,7 @@ class SocialAuthController extends Controller
         }
         // check for email in returned user
         return empty($user->email)
-        ? $this->sendFailedResponse(trans('validation.email'))
+        ? $this->sendFailedResponse(__('validation.email'))
         : $this->loginOrCreateAccount($user, $provider);
     }
 
@@ -55,7 +55,7 @@ class SocialAuthController extends Controller
 
     protected function sendFailedResponse($msg = null)
     {
-        return redirect()->route('login')->withErrors(['msg' => $msg ?: trans('translate.error_login')]);
+        return redirect()->route('login')->withErrors(['msg' => $msg ?: __('translate.error_login')]);
     }
 
     public function loginOrCreateAccount($providerUser, $provider)

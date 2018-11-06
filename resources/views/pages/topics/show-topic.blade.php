@@ -3,7 +3,7 @@
 @section('content')
     <div class="form-group quiz">
         <div class="form-group">
-            <h3 id="title-quiz">{!! trans('translate.topic') !!} </h3>
+            <h3 id="title-quiz">{!! __('translate.topic') !!} </h3>
             @if(Session::has('success'))
                 <div class="portlet-title" id="message">
                     <div class="alert alert-success">
@@ -13,13 +13,13 @@
             @endif
             <div class="form-body">
                 <div class="form-group">
-                    {!! Form::label('category_id', trans('translate.category'), ['class' => 'col-md-3 control-label']) !!}
+                    {!! Form::label('category_id', __('translate.category'), ['class' => 'col-md-3 control-label']) !!}
                     <div class="col-md-12">
                         {!! Form::text('category_id', $category->name, ['class' => 'form-control input-circle', 'disabled' => 'disabled']) !!}
                     </div>
                 </div>
                 <div class="form-group">
-                    {!! Form::label('topic_id', trans('translate.topic'), ['class' => 'col-md-3 control-label']) !!}
+                    {!! Form::label('topic_id', __('translate.topic'), ['class' => 'col-md-3 control-label']) !!}
                     <div class="col-md-12">
                         {!! Form::text('topic_name', $topic->name, ['class' => 'form-control input-circle', 'disabled' => 'disabled']) !!}
                     </div>
@@ -27,7 +27,7 @@
                 <div class="form-body question-form">
                     @foreach ($questions as $k => $question)
                         <div class="form-group">
-                            <label for="question" class="ml-3 question">{!! trans('translate.question'). ' ' . $k+=1 !!}: </label>
+                            <label for="question" class="ml-3 question">{!! __('translate.question'). ' ' . $k+=1 !!}: </label>
                             <span class="content">{!! strip_tags(htmlspecialchars_decode($question->content)) !!}</span>
                         </div>
                         @foreach ($question->answers as $key => $answer)
@@ -38,12 +38,12 @@
                             </div>
                         @endforeach
                     <div class="form-group ml-3">
-                        <label for="explain"><i>{{ trans('translate.explain') }}:</i> </label>
+                        <label for="explain"><i>{{ __('translate.explain') }}:</i> </label>
                         <span>
                             @if (!empty($question->explain))
                                 {!! strip_tags(htmlspecialchars_decode($question->explain)) !!}
                             @else
-                                {{ trans('translate.no_explain') }}
+                                {{ __('translate.no_explain') }}
                             @endif    
                         </span>
                     </div>
@@ -54,10 +54,10 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-9">
                         @if ($topic->status == 0)
-                            <a href="{{ route('create-topics.edit', $topic->id) }}" class="btn btn-warning edit">{{ trans('translate.edit') }}</a>
+                            <a href="{{ route('create-topics.edit', $topic->id) }}" class="btn btn-warning edit">{{ __('translate.edit') }}</a>
                         @endif
                         <a href="{{ route('create-topics.index', Auth::user()->id) }}" class="btn btn-light submit">
-                            {{ trans('translate.return') }}
+                            {{ __('translate.return') }}
                         </a>
                     </div>
                 </div>

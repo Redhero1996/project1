@@ -1,12 +1,12 @@
 @extends('master')
 
-@section('title', 'Edit Category')
+@section('title', '| ' . __('translate.edit_category'))
 
 @section('content')
     <div class="card">
         <div class="tab-content">
             <div class="card-body">
-                <h3 class="page-title">Edit Category</h3>
+                <h3 class="page-title"></h3>
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
                     {!! Form::model($category, ['method' => 'PUT', 'route' => ['categories.update', $category->id], 'class' => 'form-horizontal']) !!}
@@ -16,7 +16,7 @@
                                 <div class="col-md-12">
                                     {!! Form::text('name', $category->name, ['class' => 'form-control input-circle', 'placeholder' => 'Enter name']) !!}
                                     @if($errors->has('name'))
-                                        <span class="help-block" style="color: red;">
+                                        <span class="help-block">
                                             <strong>{{ $errors->first('name') }}</strong>
                                         </span>
                                     @endif
@@ -28,7 +28,7 @@
                                 <div class="col-md-offset-3 col-md-9">
                                     {!! Form::submit('Submit', ['class' => 'btn btn-info']) !!}
                                     <a href="{{ route('categories.index') }}" class="btn btn-light">
-                                        Cancel
+                                        {{ __('translate.cancel') }}
                                     </a>
                                 </div>
                             </div>

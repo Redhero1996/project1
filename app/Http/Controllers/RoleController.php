@@ -41,7 +41,7 @@ class RoleController extends Controller
         Role::create([
             'name' => $request->name,
         ]);
-        Session::flash('success', 'The role was successfully save!');
+        Session::flash('success', __('translate.role_store'));
         return redirect()->route('roles.index');
     }
 
@@ -70,7 +70,7 @@ class RoleController extends Controller
         $role = Role::whereId($id)->firstOrFail();
         $role->name = $request->name;
         $role->save();
-        Session::flash('success', 'The role was successfully updated!');
+        Session::flash('success', __('translate.role_updated'));
         return redirect()->route('roles.index');
     }
 
@@ -84,7 +84,7 @@ class RoleController extends Controller
     {
         $role = Role::whereId($id)->firstOrFail();
         $role->delete();
-        Session::flash('success', 'The role was successfully deleted!');
+        Session::flash('success', __('translate.role_deleted'));
         return redirect()->route('roles.index');
     }
 }

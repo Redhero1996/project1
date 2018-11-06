@@ -17,7 +17,7 @@ class AdminLoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('users.index');
         } else {
-            return redirect('admin/login')->with('error', 'Tài khoản hoặc mật khẩu không tồn tại');
+            return redirect('admin/login')->with('error', __('translate.error'));
         }
     }
 

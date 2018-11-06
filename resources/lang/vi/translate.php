@@ -71,8 +71,7 @@ return [
     'error_login' => 'Không thể đăng nhập, hãy thử lại với tài khoản khác.',
     'not_support' => 'không được hỗ trợ',
 
-    // admin
-    'admin' => 'Admin',
+    // button
     'save' => 'Lưu',
     'edit' => 'Sửa',
     'view' => 'Xem',
@@ -82,4 +81,39 @@ return [
     'close' => 'Đóng',
     'send' => 'Gửi bài',
     'add' => 'Thêm',
+
+    // title
+    'id' => '#ID',
+    'name' => 'Tên',
+    'slug' => 'Slug',
+    'status' => 'Trạng thái',
+
+    // Admin
+    'account_error' => 'Bạn không không có quyền truy cập',
+    'error' => 'Tài khoản hoặc mật khẩu không tồn tại',
+    'admin' => 'Admin',
+    'category_store' => 'Danh mục đã lưu thành công',
+    'category_updated' => 'Danh mục đã cập nhật thành công',
+    'category_deleted' => 'Danh mục đã được xóa thành công',
+    'question_store' => 'Câu hỏi đã lưu thành công',
+    'question_updated' => 'Câu hỏi đã cập nhật thành công',
+    'question_deleted' => 'Câu hỏi đã được xóa thành công',
+    'role_store' => 'Quyền đã lưu thành công',
+    'role_updated' => 'Quyền đã cập nhật thành công',
+    'role_deleted' => 'Quyền đã được xóa thành công',
+    'topic_store' => 'Đề thi đã lưu thành công',
+    'topic_updated' => 'Đề thi đã cập nhật thành công',
+    'topic_deleted' => 'Đề thi đã được xóa thành công',
+    'user_store' => 'Tài khoản đã lưu thành công',
+    'create_category' => 'Tạo mới danh mục',
+    'edit_category' => 'Sửa danh mục',
+    'manage_categories' => 'Quản lý danh mục',
+    'all_category' => 'Tất cả danh mục',
+    'del_confirm' => 'Xác nhận xóa',
+    'del_alert' => 'Bạn chắc chắn muốn xóa đúng không?',
+
+    // Create topic from user
+    'request' => 'Yêu cầu của bạn đã được gửi',
+    'request_correct_ans' => 'Có câu hỏi chưa có đáp án đúng',
+    'input_numb' => 'Bạn phải nhập câu hỏi lớn hơn 0',
 ];

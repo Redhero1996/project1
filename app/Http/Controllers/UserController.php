@@ -62,7 +62,7 @@ class UserController extends Controller
             $user->avatar = $file_name;
         }
         $user->save();
-        Session::flash('success', 'The user was successfully saved!');
+        Session::flash('success', __('translate.user_store'));
 
         return redirect()->route('users.show', $user->id);
     }
@@ -73,11 +73,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::whereId($id)->firstOrFail();
-
-        return view('admin.users.show')->withuser($user);
+        return view('admin.users.show')->withUser($user);
     }
 
     /**

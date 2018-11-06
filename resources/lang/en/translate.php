@@ -72,8 +72,7 @@ return [
     'error_login' => 'Login error! Try another account.',
     'not_support' => 'Have not support',
 
-    // admin
-    'admin' => 'Admin',
+    // button
     'save' => 'Save',
     'edit' => 'Edit',
     'view' => 'View',
@@ -83,4 +82,39 @@ return [
     'close' => 'Close',
     'send' => 'Send',
     'add' => 'Add',
+
+    // title
+    'id' => '#ID',
+    'name' => 'Name',
+    'slug' => 'Slug',
+    'status' => 'Status',
+
+    // Admin
+    'account_error' => 'You have not admin access',
+    'error' => 'Incorrect email or password',
+    'admin' => 'Admin',
+    'category_store' => 'The category was successfully save!',
+    'category_updated' => 'The category was successfully updated!',
+    'category_deleted' => 'The category was successfully deleted!',
+    'question_store' => 'The question was successfully save!',
+    'question_updated' => 'The question was successfully updated!',
+    'question_deleted' => 'The question was successfully deleted!',
+    'role_store' => 'The role was successfully save!',
+    'role_updated' => 'The role was successfully updated!',
+    'role_deleted' => 'The role was successfully deleted!',
+    'topic_store' => 'The topic was successfully save!',
+    'topic_updated' => 'The topic was successfully updated!',
+    'topic_deleted' => 'The topic was successfully deleted!',
+    'user_store' => 'The user was successfully save!',
+    'create_category' => 'Create New Category',
+    'edit_category' => 'Edit Category',
+    'manage_categories' => 'Manage Categories',
+    'all_category' => 'All categories',
+    'del_confirm' => 'Delete Confirmation',,
+    'del_alert' => 'Are you sure you want to delete?'
+
+    // Create topic from user
+    'request' => 'Your request was send',
+    'request_correct_ans' => 'Questions need a correct answer',
+    'input_numb' => 'Enter a number greater than 0',
 ];

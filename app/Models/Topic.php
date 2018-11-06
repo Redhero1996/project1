@@ -15,6 +15,7 @@ class Topic extends Model
         'category_id',
         'user_id',
         'status',
+        'view_count',
     ];
 
     protected $withCount = [

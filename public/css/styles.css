@@ -524,3 +524,11 @@ h4>span.question {
 h4>span.content {
     font-weight: bold;
 }
+
+span.help-block {
+    color: red !important;
+}
+
+img.img {
+    height: 30em;
+}

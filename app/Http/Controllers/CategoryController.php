@@ -42,7 +42,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'slug' => str_slug($request->name, '-'),
         ]);
-        Session::flash('success', 'The category was successfully save!');
+        Session::flash('success', __('translate.category_store'));
         return redirect()->route('categories.index');
     }
 
@@ -72,7 +72,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->slug = str_slug($category->name, '-');
         $category->save();
-        Session::flash('success', 'The category was successfully updated!');
+        Session::flash('success', __('translate.category_updated'));
         return redirect()->route('categories.index');
     }
 
@@ -87,7 +87,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->topics()->update(['category_id' => null]);
         $category->delete();
-        Session::flash('success', 'The category was successfully deleted!');
+        Session::flash('success', __('translate.category_deleted'));
         return redirect()->route('categories.index');
     }
 }

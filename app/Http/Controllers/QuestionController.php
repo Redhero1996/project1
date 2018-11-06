@@ -66,7 +66,7 @@ class QuestionController extends Controller
                 $question->save();
             }
         }
-        Session::flash('success', 'The question was successfully saved!');
+        Session::flash('success', __('translate.question_store'));
 
         return redirect()->route('questions.show', $question->id);
     }
@@ -159,7 +159,7 @@ class QuestionController extends Controller
                 $answer->save();
             }
         }
-        Session::flash('success', 'The question was successfully updated!');
+        Session::flash('success', __('translate.question_updated'));
 
         return redirect()->route('questions.show', $question->id);
     }
@@ -176,7 +176,7 @@ class QuestionController extends Controller
         $question->topics()->detach();
         $answers = Answer::where('question_id', $id)->delete();
         $question->delete();
-        Session::flash('success', 'The question was successfully deleted!');
+        Session::flash('success', __('translate.question_deleted'));
         return redirect()->route('questions.index');
     }
 }
