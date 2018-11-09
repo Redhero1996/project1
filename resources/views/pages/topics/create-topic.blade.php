@@ -1,6 +1,7 @@
 @extends('main')
 @section('title', '| '.__('translate.create_topic'))
 @section('content')
+
     <div class="form-group quiz">
         <div class="form-group">
             <h3 id="title-quiz">{!! __('translate.create_topic') !!} </h3>
@@ -23,18 +24,13 @@
                         {!! Form::label('topic_id', __('translate.topic'), ['class' => 'col-md-3 control-label']) !!}
                         <div class="col-md-12">
                             {!! Form::text('topic_name', old('topic_name'), ['class' => 'form-control input-circle', 'placeholder' => 'Enter name of topic']) !!}
-{{--                             @if($errors->has('topic_name'))
-                                <span class="help-block" style="color: red;">
-                                    <strong>{{ $errors->first('topic_name') }}</strong>
-                                </span>
-                            @endif --}}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!! Form::label('number-quest', __('translate.question_num'), ['class' => 'col-md-3 control-label']) !!}
+                        {!! Form::label('number_quest', __('translate.question_num'), ['class' => 'col-md-3 control-label']) !!}
                         <div class="row ml-1">
                             <div class="col-md-3">
-                                {!! Form::text('number-quest', config('constants.zero'), ['class' => 'form-control input-circle', 'required' => 'required']) !!}
+                                {!! Form::text('number_quest', config('constants.zero'), ['class' => 'form-control input-circle', 'required' => 'required']) !!}
                             </div>
                             <div class="col-md-3 pt-2">
                                 <span class="text-success add-quest"><i class="fas fa-plus-circle"></i></span>
@@ -77,24 +73,24 @@
                 window.onbeforeunload = function() {
                     return "{{ __('translate.alert') }}";
                 }
-                var number_quest = parseInt($('input#number-quest').val()); 
+                var number_quest = parseInt($('input#number_quest').val()); 
                 if (number_quest <= 0) {
                     alert('{{ __('translate.input_numb') }}');
                 }
                 else {
                     $('input[type=submit]').prop('disabled', false);
                     $(this).hide();
-                    $('input#number-quest').prop('disabled', true);
+                    // $('input#number_quest').prop('disabled', true);
                     $('div.addQuest').show();
                     checkAdd(number_quest);                 
                     $('button.close').click(function() {
                         number_quest -= 1;
-                        $('input#number-quest').val(number_quest);
+                        $('input#number_quest').val(number_quest);
                     });
                 }
                 $('div.addQuest').click(function() {
                     number_quest += 1;
-                    $('input#number-quest').val(number_quest);
+                    $('input#number_quest').val(number_quest);
                     $('div.question-form').append(`
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -150,7 +146,7 @@
                                 <span aria-hidden="true"><i class="fas fa-times"></i></span>
                             </button>
                             <div class="form-group">
-                                <label for="question" class="col-md-3 control-label question">Câu hỏi ` + i +`</label>
+                                <label for="question" class="col-md-3 control-label question">Câu hỏi <span class="number_label">` + i +`</span></label>
                                 <div class="col-md-12">
                                     <textarea class="editor" name="content[`+ i +`]" cols="94" id="content" required></textarea>
                                 </div>

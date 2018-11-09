@@ -1,11 +1,11 @@
 @extends('master')
 
-@section('title', 'All Roles')
+@section('title', '| ' . __('translate.all_roles'))
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h3 class="page-title">Manage Roles</h3>
+            <h3 class="page-title">{{ __('translate.manage_roles') }}</h3>
             <!-- BEGIN PAGE CONTENT-->
             <div class="row">
                 <div class="col-md-12">
@@ -20,7 +20,7 @@
                     <div class="portlet box blue-hoki">
                         <div class="portlet-title">
                             <div class="caption mb-2">
-                                <i class="fa fa-globe"></i>All roles
+                                <i class="fa fa-globe"></i>{{ __('translate.all_roles') }}
                             </div>
                             <div class="tools">
                             </div>
@@ -29,10 +29,10 @@
                             <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                                <th class="th-sm">#ID<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
-                                <th class="th-sm">Name<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
-                                <th class="th-sm">Edit<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
-                                <th class="th-sm">Delete<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
+                                <th class="th-sm">{{ __('translate.id') }}<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
+                                <th class="th-sm">{{ __('translate.name') }}<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
+                                <th class="th-sm">{{ __('translate.edit') }}<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
+                                <th class="th-sm">{{ __('translate.delete') }}<i class="fa fa-sort float-right" aria-hidden="true"></i></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -41,12 +41,12 @@
                                     <td>{{ $role->id }}</td>
                                     <td>{{ $role->name }}</td>
                                     <td><a class="edit" href="{{ route('roles.edit', $role->id) }}">
-                                        <i class="fa fa-edit"></i> Edit
+                                        <i class="fa fa-edit"></i> {{ __('translate.edit') }}
                                         </a>
                                     </td>
                                     <td>
                                         <a class="delete" data-toggle="modal" href="#delete-{{$role->id}}">
-                                        <i class="fa fa-trash"></i> Delete
+                                        <i class="fa fa-trash"></i> {{ __('translate.delete') }}
                                         </a>
                                         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
                                         <div class="modal fade" id="delete-{{$role->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -56,16 +56,16 @@
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
-                                                        <h4 class="modal-title">Delete Confirmation</h4>
+                                                        <h4 class="modal-title">{{ __('translate.del_confirm') }}</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <h5>Are you sure you want to delete this role?</h5>
+                                                        <h5>{{ __('translate.del_alert') }}</h5>
                                                     </div>
                                                     <div class="modal-footer">
                                                         {!! Form::open(['route' => ['roles.destroy', $role->id], 'method' => 'DELETE']) !!}
-                                                        <button type="submit" class="btn btn-danger mb-1">DELETE</button>
+                                                        <button type="submit" class="btn btn-danger mb-1">{{ __('translate.delete') }}</button>
                                                         {!! Form::close() !!}
-                                                        <button type="button" class="btn btn-light" data-dismiss="modal" >Close</button>
+                                                        <button type="button" class="btn btn-light" data-dismiss="modal" >{{ __('translate.close') }}</button>
                                                     </div>
                                                 </div>
                                             </div>

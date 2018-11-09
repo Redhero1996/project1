@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', '| ' . __('translate.all_category'))
+@section('title', '| ' . __('translate.all_categories'))
 
 @section('content')
     <div class="card">
@@ -20,7 +20,7 @@
                     <div class="portlet box blue-hoki">
                         <div class="portlet-title">
                             <div class="caption mb-2">
-                                <i class="fa fa-globe"></i>{{ __('translate.all_category') }}
+                                <i class="fa fa-globe"></i>{{ __('translate.all_categories') }}
                             </div>
                             <div class="tools">
                             </div>

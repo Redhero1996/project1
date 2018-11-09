@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 04, 2018 at 04:20 PM
+-- Generation Time: Nov 08, 2018 at 07:15 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -202,7 +202,17 @@ INSERT INTO `answers` (`id`, `content`, `question_id`, `created_at`, `updated_at
 (171, 'Chưa nhận thức được tầm quan trọng của nhiệm vụ chống đế quốc giành độc lập dân tộc.', 59, '2018-10-17 09:17:48', '2018-10-17 09:17:48'),
 (172, 'Nặng về đấu tranh giai cấp.', 59, '2018-10-17 09:17:48', '2018-10-17 09:17:48'),
 (173, 'Chưa thấy rõ được khả năng cách mạng của các tầng lớp khác ngoài công nông.', 59, '2018-10-17 09:17:48', '2018-10-20 18:36:58'),
-(174, 'Cả ba ý trên đều sai', 59, '2018-10-17 09:17:48', '2018-10-17 09:17:48');
+(174, 'Cả ba ý trên đều sai', 59, '2018-10-17 09:17:48', '2018-10-17 09:17:48'),
+(175, 'z', 60, '2018-11-05 01:29:02', '2018-11-05 01:29:02'),
+(176, 'dg', 61, '2018-11-06 07:04:33', '2018-11-06 07:04:33'),
+(177, 'dgs', 62, '2018-11-07 15:34:12', '2018-11-07 15:34:12'),
+(178, 'gsdgs', 62, '2018-11-07 15:34:12', '2018-11-07 15:34:12'),
+(179, 'sdgs', 62, '2018-11-07 15:34:12', '2018-11-07 15:34:12'),
+(180, 'gsdg', 62, '2018-11-07 15:34:12', '2018-11-07 15:34:12'),
+(181, 'cx', 64, '2018-11-07 17:02:49', '2018-11-07 17:02:49'),
+(182, 'bcxb', 64, '2018-11-07 17:02:49', '2018-11-07 17:02:49'),
+(183, 'xcbx', 64, '2018-11-07 17:02:49', '2018-11-07 17:02:49'),
+(184, 'bxcbx', 64, '2018-11-07 17:02:49', '2018-11-07 17:02:49');
 
 -- --------------------------------------------------------
 
@@ -267,8 +277,8 @@ CREATE TABLE `likes` (
 INSERT INTO `likes` (`id`, `user_id`, `topic_id`, `status`, `created_at`, `updated_at`) VALUES
 (28, 4, 18, 1, '2018-11-04 10:02:44', '2018-11-04 13:24:45'),
 (31, 6, 18, 0, '2018-11-04 13:23:59', '2018-11-04 13:44:35'),
-(45, 7, 18, 1, '2018-11-04 14:32:46', '2018-11-04 14:32:46'),
-(47, 7, 2, 1, '2018-11-04 14:36:05', '2018-11-04 14:36:05');
+(47, 7, 2, 1, '2018-11-04 14:36:05', '2018-11-04 14:36:05'),
+(48, 11, 2, 1, '2018-11-05 01:10:03', '2018-11-05 01:10:03');
 
 -- --------------------------------------------------------
 
@@ -305,7 +315,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (25, '2018_10_19_104532_add_provider_col_to_users_table', 9),
 (26, '2018_10_20_202716_add_status_col_to_topics_table', 10),
 (27, '2018_10_27_142700_add_col_user_id_to_topics_table', 11),
-(31, '2018_11_03_164542_create_likes_table', 12);
+(31, '2018_11_03_164542_create_likes_table', 12),
+(34, '2018_11_06_144309_add_view_count_col_to_topics_table', 13);
 
 -- --------------------------------------------------------
 
@@ -376,7 +387,12 @@ INSERT INTO `questions` (`id`, `content`, `correct_ans`, `explain`, `created_at`
 (56, 'Điều gì chứng tỏ Cương lĩnh chính trị đầu tiên của Đảng do Nguyễn Ái Quốc khởi thảo là đúng đắn, sáng tạo, thắm đượm tính dân tộc và nhân văn?', '[158,160,161]', '', '2018-10-17 09:11:37', '2018-10-17 09:11:38'),
 (57, 'Tính chất của cách mạng Đông Dương lúc đầu là một cuộc cách mạng tư sản dân quyền, sau khi cách mạng tư sản dân quyền thắng lợi sẽ tiếp tục phát triển, bỏ qua thời kỳ tư bản mà tiến thẳng lên chủ nghĩa xã hội. Đó là nội dung của:', '[165]', '', '2018-10-17 09:13:19', '2018-10-17 09:13:19'),
 (58, 'Nhiệm vụ cốt yếu của cách mạng tư sản dân quyền ở Việt Nam là gì?', '[169,170]', '', '2018-10-17 09:15:17', '2018-10-17 09:16:28'),
-(59, 'Những điểm hạn chế cơ bản của Luận cương chính trị 1930?', '[171,172,173]', '<p>Những điểm hạn chế cơ bản của Luận cương chính trị 1930 là:</p>\r\n\r\n<p> - Chưa nhận thức được tầm quan trọng của nhiệm vụ chống đế quốc giành độc lập dân tộc. </p>\r\n\r\n<p>- Nặng về đấu tranh giai cấp. </p>\r\n\r\n<p>- Chưa thấy rõ được khả năng cách mạng của các tầng lớp khác ngoài công nông.</p>', '2018-10-17 09:17:47', '2018-10-20 18:49:40');
+(59, 'Những điểm hạn chế cơ bản của Luận cương chính trị 1930?', '[171,172,173]', '<p>Những điểm hạn chế cơ bản của Luận cương chính trị 1930 là:</p>\r\n\r\n<p> - Chưa nhận thức được tầm quan trọng của nhiệm vụ chống đế quốc giành độc lập dân tộc. </p>\r\n\r\n<p>- Nặng về đấu tranh giai cấp. </p>\r\n\r\n<p>- Chưa thấy rõ được khả năng cách mạng của các tầng lớp khác ngoài công nông.</p>', '2018-10-17 09:17:47', '2018-10-20 18:49:40'),
+(60, '<p>rewga</p>', NULL, '', '2018-11-05 01:29:02', '2018-11-05 01:29:02'),
+(61, '<p>hddf</p>', NULL, '', '2018-11-06 07:04:33', '2018-11-06 07:04:33'),
+(62, '<p>dsgsg</p>', '[178,179]', '', '2018-11-07 15:34:12', '2018-11-07 15:34:12'),
+(63, '<p>gsdgs</p>', NULL, '<p>dgs</p>', '2018-11-07 15:34:12', '2018-11-07 15:34:12'),
+(64, '<p>cbxb</p>', '[182]', '<p>bcx</p>', '2018-11-07 17:02:49', '2018-11-07 17:02:49');
 
 -- --------------------------------------------------------
 
@@ -434,7 +450,10 @@ INSERT INTO `question_topic` (`id`, `question_id`, `topic_id`, `created_at`, `up
 (37, 56, 12, NULL, NULL),
 (38, 57, 12, NULL, NULL),
 (39, 58, 12, NULL, NULL),
-(40, 59, 12, NULL, NULL);
+(40, 59, 12, NULL, NULL),
+(41, 62, 41, NULL, NULL),
+(42, 63, 41, NULL, NULL),
+(43, 64, 42, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -470,6 +489,7 @@ CREATE TABLE `topics` (
   `category_id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `status` int(11) NOT NULL,
+  `view_count` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -478,25 +498,27 @@ CREATE TABLE `topics` (
 -- Dumping data for table `topics`
 --
 
-INSERT INTO `topics` (`id`, `name`, `slug`, `category_id`, `user_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Luyện tập phần từ vừng', 'luyen-tap-phan-tu-vung', 1, 4, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
-(2, 'Luyện tập ngữ pháp', 'luyen-tap-ngu-phap', 1, 4, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
-(3, 'Câu bị động', 'cau-bi-dong', 1, 4, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
-(4, 'Câu điều kiện', 'cau-dieu-kien', 1, 6, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
-(6, 'Các định luật bảo toàn', 'cac-dinh-luat-bao-toan', 2, 6, 2, '2018-09-26 14:55:55', '2018-10-31 16:33:14'),
-(7, 'Phương trình bậc nhất', 'phuong-trinh-bac-nhat', 3, 4, 3, '2018-09-26 14:55:55', '2018-10-31 16:10:30'),
-(8, 'Giải phương trình bậc hai', 'giai-phuong-trinh-bac-hai', 3, 6, 0, '2018-09-26 14:55:55', '2018-10-30 07:38:50'),
-(9, 'Hệ phương trình bậc nhất', 'he-phuong-trinh-bac-nhat', 3, 6, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
-(10, 'Tập làm văn', 'tap-lam-van', 4, 4, 0, '2018-09-26 14:55:55', '2018-11-02 15:58:12'),
-(11, 'Thơ văn', 'tho-van', 4, 4, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
-(12, 'Đảng cộng sản Việt Nam ra đời', 'dang-cong-san-viet-nam-ra-doi', 5, 5, 1, '2018-09-26 14:55:55', '2018-09-26 14:55:56'),
-(13, 'Trận chiến sông Bạch Đằng', 'tran-chien-song-bach-dang', 5, 7, 3, '2018-09-26 14:55:56', '2018-10-31 17:39:28'),
-(14, 'HTML', 'html', 6, 4, 1, '2018-09-26 14:55:56', '2018-09-26 14:55:56'),
-(15, 'PHP', 'php', 6, 6, 1, '2018-09-26 14:55:56', '2018-09-26 14:55:56'),
-(16, 'CSS', 'csc', 6, 8, 1, '2018-09-26 14:55:56', '2018-09-26 14:55:56'),
-(17, 'Javascript', 'javascript', 6, 10, 1, '2018-09-26 14:55:56', '2018-09-26 14:55:56'),
-(18, 'Văn học dân gian', 'van-hoc-dan-gian', 4, 7, 1, '2018-09-28 02:16:00', '2018-11-02 15:58:34'),
-(40, 'Động lực học chất điểm', 'dong-luc-hoc-chat-diem', 2, 4, 1, '2018-11-01 14:09:44', '2018-11-01 14:09:44');
+INSERT INTO `topics` (`id`, `name`, `slug`, `category_id`, `user_id`, `status`, `view_count`, `created_at`, `updated_at`) VALUES
+(1, 'Luyện tập phần từ vừng', 'luyen-tap-phan-tu-vung', 1, 4, 1, 0, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
+(2, 'Luyện tập ngữ pháp', 'luyen-tap-ngu-phap', 1, 4, 1, 0, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
+(3, 'Câu bị động', 'cau-bi-dong', 1, 4, 1, 0, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
+(4, 'Câu điều kiện', 'cau-dieu-kien', 1, 6, 1, 0, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
+(6, 'Các định luật bảo toàn', 'cac-dinh-luat-bao-toan', 2, 6, 2, 0, '2018-09-26 14:55:55', '2018-10-31 16:33:14'),
+(7, 'Phương trình bậc nhất', 'phuong-trinh-bac-nhat', 3, 4, 3, 0, '2018-09-26 14:55:55', '2018-10-31 16:10:30'),
+(8, 'Giải phương trình bậc hai', 'giai-phuong-trinh-bac-hai', 3, 6, 0, 0, '2018-09-26 14:55:55', '2018-10-30 07:38:50'),
+(9, 'Hệ phương trình bậc nhất', 'he-phuong-trinh-bac-nhat', 3, 6, 1, 0, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
+(10, 'Tập làm văn', 'tap-lam-van', 4, 4, 0, 0, '2018-09-26 14:55:55', '2018-11-02 15:58:12'),
+(11, 'Thơ văn', 'tho-van', 4, 4, 1, 0, '2018-09-26 14:55:55', '2018-09-26 14:55:55'),
+(12, 'Đảng cộng sản Việt Nam ra đời', 'dang-cong-san-viet-nam-ra-doi', 5, 5, 1, 0, '2018-09-26 14:55:55', '2018-09-26 14:55:56'),
+(13, 'Trận chiến sông Bạch Đằng', 'tran-chien-song-bach-dang', 5, 7, 3, 0, '2018-09-26 14:55:56', '2018-10-31 17:39:28'),
+(14, 'HTML', 'html', 6, 4, 1, 0, '2018-09-26 14:55:56', '2018-09-26 14:55:56'),
+(15, 'PHP', 'php', 6, 6, 1, 0, '2018-09-26 14:55:56', '2018-09-26 14:55:56'),
+(16, 'CSS', 'csc', 6, 8, 1, 0, '2018-09-26 14:55:56', '2018-09-26 14:55:56'),
+(17, 'Javascript', 'javascript', 6, 10, 1, 0, '2018-09-26 14:55:56', '2018-09-26 14:55:56'),
+(18, 'Văn học dân gian', 'van-hoc-dan-gian', 4, 7, 1, 0, '2018-09-28 02:16:00', '2018-11-02 15:58:34'),
+(40, 'Động lực học chất điểm', 'dong-luc-hoc-chat-diem', 2, 4, 1, 0, '2018-11-01 14:09:44', '2018-11-01 14:09:44'),
+(41, 'Block', 'block', 1, 7, 0, 0, '2018-11-07 15:34:12', '2018-11-07 15:34:12'),
+(42, 'Block', 'block', 1, 7, 0, 0, '2018-11-07 17:02:49', '2018-11-07 17:02:49');
 
 -- --------------------------------------------------------
 
@@ -529,7 +551,8 @@ INSERT INTO `topic_user` (`id`, `topic_id`, `user_id`, `total`, `answered`, `cre
 (62, 2, 6, 25, '[[11],[17],[23],[26],[30],[34],[39],[43],[48],[50]]', '2018-10-16 09:29:27', '2018-10-16 09:29:27'),
 (63, 14, 6, 15, '[[53],[59],[63]]', '2018-10-16 09:32:25', '2018-10-16 09:32:25'),
 (65, 12, 4, 0, '{\"0\":[110],\"1\":[114],\"2\":[117,120],\"3\":[122,123,124],\"4\":[127,130],\"6\":[137,139]}', '2018-10-18 08:51:02', '2018-10-18 08:51:02'),
-(66, 18, 7, 15, '[[82,83],[87,88],[93],[97,98,99],[103],[106]]', '2018-10-18 15:43:26', '2018-10-18 15:43:26');
+(66, 18, 7, 15, '[[82,83],[87,88],[93],[97,98,99],[103],[106]]', '2018-10-18 15:43:26', '2018-10-18 15:43:26'),
+(67, 2, 11, 25, '[[11],[17],[22],[27],[30],[36],[37],[41],[47],[50]]', '2018-11-05 01:12:17', '2018-11-05 01:12:17');
 
 -- --------------------------------------------------------
 
@@ -564,11 +587,11 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `first_name`, `last_name`, `avatar`, `phone_number`, `address`, `email`, `provider`, `provider_id`, `access_token`, `email_verified_at`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
 (4, 'Hero Gustin', 'Hero', 'Gustin', '1539843929.jpg', NULL, 'New York', 'herogustin@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$l6/UnAkFE1hbvs.mzg1t8eAlrnTt6rqKHBPcm9914JhHWVr2BabMS', 1, 'LLDcsBuZpRtO8XcyFgHqTrACWKyjrncllxQN75kgeNx1xheN2PaccUuHjPHI', '2018-10-09 06:15:56', '2018-10-23 01:44:46'),
 (5, 'RedHero', NULL, NULL, '1539481851.jpg', NULL, NULL, 'redhero@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$1aqt1DAweey00Y05PTMO/uE1CQzGGbeVV7rpALFtVVUKhCkMEaKda', 2, 'c8DXhvwHjYLodW1G58OsZgV0NTlWRR7GeRpxM2tDXbM5Wj2RMsrEjbvf2d8T', '2018-10-09 07:23:58', '2018-10-14 01:50:52'),
-(6, 'Emma', 'Emma', 'Watson', '1539482138.jpg', NULL, 'London, England', 'emma@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$/VMssU.mqL2mniwlTLmzAOoDw4TiKIPKR0XY1snvNL.cYdxTE6FLS', 1, 'fzKkxp0v8uXVHeoUInv0X0O3k81PapvHjpXUCAruZd0o75Rwq7H7GCYu76RA', '2018-10-14 01:54:10', '2018-10-14 01:55:38'),
-(7, 'Taylor', NULL, NULL, '1539843744.jpg', NULL, NULL, 'frog.dbsk.cass@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$LaEZbqTE48KyLSabe0MGf.Sv76.GyVxyJWZzoPIQzmc8O/fPAF.lS', 2, 'NtfS7PsTzfOf90atzjOXXDEoSOVlgzqFLRtYzBaMYs9VwHMbo6ox1uILlco7', '2018-10-18 04:37:23', '2018-11-03 01:56:45'),
+(6, 'Emma', 'Emma', 'Watson', '1541564923.jpg', NULL, 'London, England', 'emma@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$/VMssU.mqL2mniwlTLmzAOoDw4TiKIPKR0XY1snvNL.cYdxTE6FLS', 1, 'vtfuUyDHk5DuXNX23pDI71LJp9ecCYC4nx6VJHg8LRRfQtSd0eyU87BliUm6', '2018-10-14 01:54:10', '2018-11-07 04:28:43'),
+(7, 'Taylor', NULL, NULL, '1539843744.jpg', NULL, NULL, 'frog.dbsk.cass@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$LaEZbqTE48KyLSabe0MGf.Sv76.GyVxyJWZzoPIQzmc8O/fPAF.lS', 2, 'U2RMqlu1pnmiMG3cNC80mcDYvzo7VaujkuMr7ibzOf4gEpDDHttJW5yvGyNw', '2018-10-18 04:37:23', '2018-11-03 01:56:45'),
 (8, 'Red', NULL, NULL, NULL, NULL, NULL, 'redhero1996@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$zbTIZl9s3XJLSCw0CaZ4Te2ipmV.qNHrEYrbmmuj2djShU6PcsnyS', 2, '7FOxD6E8lKXCxNgOquJF7LNe9vilXRPn9DPmjCWXdDoOQD1rTkONPejd9cYj', '2018-10-18 16:08:18', '2018-10-18 16:08:18'),
-(10, 'Hero Gustin', NULL, NULL, '', NULL, NULL, 'herogustin1986@gmail.com', 'facebook', '197856630991177', 'EAASEY7vs0qMBANar8xaNL6KwRl0J6oY69hyzm4iY4HEEqZBO21UZAuB8yBKSbiHJdscZCRB2Weg0FL8238xtSuqhx4s4WEzpXNCZAZCvTu4yF5E9JwL4K1w49Ckpmj1OwYO076fSh26wgs4xT4klW2PIfMzFFNNNGZAPrsz1FF7wZDZD', NULL, '', 2, 'oA3sZam7xAsrUNqjDz6QtPg5OTkqyAF61DmFmreQYA02Jm3sMzuNdoRXG3AD', '2018-10-19 04:53:40', '2018-10-19 04:53:40'),
-(11, 'Chi Nguyen', NULL, NULL, '1541344722.jpg', NULL, 'Bắc Ninh', 'chinguyen270296@gmail.com', 'google', '103433988440606455875', 'ya29.GltKBiI7K7wCBfJaa51V7lzne1HAdzYgEjLeSVLha7IacseBEWEIR9enJMjhQC1VuWlSOdD5zjBeP3G5OgZu888xm3aikWXuVR2FhCYEQ4uTHEiGpyaPteNzf6uL', NULL, '$2y$10$9D5EawF1lygYHGYhRve0s.7aqMX/HSZsdVVOcsu.2YBWid3o8lknW', 2, 'xaFUqaA0RHkAHjyQlN1nsnC2eUTGWDOJ6dXk1M49RUnOCFVWRWyVZ96B5eWS', '2018-11-04 14:45:52', '2018-11-04 15:18:42');
+(10, 'Hero Gustin', NULL, NULL, '', NULL, NULL, 'herogustin1986@gmail.com', 'facebook', '197856630991177', 'EAASEY7vs0qMBANar8xaNL6KwRl0J6oY69hyzm4iY4HEEqZBO21UZAuB8yBKSbiHJdscZCRB2Weg0FL8238xtSuqhx4s4WEzpXNCZAZCvTu4yF5E9JwL4K1w49Ckpmj1OwYO076fSh26wgs4xT4klW2PIfMzFFNNNGZAPrsz1FF7wZDZD', NULL, '', 2, 'XZ3xEy61yNchYarM04uqX2lZTlVzRPbqt35ABE6v62M1mNR01BQ1Mp6zzf2Y', '2018-10-19 04:53:40', '2018-10-19 04:53:40'),
+(11, 'Chi Nguyen', NULL, NULL, '1541344722.jpg', NULL, 'Bắc Ninh', 'chinguyen270296@gmail.com', 'google', '103433988440606455875', 'ya29.GltKBiI7K7wCBfJaa51V7lzne1HAdzYgEjLeSVLha7IacseBEWEIR9enJMjhQC1VuWlSOdD5zjBeP3G5OgZu888xm3aikWXuVR2FhCYEQ4uTHEiGpyaPteNzf6uL', NULL, '$2y$10$9D5EawF1lygYHGYhRve0s.7aqMX/HSZsdVVOcsu.2YBWid3o8lknW', 2, '5xtwnQrmGobL2IFxUQWVZZCmcIeUSCGYwI3vjqam9STtfZmN8bIflDZmsw3K', '2018-11-04 14:45:52', '2018-11-04 15:18:42');
 
 --
 -- Indexes for dumped tables
@@ -666,7 +689,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -684,25 +707,25 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `question_topic`
 --
 ALTER TABLE `question_topic`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -714,13 +737,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `topics`
 --
 ALTER TABLE `topics`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `topic_user`
 --
 ALTER TABLE `topic_user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `users`

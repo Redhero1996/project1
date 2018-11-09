@@ -87,9 +87,11 @@ return [
     'name' => 'Tên',
     'slug' => 'Slug',
     'status' => 'Trạng thái',
+    'null' => 'NULL',
+    'comments' => 'Bình luận',
 
     // Admin
-    'account_error' => 'Bạn không không có quyền truy cập',
+    'account_error' => 'Bạn không có quyền truy cập',
     'error' => 'Tài khoản hoặc mật khẩu không tồn tại',
     'admin' => 'Admin',
     'category_store' => 'Danh mục đã lưu thành công',
@@ -105,15 +107,33 @@ return [
     'topic_updated' => 'Đề thi đã cập nhật thành công',
     'topic_deleted' => 'Đề thi đã được xóa thành công',
     'user_store' => 'Tài khoản đã lưu thành công',
+    'content' => 'Nội dung',
     'create_category' => 'Tạo mới danh mục',
     'edit_category' => 'Sửa danh mục',
     'manage_categories' => 'Quản lý danh mục',
     'all_category' => 'Tất cả danh mục',
     'del_confirm' => 'Xác nhận xóa',
     'del_alert' => 'Bạn chắc chắn muốn xóa đúng không?',
-
+    'create_question' => 'Tạo mới câu hỏi',
+    'edit_question' => 'Sửa câu hỏi',
+    'manage_questions' => 'Quản lý câu hỏi',
+    'all_questions' => 'Tất cả câu hỏi',
+    'detail_question' => 'Chi tiết câu hỏi',
+    'create_role' => 'Tạo mới vai trò',
+    'edit_role' => 'Sửa vai trò',
+    'manage_roles' => 'Quản lý vai trò',
+    'all_roles' => 'Tất cả vai trò',
+    
     // Create topic from user
     'request' => 'Yêu cầu của bạn đã được gửi',
     'request_correct_ans' => 'Có câu hỏi chưa có đáp án đúng',
     'input_numb' => 'Bạn phải nhập câu hỏi lớn hơn 0',
+    'correct_ans' => 'Đáp án đúng',
+
+    // answers
+    'ans' => 'Đáp án',
+    'ans_a' => 'Đáp án A:',
+    'ans_b' => 'Đáp án B:',
+    'ans_c' => 'Đáp án C:',
+    'ans_d' => 'Đáp án D:',
 ];

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+// use Illuminate\Http\Request;
 
 class HandleCreateTopicRequest extends FormRequest
 {
@@ -23,23 +24,29 @@ class HandleCreateTopicRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $request = $this->request->get('number_quest');
+        $rules = [
             'topic_name' => 'required|min:3|max:255',
             'content.*' => 'required',
             'answer.*' => 'required',
-            'correct_ans.*' => 'required',
+            'correct_ans' => '',
             'explain.*' => '',
         ];
+        for($i = 1; $i<=(int)$request; $i++) {
+            $rules["correct_ans.$i"] =  'required';
+        }
+        return $rules;
     }
 
-    // public function messages()
-    // {
-    //     return [
-    //         'topic_name.req' => 'required|min:3|max:255',
-    //         'content.*' => 'required|min:3',
-    //         'answer.*' => 'required',
-    //         'correct_ans.*' => 'required|min:1',
-    //         'explain.*' => '',
-    //     ];
-    // }
+    public function messages()
+    {
+        $request = $this->request->get('number_quest');
+        $messages['topic_name.required'] = __('validation.required');
+        $messages['topic_name.min'] = __('validation.min');
+        $messages['topic_name.max'] = __('validation.max');
+        for($i = 1; $i<=(int)$request; $i++) {
+            $messages["correct_ans.$i.required"] =  __('translate.request_correct_ans');
+        }
+        return $messages;
+    }
 }

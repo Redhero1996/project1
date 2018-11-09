@@ -1,4 +1,3 @@
-
 <?php
 
 return [
@@ -88,6 +87,8 @@ return [
     'name' => 'Name',
     'slug' => 'Slug',
     'status' => 'Status',
+    'null' => 'NULL',
+    'comments' = 'Comments',
 
     // Admin
     'account_error' => 'You have not admin access',
@@ -106,15 +107,33 @@ return [
     'topic_updated' => 'The topic was successfully updated!',
     'topic_deleted' => 'The topic was successfully deleted!',
     'user_store' => 'The user was successfully save!',
+    'content' => 'Content',
     'create_category' => 'Create New Category',
     'edit_category' => 'Edit Category',
     'manage_categories' => 'Manage Categories',
-    'all_category' => 'All categories',
-    'del_confirm' => 'Delete Confirmation',,
-    'del_alert' => 'Are you sure you want to delete?'
+    'all_categories' => 'All categories',
+    'del_confirm' => 'Delete Confirmation',
+    'del_alert' => 'Are you sure you want to delete?',
+    'create_question' => 'Create New Question',
+    'edit_question' => 'Edit Question',
+    'manage_questions' => 'Manage Questions',
+    'all_questions' => 'All Questions',
+    'detail_question' => 'Detail Question',  
+    'create_role' => 'Create New role',
+    'edit_role' => 'Edit role',
+    'manage_rolees' => 'Manage roles',
+    'all_rolees' => 'All roles',
 
     // Create topic from user
     'request' => 'Your request was send',
     'request_correct_ans' => 'Questions need a correct answer',
     'input_numb' => 'Enter a number greater than 0',
+    'correct_ans' => 'Correct Answer',
+
+    // answers
+    'ans' => 'Answer',
+    'ans_a' => 'Answer A:',
+    'ans_b' => 'Answer B:',
+    'ans_c' => 'Answer C:',
+    'ans_d' => 'Answer D:',
 ];

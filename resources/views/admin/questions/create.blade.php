@@ -1,10 +1,10 @@
 @extends('master')
-@section('title', 'Create New Question')
+@section('title', '| ' . __('translate.create_question'))
 @section('content')
     <div class="card">
         <div class="tab-content">
             <div class="card-body">
-                <h3 class="page-title">Create Question</h3>
+                <h3 class="page-title">{{ __('translate.create_question') }}</h3>
                 <div class="portlet-body form">
                     @if(count($errors) > 0)
                         <div class="alert alert-danger">
@@ -17,45 +17,45 @@
                     {!! Form::open(['method' => 'POST', 'route' => 'questions.store', 'class' => 'form-horizontal']) !!}
                         <div class="form-body">
                             <div class="form-group">
-                                {!! Form::label('category_id', 'Category', ['class' => 'col-md-3 control-label']) !!}
+                                {!! Form::label('category_id', __('translate.category'), ['class' => 'col-md-3 control-label']) !!}
                                 <div class="col-md-12">
                                     {!! Form::select('category_id', $categories->pluck('name', 'id'), null, ['class' => 'browser-default custom-select']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
-                                {!! Form::label('topic_id', 'Topic', ['class' => 'col-md-3 control-label']) !!}
+                                {!! Form::label('topic_id', __('translate.topic'), ['class' => 'col-md-3 control-label']) !!}
                                 <div class="col-md-12">
                                     {!! Form::select('topic_id', $topics->pluck('name', 'id'), null, ['class' => 'browser-default custom-select']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
-                                {!! Form::label('content', 'Content', ['class' => 'col-md-3 control-label']) !!}
+                                {!! Form::label('content', __('translate.content'), ['class' => 'col-md-3 control-label']) !!}
                                 <div class="col-md-12">
                                     {!! Form::textarea('content', old('content'), ['class' => 'editor']) !!}
                                 </div>
                             </div>
                             <div class="form-group ml-3">
-                                <input type="checkbox" name="correct_ans[]" value="0">
-                                <label>Answer A:</label>
-                                <input type="text" name="answer[]" class="form-control" value="{!! old('answer[0]') !!}">
+                                {!! Form::checkbox('correct_ans[]', config('constants.zero')) !!}
+                                <label>{{ __('translate.ans_a') }}</label>
+                                {!! Form::text('answer[]', old('answer[0]'), ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group ml-3">
-                                 <input type="checkbox" name="correct_ans[]" value="1">
-                                 <label>Answer B:</label>
-                                <input type="text" name="answer[]" class="form-control" value="{!! old('answer[1]') !!}">
+                                {!! Form::checkbox('correct_ans[]', config('constants.one')) !!}
+                                <label>{{ __('translate.ans_b') }}</label>
+                                {!! Form::text('answer[]', old('answer[1]'), ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group ml-3">
-                                 <input type="checkbox" name="correct_ans[]" value="2">
-                                 <label>Answer C:</label>
-                                <input type="text" name="answer[]" class="form-control" value="{!! old('answer[2]') !!}">
+                                {!! Form::checkbox('correct_ans[]', config('constants.two')) !!}
+                                <label>{{ __('translate.ans_c') }}</label>
+                                {!! Form::text('answer[]', old('answer[2]'), ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group ml-3">
-                                <input type="checkbox" name="correct_ans[]" value="3">
-                                <label>Answer D:</label>
-                                <input type="text" name="answer[]" class="form-control" value="{!! old('answer[3]') !!}">
+                                {!! Form::checkbox('correct_ans[]', config('constants.three')) !!}
+                                <label>{{ __('translate.ans_d') }}</label>
+                                {!! Form::text('answer[]', old('answer[3]'), ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group ml-3">
-                                {!! Form::label('explain', 'Explain') !!}
+                                {!! Form::label('explain', __('translate.explain')) !!}
                                 <div class="col-md-12">
                                     {!! Form::textarea('explain', old('explain'), ['class' => 'editor']) !!}
                                 </div>
@@ -66,7 +66,7 @@
                                 <div class="col-md-offset-3 col-md-9">
                                     {!! Form::submit('Submit', ['class' => 'btn btn-info']) !!}
                                     <a href="{{ route('questions.index') }}" class="btn btn-light">
-                                        Cancel
+                                        {{ __('translate.cancel') }}
                                     </a>
                                 </div>
                             </div>

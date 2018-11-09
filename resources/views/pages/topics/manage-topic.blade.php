@@ -53,12 +53,47 @@
                                         </a>
                                     </td>
                                     @if ($topic->status == 1)
-                                        <td class="status">
-                                            <i class="fas fa-edit"></i> {{ __('translate.edit') }} 
-                                        </td>
-                                        <td class="status">
-                                            <i class="fas fa-trash"></i> {{ __('translate.delete') }} 
-                                        </td>
+                                        @if (Auth::user()->role_id == 1)
+                                            <td><a class="edit" href="{{ route('create-topics.edit', $topic->id) }}">
+                                                <i class="fas fa-edit"></i> {{ __('translate.edit') }}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="delete" data-toggle="modal" href="#delete-{{$topic->id}}">
+                                                <i class="fas fa-trash"></i> {{ __('translate.delete') }}
+                                                </a>
+                                                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                                                <div class="modal fade" id="delete-{{$topic->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header delete">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                                <h4 class="modal-title">{{ __('translate.del_confirm') }}</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <h5>{{ __('translate.del_alert') }}</h5>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                {!! Form::open(['route' => ['create-topics.destroy', $topic->id], 'method' => 'DELETE']) !!}
+                                                                <button type="submit" class="btn btn-danger mb-1">{{ __('translate.delete') }}</button>
+                                                                {!! Form::close() !!}
+                                                                <button type="button" class="btn btn-light" data-dismiss="modal" >{{ __('translate.close') }}</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                                            </td>
+                                        @else
+                                            <td class="status">
+                                                <i class="fas fa-edit"></i> {{ __('translate.edit') }} 
+                                            </td>
+                                            <td class="status">
+                                                <i class="fas fa-trash"></i> {{ __('translate.delete') }} 
+                                            </td>
+                                        @endif
                                     @elseif ($topic->status == 3)
                                         <td class="status">
                                             <i class="fas fa-edit"></i> {{ __('translate.edit') }} 

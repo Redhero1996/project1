@@ -33,7 +33,6 @@ class TopicEditRequest extends FormRequest
         if ($name != null && strlen($name) >=3 && strlen($name) <= 255) {
             $topic = Topic::where('name', $name)->get();
             foreach ($topic[0]->questions as $key => $question) {
-                // $rules["content"] = 'required|min:3';
                 $rules["correct_ans.$question->id"] = 'required';
             }
         } else {
@@ -49,8 +48,6 @@ class TopicEditRequest extends FormRequest
         if (($name != null) && (strlen($name) >=3) && (strlen($name) <= 255)) {
             $topic = Topic::where('name', $name)->get();
             foreach ($topic[0]->questions as $key => $question) {
-                // $messages["content.required"] = __('Nội dung câu hỏi không được bỏ trống');
-                // $messages["content.min"] = __('Nội dung câu hỏi cần tối thiểu 3 ký tự');
                 $messages["correct_ans.$question->id.required"] = __('translate.request_correct_ans');
             }
         } else {

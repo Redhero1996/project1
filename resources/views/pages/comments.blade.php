@@ -1,9 +1,9 @@
 @extends('main')
-@section('title', '| Comments')
+@section('title', '| ' . __('translate.comments'))
 @section('content')
     <div class="form-group quiz">
         <div class="form-group mt-5">
-            <h3 id="title-quiz" ><a href="{{ route('review', [$topic->category->slug, $topic->slug, $user->pivot->id]) }}">{!! trans('translate.title_topic') !!} {{ $topic->name }}</h3></a>
+            <h3 id="title-quiz" ><a href="{{ route('review', [$topic->category->slug, $topic->slug, $user->pivot->id]) }}">{!! __('translate.title_topic') !!} {{ $topic->name }}</h3></a>
             <h4> 
                 <span class="question">{{ __('translate.question') }}</span>: <span class="content">{!! strip_tags(htmlspecialchars_decode($question->content)) !!}</span>
             </h4>

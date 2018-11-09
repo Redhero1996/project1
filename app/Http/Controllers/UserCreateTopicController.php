@@ -60,6 +60,7 @@ class UserCreateTopicController extends Controller
             'category_id' => $request->category_id,
             'user_id' => Auth::user()->id,
             'status' => 0,
+            'view_count' => 0,
         ]);
         foreach ($request->content as $key => $question) {
             foreach ($request->explain[$key] as $explain) {
@@ -87,6 +88,7 @@ class UserCreateTopicController extends Controller
             }
         }
         Session::flash('success', __('translate.request'));
+        // return Response()->json(['status' => 'success']);
 
         return redirect()->route('create-topics.index', $topic->user_id);
     }
@@ -107,6 +109,7 @@ class UserCreateTopicController extends Controller
             'u', 'v', 'w', 'x', 'y',
             'z',
         ];
+        $topic = Topic::findOrFail($id);
         $questions = $topic->questions()->get();
 
         return view('pages.topics.show-topic', compact('category', 'topic', 'questions', 'alphabet'));
