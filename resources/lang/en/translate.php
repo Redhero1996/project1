@@ -88,7 +88,8 @@ return [
     'slug' => 'Slug',
     'status' => 'Status',
     'null' => 'NULL',
-    'comments' = 'Comments',
+    'comments' => 'Comments',
+    'avatar' => 'Avatar',
 
     // Admin
     'account_error' => 'You have not admin access',
@@ -107,6 +108,7 @@ return [
     'topic_updated' => 'The topic was successfully updated!',
     'topic_deleted' => 'The topic was successfully deleted!',
     'user_store' => 'The user was successfully save!',
+    'user_deleted' => 'The user was successfully deleted!',
     'content' => 'Content',
     'create_category' => 'Create New Category',
     'edit_category' => 'Edit Category',

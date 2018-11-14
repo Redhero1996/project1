@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserProfileRequest;
 use App\Models\Role;
 use App\User;
 use Illuminate\Http\Request;
@@ -44,8 +45,8 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $user = new User([
-            'username' => $request->username,
+        $user = User::create([
+            'name' => $request->name,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone_number' => $request->phone_number,
@@ -87,7 +88,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $roles = Role::all();
-        $user = User::whereId($id)->firstOrFail();
+        $user = User::findOrFail($id);
 
         return view('admin.users.edit', compact('roles', 'user'));
     }
@@ -99,9 +100,31 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserProfileRequest $request, User $user)
     {
-        //
+        $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->phone_number = $request->phone_number;
+        $user->address = $request->address;
+        if ($request->change_password == 'on') {
+            $user->password = bcrypt($request->password);
+        }
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $file_name = time() . '.' . $avatar->getClientOriginalExtension();
+            $location = public_path('images/' . $file_name);
+            Image::make($avatar)->resize(300, 300)->save($location);
+            if (isset($user->avatar)) {
+                $old_avatar = $user->avatar;
+                $user->avatar = $file_name;
+                Storage::delete($old_avatar);
+            } else {
+                $user->avatar = $file_name;
+            }
+        }
+        $user->save();
+        Session::flash('success', __('translate.succ_acount'));
     }
 
     /**
@@ -110,8 +133,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->topics()->detach();
+        $user->delete();
+        Session::flash('success', __('translate.user_deleted'));
+        
+        return redirect()->route('users.index');
     }
 }

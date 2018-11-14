@@ -3,157 +3,111 @@
 @section('title', '| Edit User')
 
 @section('content')
-    <div class="page-content">
-        <div class="portlet light bordered form-fit">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="icon-user font-green-haze"></i>
-                    <span class="caption-subject font-green-haze bold uppercase">Edit User</span>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="page-header"> Edit
+                        <small>{{$user->name}}</small>
+                    </h2>
+
                 </div>
-            </div>
-            <div class="portlet-body form">
-                <!-- BEGIN FORM-->
-                {!! Form::model( [$user, $roles], [ 'route' => ['users.update', $user->id], 'method' => 'PUT', 'class' => 'form-horizontal form-row-seperated', 'files' => true ]) !!}
-                    <div class="form-body">
+                <!-- /.col-lg-12 -->
+                {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT']) !!}
+                    <div class="col-md-8 col-md-offset-2" style="padding-bottom:120px">                 
                         <div class="form-group">
-                            <label class="control-label col-md-3">Avatar</label>
-                            <img src="{{ asset('images/'.$user->avatar) }}" id="img" class="avatar img-circle">
-                            <span class="btn green fileinput-button">
-                                <i class="fa fa-plus"></i>
-                                <span>Change avatar</span>
-                                {!! Form::file('avatar', ['id' => 'upload']) !!}
-                            </span>
+                            <label>Avatar</label><br>
+                            @if ($user->avatar == null )
+                                <img id="img" class="avatar profile" src="{{ config('view.image_paths.images') . 'avatar-default-icon.png' }}" />
+                            @else
+                                <img id="img" class="avatar profile" src="{{ config('view.image_paths.images') . $user->avatar }}" />
+                            @endif
+                            {!! Form::file('avatar', ['id' => 'upload']) !!}
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Usename
-                                <span class="required">*</span>
+                            <label>Username</label>
+                            <input class="form-control" name="name" value="{{$user->name}}" />
+                        </div>
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input class="form-control" name="first_name" value="{{$user->first_name}}" />
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input class="form-control" name="last_name" value="{{$user->last_name}}" />
+                        </div>
+                        <div class="form-group">
+                            <label>Phone number</label>
+                            <input class="form-control" name="phone_number" value="{{$user->phone_number}}"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input class="form-control" name="address" value="{{$user->address}}"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" value="{{$user->email}}"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="changePassword" id="changePassword">
+                            <label>Change Password</label>
+                            <input type="password" class="form-control password" name="password" placeholder="Password" disabled=""/>
+                            @if($errors->has('password'))
+                                <span style="color: red;"><i>{{$errors->first('password')}}</i></span>
+                            @endif
+                        </div> 
+                        <div class="form-group">
+                            <label>Confirm password</label>
+                            <input type="password" class="form-control password" name="password_confirmation" placeholder="Confirm password" disabled="" />
+                            @if($errors->has('password_confirmation'))
+                                <span style="color: red;"><i>{{$errors->first('password_confirmation')}}</i></span>
+                            @endif
+                        </div> 
+                        <div class="form-group">
+                            <label>Level</label>
+                            <label class="radio-inline">
+                                <input name="role_id" value="1" 
+                                    @if($user->role_id == 1)
+                                        {{'checked'}}
+                                    @endif  
+                                type="radio">Admin
                             </label>
-                            <div class="col-md-9">
-                                {!! Form::text('username', $user->username, ['class' => 'form-control', 'placeholder' => 'Username']) !!}
-                                @if($errors->has('username'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('first_name', 'First Name', ['class' => 'control-label col-md-3']) !!}
-                            <div class="col-md-9">
-                                {!! Form::text('first_name', $user->first_name, ['class' => 'form-control', 'placeholder' => 'First Name']) !!}
-                                @if($errors->has('first_name'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('first_name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('last_name', 'Last Name', ['class' => 'control-label col-md-3']) !!}
-                            <div class="col-md-9">
-                                {!! Form::text('last_name', $user->last_name, ['class' => 'form-control', 'placeholder' => 'Last Name']) !!}
-                                @if($errors->has('last_name'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('last_name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('phone_number', 'Phone Number', ['class' => 'control-label col-md-3']) !!}
-                            <div class="col-md-9">
-                                {!! Form::text('phone_number', $user->phone_number, ['class' => 'form-control', 'placeholder' => 'Phone Number']) !!}
-                                @if($errors->has('phone_number'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('phone_number') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('address', 'Address', ['class' => 'control-label col-md-3']) !!}
-                            <div class="col-md-9">
-                                {!! Form::text('address', $user->address, ['class' => 'form-control', 'placeholder' => 'Address']) !!}
-                                @if($errors->has('address'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('address') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Email</label>
-                            <div class="col-md-9">
-                                {!! Form::email('email', $user->email, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {{-- <div class="md-checkbox-inline"> --}}
-                                <div class="md-checkbox">
-                                    <input type="checkbox" id="checkbox6" class="md-check">
-                                    <label for="checkbox6">
-                                    <span></span>
-                                    <span class="check"></span>
-                                    <span class="box"></span>
-                                    Option 1 </label>
-                                </div>
-                            {{-- </div> --}}
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Password
-                                <span class="required">*</span>
+                            <label class="radio-inline">
+                                <input name="role_id" value="2"
+                                    @if($user->role_id == 2)
+                                        {{'checked'}}
+                                    @endif  
+                                type="radio">User
                             </label>
-                            <div class="col-md-9">
-                                {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
-                                @if($errors->has('password'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Confirm Password
-                                <span class="required">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Role</label>
-                            <div class="col-md-9">
-                                <div class="radio-list">
-                                    @foreach ( $roles as $role )
-                                        <label>
-                                            @if ( $role->name == $user->role->name )                                            {!! Form::radio('role_id', $role->id, true) !!} {{ $role->name }}
-                                            @else
-                                                {!! Form::radio('role_id', $role->id) !!} {{ $role->name }}
-                                            @endif
-                                        </label>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-actions">
+                        
                         <div class="row">
-                            <div class="col-md-offset-3 col-md-9">
-                                {!! Form::button('<i class="fa fa-save"></i>', ['type' => 'submit', 'class' => 'btn blue', 'id' => 'btn_submit']) !!}
-                                <a href="{{ route('users.index') }}" class="btn default">Cancel</a>
+                            <div class="col-sm-6">
+                                {!! Form::submit('Submit', ['class' => 'btn btn-info']) !!}
                             </div>
-                        </div>
+                            <div class="col-sm-6">      
+                                <a href="{{route('users.show', $user->id)}}" class="btn btn-danger btn-block">Cancel</a>
+                            </div>
+                        </div><br>                       
                     </div>
                 {!! Form::close() !!}
-                <!-- END FORM-->
             </div>
+            <!-- /.row -->
         </div>
+        <!-- /.container-fluid -->
     </div>
 @endsection
-
 @section('scripts')
-    {{-- {!! Html::script('js/jquery-3.3.1.min.js') !!} --}}
     <script type="text/javascript">
+        $(document).ready(function(){
+            $('#changePassword').change(function(){
+                if($(this).is(':checked')){
+                    $('.password').removeAttr('disabled');
+                }else{
+                    $('.password').attr('disabled', '');
+                }
+            });
+        });
         // Avatar
         $(document).ready(function () {
             $('#upload').change( function () {
@@ -170,11 +124,11 @@
                        $('#img').css({"width" : "200px", "height" : "200px"});
 
                     }
-                   reader.readAsDataURL(input.files[0]);
+                    reader.readAsDataURL(input.files[0]);
                 }
                 else
                 {
-                  $('#img').attr('src', $(this).attr('src'));
+                    $('#img').attr('src', avatar.avatar);
                 }
             });
         });

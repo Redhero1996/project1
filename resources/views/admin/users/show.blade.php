@@ -3,196 +3,98 @@
 @section('title', '| Imformation User')
 
 @section('content')
-    <div class="page-content">
-        <div class="container bootstrap snippet">
+    <div id="page-wrapper">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-10"><h1>{{ $user->username }}</h1></div>
-            </div>
-            @if(Session::has('success'))
-                <div class="portlet-title">
-                    <div class="alert alert-success">
-                        {!! Session::get('success') !!}
-                    </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="page-header"> Information
+                        <small>{{$user->name}}</small>
+                    </h2>
+
                 </div>
-            @endif
-            <div class="row">
-                <div class="col-sm-3"><!--left col-->
-                    <div class="text-center">
-                        @if ( $user->avatar !== null )
-                            <img src="{{ asset('images/'.$user->avatar) }}" class="avatar img-circle img-thumbnail" alt="avatar">
+                <!-- /.col-lg-12 -->
+                <div class="col-md-8 col-md-offset-2" style="padding-bottom:120px">
+                    
+                    <!-- Success -->
+                   @if(Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        <strong>{{Session::get('success')}}</strong> 
+                    </div>
+                   @endif
+                  
+                    <div class="form-group">
+                        <label>Avatar</label><br>
+                        @if ($user->avatar == null )
+                            <img id="img" class="avatar profile" src="{{ config('view.image_paths.images') . 'avatar-default-icon.png' }}" />
                         @else
-                            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                            <img id="img" class="avatar profile" src="{{ config('view.image_paths.images') . $user->avatar }}" />
                         @endif
-                    </div></hr><br>
-                </div><!--/col-3-->
-                <div class="col-sm-9">
-                    <!-- BEGIN FORM-->
-                    <form class="form-horizontal" role="form">
-                        <div class="form-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">User Name:</label>
-                                        <div class="col-md-9">
-                                            <p class="form-control-static">
-                                                 {{ $user->username }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/span-->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Address:</label>
-                                        <div class="col-md-9">
-                                            <p class="form-control-static">
-                                                @if ( $user->address !== null )
-                                                    {{ $user->address }}
-                                                @else
-                                                    NULL
-                                                @endif
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/span-->
-                            </div>
-                            <!--/row-->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">First Name:</label>
-                                        <div class="col-md-9">
-                                            <p class="form-control-static">
-                                                @if ( $user->first_name !== null )
-                                                    {{ $user->first_name }}
-                                                @else
-                                                    NULL
-                                                @endif
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/span-->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Email:</label>
-                                        <div class="col-md-9">
-                                            <p class="form-control-static">
-                                                {{ $user->email }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/span-->
-                            </div>
-                            <!--/row-->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Last Name:</label>
-                                        <div class="col-md-9">
-                                            <p class="form-control-static">
-                                                @if ( $user->last_name !== null )
-                                                    {{ $user->last_name }}
-                                                @else
-                                                    NULL
-                                                @endif
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/span-->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Role:</label>
-                                        <div class="col-md-9">
-                                            <p class="form-control-static">
-                                                {{ $user->role->name}}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/span-->
-                            </div>
-                            <!--/row-->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Phone:</label>
-                                        <div class="col-md-9">
-                                            <p class="form-control-static">
-                                                @if ( $user->phone_number !== null )
-                                                    {{ $user->phone_number }}
-                                                @else
-                                                    NULL
-                                                @endif
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/span-->
+                    </div>
 
-                            </div>
-                            <!--/row-->
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input class="form-control" name="name" value="{{$user->name}}" disabled=""/>
+                    </div>
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input class="form-control" name="first_name" value="{{$user->first_name}}" disabled=""/>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input class="form-control" name="last_name" value="{{$user->last_name}}" disabled=""/>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone number</label>
+                        <input class="form-control" name="phone_number" value="{{$user->phone_number}}" disabled=""/>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input class="form-control" name="address" value="{{$user->address}}" disabled=""/>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" value="{{$user->email}}" disabled="" />
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a href="{{route('users.edit', $user->id)}}" class="btn btn-primary btn-block">Edit</a>
                         </div>
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="col-md-offset-3 col-md-9">
-                                            <a href="{{ route('users.edit', $user->id) }}" class="btn green">
-                                                <i class="fa fa-edit"></i> Edit
-                                            </a>
-                                            <a href="{{ route('users.index') }}" class="btn default">Cancel</a>
+                        <div class="col-sm-6">      
+                             <a href="#" class="btn btn-danger btn-block" data-toggle="modal" data-target="#delete-{{$user->id}}">Delete</a>
+
+                        </div>
+                         <!-- Delete Confirmation Modal (place it right below the button) -->
+
+                            <div class="modal fade" id="delete-{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h4 class="modal-title">Delete Confirmation</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5>Are you sure you want to delete this user?</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            
+                                            {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'DELETE', 'style' => 'width: 500px; float:left;']) !!}
+                                            <button type="submit" class="btn btn-danger" style="margin-bottom: 5px;">DELETE</button>
+                                            {!! Form::close() !!}
+
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- END FORM-->
-                </div><!--/tab-content-->
-
-            </div><!--/col-9-->
-        </div><!--/row-->
+                            </div> <!--At the end -->
+                    </div><br>
+                        
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
     </div>
 @endsection
-
-@section('scripts')
-    <script type="text/javascript">
-
-        // $(document).ready(function(){
-        //     $('#reset').on('click', function(){
-        //         $('#form').trigger("reset");
-        //     });
-        // });
-        // Avatar
-        $(function(){
-          $('#upload').change(function(){
-            $('#img').css('display', '');
-            var input = this;
-            var url = $(this).val();
-            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-            if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg"))
-             {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                   $('#img').attr('src', e.target.result);
-                   $('#img').css({"width" : "200px", "height" : "200px"});
-
-                }
-               reader.readAsDataURL(input.files[0]);
-            }
-            else
-            {
-              $('#img').attr('src', $(this).attr('src'));
-            }
-          });
-
-        });
-    </script>
-@stop

@@ -89,6 +89,7 @@ return [
     'status' => 'Trạng thái',
     'null' => 'NULL',
     'comments' => 'Bình luận',
+    'avatar' => 'Avatar',
 
     // Admin
     'account_error' => 'Bạn không có quyền truy cập',
@@ -107,6 +108,7 @@ return [
     'topic_updated' => 'Đề thi đã cập nhật thành công',
     'topic_deleted' => 'Đề thi đã được xóa thành công',
     'user_store' => 'Tài khoản đã lưu thành công',
+    'user_deleted' => 'Tài khoản đã xóa thành công',
     'content' => 'Nội dung',
     'create_category' => 'Tạo mới danh mục',
     'edit_category' => 'Sửa danh mục',

@@ -3,155 +3,108 @@
 @section('title', '| Create New User')
 
 @section('content')
-    <div class="page-content">
-        <div class="portlet light bordered form-fit">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="icon-user font-green-haze"></i>
-                    <span class="caption-subject font-green-haze bold uppercase">Add User</span>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 class="page-header">User
+                        <small>Add</small>
+                    </h1>
+                </div>
+                <!-- /.col-lg-12 -->
+                <div class="col-md-8 col-md-offset-2" style="padding-bottom:120px">                   
+                    <!-- FORM-->
+                    {!! Form::open(['route' => 'users.store', 'method' => 'POST', 'files' => true]) !!}
+                        <div class="form-group">
+                            {!! Form::label('avatar', __('translate.avatar')) !!}<br>
+                            <img src="" id="img" class="image-avatar">
+                            {!! Form::file('avatar', ['id' => 'upload']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input class="form-control" name="name" placeholder="Username" value="{{old('name')}}" />
+                             @if($errors->has('name'))
+                                <span style="color: red;"><i>{{$errors->first('name')}}</i></span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input class="form-control" name="first_name" placeholder="First Name" value="{{old('first_name')}}" />
+                             @if($errors->has('first_name'))
+                                <span style="color: red;"><i>{{$errors->first('first_name')}}</i></span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input class="form-control" name="last_name" placeholder="Last Name" value="{{old('last_name')}}" />
+                             @if($errors->has('last_name'))
+                                <span style="color: red;"><i>{{$errors->first('last_name')}}</i></span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input class="form-control" name="phone_number" placeholder="Phone Number" value="{{old('phone_number')}}" />
+                             @if($errors->has('phone_number'))
+                                <span style="color: red;"><i>{{$errors->first('phone_number')}}</i></span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input class="form-control" name="address" placeholder="Address" value="{{old('address')}}" />
+                             @if($errors->has('address'))
+                                <span style="color: red;"><i>{{$errors->first('address')}}</i></span>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Email" value="{{old('email')}}" />
+                            @if($errors->has('email'))
+                                <span style="color: red;"><i>{{$errors->first('email')}}</i></span>
+                            @endif
+                        </div>
+                       <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Password"/>
+                            @if($errors->has('password'))
+                                <span style="color: red;"><i>{{$errors->first('password')}}</i></span>
+                            @endif
+                        </div> 
+                        <div class="form-group">
+                            <label>Confirm password</label>
+                            <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm password" />
+                            @if($errors->has('password_confirmation'))
+                                <span style="color: red;"><i>{{$errors->first('password_confirmation')}}</i></span>
+                            @endif
+                        </div> 
+                        <div class="form-group">
+                            <label>Level</label>
+                            <label class="radio-inline">
+                                <input name="role_id" value="1" type="radio">Admin
+                            </label>
+                            <label class="radio-inline">
+                                <input name="role_id" value="2" checked="" type="radio">User
+                            </label>
+                        </div>
+                       <div class="row">                                
+                            <div class="col-sm-6">
+                                <input type="submit" value="Create user" class="btn btn-success btn-block">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <input type="reset" value="Reset" class="btn btn-default btn-block" id="reset">
+                            </div>
+                        </div>
+                    <form>
                 </div>
             </div>
-            <div class="portlet-body form">
-                <!-- BEGIN FORM-->
-                {!! Form::open([ 'route' => 'users.store', 'method' => 'POST', 'class' => 'form-horizontal form-row-seperated', 'files' => true ]) !!}
-                    <div class="form-body">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Avatar</label>
-                            <img src="" id="img" class="avatar img-circle" style="display: none">
-                            <span class="btn green fileinput-button">
-                                <i class="fa fa-plus"></i>
-                                <span>Add avatar</span>
-                                {!! Form::file('avatar', ['id' => 'upload']) !!}
-                            </span>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Usename
-                                <span class="required">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username']) !!}
-                                @if($errors->has('username'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('first_name', 'First Name', ['class' => 'control-label col-md-3']) !!}
-                            <div class="col-md-9">
-                                {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'First Name']) !!}
-                                @if($errors->has('first_name'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('first_name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('last_name', 'Last Name', ['class' => 'control-label col-md-3']) !!}
-                            <div class="col-md-9">
-                                {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Last Name']) !!}
-                                @if($errors->has('last_name'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('last_name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('phone_number', 'Phone Number', ['class' => 'control-label col-md-3']) !!}
-                            <div class="col-md-9">
-                                {!! Form::text('phone_number', null, ['class' => 'form-control', 'placeholder' => 'Phone Number']) !!}
-                                @if($errors->has('phone_number'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('phone_number') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('address', 'Address', ['class' => 'control-label col-md-3']) !!}
-                            <div class="col-md-9">
-                                {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => 'Address']) !!}
-                                @if($errors->has('address'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('address') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Email
-                                <span class="required">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
-                                @if($errors->has('email'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Password
-                                <span class="required">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
-                                @if($errors->has('password'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Confirm Password
-                                <span class="required">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Role
-                                <span class="required">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <div class="radio-list">
-                                    @foreach ( $roles as $role )
-                                        <label>
-                                            {!! Form::radio('role_id', $role->id) !!} {{ $role->name }}
-                                        </label>
-                                    @endforeach
-                                </div>
-                                @if($errors->has('role'))
-                                    <span class="help-block" style="color: red;">
-                                        <strong>{{ $errors->first('role') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-actions">
-                        <div class="row">
-                            <div class="col-md-offset-3 col-md-9">
-                                {!! Form::button('<i class="fa fa-save"></i>', ['type' => 'submit', 'class' => 'btn blue', ]) !!}
-                                <a href="{{ route('users.index') }}" class="btn default">Cancel</a>
-                            </div>
-                        </div>
-                    </div>
-                {!! Form::close() !!}
-                <!-- END FORM-->
-            </div>
+            <!-- /.row -->
         </div>
+        <!-- /.container-fluid -->
     </div>
 @endsection
 
 @section('scripts')
-    {{-- {!! Html::script('js/jquery-3.3.1.min.js') !!}                  --}}
     <script type="text/javascript">
         // Avatar
         $(document).ready(function () {
