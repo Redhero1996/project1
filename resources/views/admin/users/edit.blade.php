@@ -1,22 +1,17 @@
 @extends('master')
-
-@section('title', '| Edit User')
-
+@section('title', '| ' . __('translate.edit_user'))
 @section('content')
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="page-header"> Edit
-                        <small>{{$user->name}}</small>
-                    </h2>
-
+                    <h2 class="page-header">{{ __('translate.edit_user') }}</h2>
                 </div>
                 <!-- /.col-lg-12 -->
                 {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT']) !!}
-                    <div class="col-md-8 col-md-offset-2" style="padding-bottom:120px">                 
+                    <div class="col-md-8 col-md-offset-2">                 
                         <div class="form-group">
-                            <label>Avatar</label><br>
+                            <label>{{ __('translate.avatar') }}</label><br>
                             @if ($user->avatar == null )
                                 <img id="img" class="avatar profile" src="{{ config('view.image_paths.images') . 'avatar-default-icon.png' }}" />
                             @else
@@ -25,68 +20,85 @@
                             {!! Form::file('avatar', ['id' => 'upload']) !!}
                         </div>
                         <div class="form-group">
-                            <label>Username</label>
-                            <input class="form-control" name="name" value="{{$user->name}}" />
+                            {!! Form::label('name', __('translate.username')) !!}
+                            {!! Form::text('name', $user->name, ['class' => 'form-control']) !!}
+                            @if ($errors->has('name'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </p>
+                            @endif
                         </div>
                         <div class="form-group">
-                            <label>First Name</label>
-                            <input class="form-control" name="first_name" value="{{$user->first_name}}" />
+                            {!! Form::label('first_name', __('translate.first_name')) !!}
+                            {!! Form::text('first_name', $user->first_name, ['class' => 'form-control']) !!}
+                            @if ($errors->has('first_name'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('first_name') }}</strong>
+                                </p>
+                            @endif
                         </div>
                         <div class="form-group">
-                            <label>Last Name</label>
-                            <input class="form-control" name="last_name" value="{{$user->last_name}}" />
+                            {!! Form::label('last_name', __('translate.last_name')) !!}
+                            {!! Form::text('last_name', $user->last_name, ['class' => 'form-control']) !!}
+                            @if ($errors->has('last_name'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('last_name') }}</strong>
+                                </p>
+                            @endif
                         </div>
                         <div class="form-group">
-                            <label>Phone number</label>
-                            <input class="form-control" name="phone_number" value="{{$user->phone_number}}"/>
+                            {!! Form::label('phone_number', __('translate.phone_number')) !!}
+                            {!! Form::text('phone_number', $user->phone_number, ['class' => 'form-control']) !!}
+                            @if ($errors->has('phone_number'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('phone_number') }}</strong>
+                                </p>
+                            @endif
                         </div>
                         <div class="form-group">
-                            <label>Address</label>
-                            <input class="form-control" name="address" value="{{$user->address}}"/>
+                            {!! Form::label('address', __('translate.address')) !!}
+                            {!! Form::text('address', $user->address, ['class' => 'form-control']) !!}
+                            @if ($errors->has('address'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('address') }}</strong>
+                                </p>
+                            @endif
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" name="email" value="{{$user->email}}"/>
+                            {!! Form::label('email', 'E-mail') !!}
+                            {!! Form::email('email', $user->email, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+                            @if ($errors->has('email'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </p>
+                            @endif
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" name="changePassword" id="changePassword">
-                            <label>Change Password</label>
-                            <input type="password" class="form-control password" name="password" placeholder="Password" disabled=""/>
-                            @if($errors->has('password'))
-                                <span style="color: red;"><i>{{$errors->first('password')}}</i></span>
+                            {!! Form::checkbox('change_password', null, null, ['id' => 'change_password']) !!}
+                            {!! Form::label('change_password', __('translate.change_password')) !!}
+                            {!! Form::label('password', __('translate.password')) !!}
+                            {!! Form::password('password', ['class' => 'form-control password', 'disabled' => 'disabled']) !!}
+                            @if ($errors->has('password'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </p>
                             @endif
                         </div> 
                         <div class="form-group">
-                            <label>Confirm password</label>
-                            <input type="password" class="form-control password" name="password_confirmation" placeholder="Confirm password" disabled="" />
-                            @if($errors->has('password_confirmation'))
-                                <span style="color: red;"><i>{{$errors->first('password_confirmation')}}</i></span>
-                            @endif
+                            {!! Form::label('password_confirmation', __('translate.confirm_password')) !!}
+                            {!! Form::password('password_confirmation', ['class' => 'form-control password', 'disabled' => 'disabled']) !!}
                         </div> 
                         <div class="form-group">
-                            <label>Level</label>
-                            <label class="radio-inline">
-                                <input name="role_id" value="1" 
-                                    @if($user->role_id == 1)
-                                        {{'checked'}}
-                                    @endif  
-                                type="radio">Admin
-                            </label>
-                            <label class="radio-inline">
-                                <input name="role_id" value="2"
-                                    @if($user->role_id == 2)
-                                        {{'checked'}}
-                                    @endif  
-                                type="radio">User
-                            </label>
-                        </div>
-                        
+                            {!! Form::label('role', __('translate.role')) !!}
+                            {!! Form::radio('role_id', 1, $user->role_id == 1 ? true : null, ['class' => 'mr-2']) !!}{{ __('translate.admin') }}
+                            {!! Form::radio('role_id', 2, $user->role_id == 2 ? true : null, ['class' => 'ml-5 mr-2']) !!}{{ __('translate.user') }}
+                        </div>                     
                         <div class="row">
                             <div class="col-sm-6">
                                 {!! Form::submit('Submit', ['class' => 'btn btn-info']) !!}
                             </div>
                             <div class="col-sm-6">      
-                                <a href="{{route('users.show', $user->id)}}" class="btn btn-danger btn-block">Cancel</a>
+                                <a href="{{route('users.show', $user->id)}}" class="btn btn-danger btn-block">{{ __('translate.cancel') }}</a>
                             </div>
                         </div><br>                       
                     </div>
@@ -99,11 +111,12 @@
 @endsection
 @section('scripts')
     <script type="text/javascript">
-        $(document).ready(function(){
-            $('#changePassword').change(function(){
-                if($(this).is(':checked')){
+        // Check password
+        $(document).ready(function() {
+            $('input#change_password').change(function() {
+                if ($(this).is(':checked')) {
                     $('.password').removeAttr('disabled');
-                }else{
+                } else {
                     $('.password').attr('disabled', '');
                 }
             });

@@ -90,6 +90,8 @@ return [
     'null' => 'NULL',
     'comments' => 'Comments',
     'avatar' => 'Avatar',
+    'role' => 'Role',
+    'user' => 'User',
 
     // Admin
     'account_error' => 'You have not admin access',
@@ -123,8 +125,13 @@ return [
     'detail_question' => 'Detail Question',  
     'create_role' => 'Create New role',
     'edit_role' => 'Edit role',
-    'manage_rolees' => 'Manage roles',
-    'all_rolees' => 'All roles',
+    'manage_roles' => 'Manage roles',
+    'all_roles' => 'All roles',
+    'create_user' => 'Create New user',
+    'edit_user' => 'Edit user',
+    'manage_users' => 'Manage users',
+    'all_users' => 'All users',
+    
 
     // Create topic from user
     'request' => 'Your request was send',

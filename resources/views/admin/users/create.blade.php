@@ -1,18 +1,14 @@
 @extends('master')
-
-@section('title', '| Create New User')
-
+@section('title', '| ' . __('translate.create_user'))
 @section('content')
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h1 class="page-header">User
-                        <small>Add</small>
-                    </h1>
+                    <h1 class="page-header">{{ __('translate.create_user') }}</h1>
                 </div>
                 <!-- /.col-lg-12 -->
-                <div class="col-md-8 col-md-offset-2" style="padding-bottom:120px">                   
+                <div class="col-md-8 col-md-offset-2 user">                   
                     <!-- FORM-->
                     {!! Form::open(['route' => 'users.store', 'method' => 'POST', 'files' => true]) !!}
                         <div class="form-group">
@@ -22,78 +18,84 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Username</label>
-                            <input class="form-control" name="name" placeholder="Username" value="{{old('name')}}" />
-                             @if($errors->has('name'))
-                                <span style="color: red;"><i>{{$errors->first('name')}}</i></span>
+                            {!! Form::label('username', __('translate.username')) !!}
+                            {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => __('translate.username')]) !!}
+                            @if ($errors->has('name'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </p>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label>First Name</label>
-                            <input class="form-control" name="first_name" placeholder="First Name" value="{{old('first_name')}}" />
-                             @if($errors->has('first_name'))
-                                <span style="color: red;"><i>{{$errors->first('first_name')}}</i></span>
+                            {!! Form::label('first_name', __('translate.first_name')) !!}
+                            {!! Form::text('first_name', old('first_name'), ['class' => 'form-control', 'placeholder' => __('translate.first_name')]) !!}
+                            @if ($errors->has('first_name'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('first_name') }}</strong>
+                                </p>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label>Last Name</label>
-                            <input class="form-control" name="last_name" placeholder="Last Name" value="{{old('last_name')}}" />
-                             @if($errors->has('last_name'))
-                                <span style="color: red;"><i>{{$errors->first('last_name')}}</i></span>
+                            {!! Form::label('last_name', __('translate.last_name')) !!}
+                            {!! Form::text('last_name', old('last_name'), ['class' => 'form-control', 'placeholder' => __('translate.last_name')]) !!}
+                            @if ($errors->has('last_name'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('last_name') }}</strong>
+                                </p>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label>Phone Number</label>
-                            <input class="form-control" name="phone_number" placeholder="Phone Number" value="{{old('phone_number')}}" />
-                             @if($errors->has('phone_number'))
-                                <span style="color: red;"><i>{{$errors->first('phone_number')}}</i></span>
+                            {!! Form::label('phone_number', __('translate.phone_number')) !!}
+                            {!! Form::text('phone_number', old('phone_number'), ['class' => 'form-control', 'placeholder' => __('translate.phone_number')]) !!}
+                            @if ($errors->has('phone_number'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('phone_number') }}</strong>
+                                </p>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label>Address</label>
-                            <input class="form-control" name="address" placeholder="Address" value="{{old('address')}}" />
-                             @if($errors->has('address'))
-                                <span style="color: red;"><i>{{$errors->first('address')}}</i></span>
+                            {!! Form::label('address', __('translate.address')) !!}
+                            {!! Form::text('address', old('address'), ['class' => 'form-control', 'placeholder' => __('translate.address')]) !!}
+                            @if ($errors->has('address'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('address') }}</strong>
+                                </p>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="Email" value="{{old('email')}}" />
-                            @if($errors->has('email'))
-                                <span style="color: red;"><i>{{$errors->first('email')}}</i></span>
+                            {!! Form::label('email', 'E-mail') !!}
+                            {!! Form::email('email', old('email'), ['class' => 'form-control', 'placeholder' => 'email']) !!}
+                            @if ($errors->has('email'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </p>
                             @endif
                         </div>
                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="Password"/>
-                            @if($errors->has('password'))
-                                <span style="color: red;"><i>{{$errors->first('password')}}</i></span>
+                            {!! Form::label('password', __('translate.password')) !!}
+                            {!! Form::password('password', ['class' => 'form-control password', 'placeholder' => __('translate.password')]) !!}
+                            @if ($errors->has('password'))
+                                <p class="help-block validated" role="alert">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </p>
                             @endif
                         </div> 
                         <div class="form-group">
-                            <label>Confirm password</label>
-                            <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm password" />
-                            @if($errors->has('password_confirmation'))
-                                <span style="color: red;"><i>{{$errors->first('password_confirmation')}}</i></span>
-                            @endif
+                            {!! Form::label('password_confirmation', __('translate.confirm_password')) !!}
+                            {!! Form::password('password_confirmation', ['class' => 'form-control password', 'placeholder' => __('translate.confirm_password')]) !!}
                         </div> 
                         <div class="form-group">
-                            <label>Level</label>
-                            <label class="radio-inline">
-                                <input name="role_id" value="1" type="radio">Admin
-                            </label>
-                            <label class="radio-inline">
-                                <input name="role_id" value="2" checked="" type="radio">User
-                            </label>
+                            {!! Form::label('role', __('translate.role')) !!}
+                            <div class="custom-control custom-radio">
+                                {!! Form::radio('role', 1, null, ['class' => 'mr-2']) !!} {{ __('translate.admin') }}
+                                {!! Form::radio('role', 2, true, ['class' => 'ml-5 mr-2']) !!} {{ __('translate.user') }}
+                            </div>
                         </div>
-                       <div class="row">                                
-                            <div class="col-sm-6">
-                                <input type="submit" value="Create user" class="btn btn-success btn-block">
-                            </div>
-
-                            <div class="col-sm-6">
-                                <input type="reset" value="Reset" class="btn btn-default btn-block" id="reset">
-                            </div>
+                       <div class="row">     
+                            {!! Form::submit(__('translate.save'), ['class' => 'btn btn-info']) !!}
+                            <a href="{{ route('users.index') }}" class="btn btn-light">
+                                {{ __('translate.cancel') }}
+                            </a>                           
                         </div>
                     <form>
                 </div>
@@ -103,7 +105,6 @@
         <!-- /.container-fluid -->
     </div>
 @endsection
-
 @section('scripts')
     <script type="text/javascript">
         // Avatar

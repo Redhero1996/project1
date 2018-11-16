@@ -90,6 +90,8 @@ return [
     'null' => 'NULL',
     'comments' => 'Bình luận',
     'avatar' => 'Avatar',
+    'role' => 'Quyền',
+    'user' => 'Người dùng',
 
     // Admin
     'account_error' => 'Bạn không có quyền truy cập',
@@ -110,7 +112,7 @@ return [
     'user_store' => 'Tài khoản đã lưu thành công',
     'user_deleted' => 'Tài khoản đã xóa thành công',
     'content' => 'Nội dung',
-    'create_category' => 'Tạo mới danh mục',
+    'create_category' => '| Tạo mới danh mục',
     'edit_category' => 'Sửa danh mục',
     'manage_categories' => 'Quản lý danh mục',
     'all_category' => 'Tất cả danh mục',
@@ -125,6 +127,10 @@ return [
     'edit_role' => 'Sửa vai trò',
     'manage_roles' => 'Quản lý vai trò',
     'all_roles' => 'Tất cả vai trò',
+    'create_user' => 'Tạo mới tài khoản',
+    'edit_user' => 'Sửa tài khoản',
+    'manage_users' => 'Quản lý tài khoản',
+    'all_users' => 'Tất cả tài khoản',
     
     // Create topic from user
     'request' => 'Yêu cầu của bạn đã được gửi',

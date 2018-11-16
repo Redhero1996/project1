@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', '| ' . __('translate.create_category'))
+@section('title', __('translate.create_category'))
 
 @section('content')
     <div class="card">

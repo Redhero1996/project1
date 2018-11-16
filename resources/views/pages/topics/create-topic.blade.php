@@ -1,7 +1,6 @@
 @extends('main')
 @section('title', '| '.__('translate.create_topic'))
 @section('content')
-
     <div class="form-group quiz">
         <div class="form-group">
             <h3 id="title-quiz">{!! __('translate.create_topic') !!} </h3>
