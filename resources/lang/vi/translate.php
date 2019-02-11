@@ -22,6 +22,7 @@ return [
     'register_social' => 'hoặc đăng ký với:',
     'permission' => 'Bạn phải <a href="/login">Đăng nhập</a> mới xem được đề thi',
     'password' => 'Mật khẩu',
+    'username' => 'Tên người dùng',
     'confirm_password' => 'Xác nhận mật khẩu',
 
     //homepage
@@ -30,16 +31,11 @@ return [
     'contact' => 'Liên hệ',
     'submit' => 'Nộp bài',
     'account' => 'Tài khoản',
-    'question' => 'Câu hỏi',
+    'question' => 'Câu',
     'rank' => 'Thứ hạng',
     'member' => 'Thành viên',
     'top' => 'Bảng xếp hạng',
     'count_topic' => 'Số đề thi đã làm',
-    'create_topic' => 'Tạo đề thi',
-    'manage_topic' => 'Quản lý đề thi',
-    'question_num' => 'Thêm câu hỏi',
-    'create' => 'Tạo bài',
-    'answer' => 'Đáp án',
 
     // test page
     'alert' => 'Những thay đổi sẽ không được lưu. Bạn chắc muốn rời không?',
@@ -49,7 +45,6 @@ return [
     'warn_alert' => 'Bạn đã hết thời gian làm bài',
     'try_again' => 'Bạn phải đạt 70% mới xem được đáp án! Cố lên!',
     'explain' => 'Giải thích',
-    'no_explain' => 'Không có lời giải thích',
 
     // proflie
     'avatar' => 'Avatar',
@@ -66,82 +61,4 @@ return [
     'numb_topic' => 'Lần thi',
     'topic' => 'Đề thi',
     'total_profile' => 'Điểm',
-
-    // social
-    'error_login' => 'Không thể đăng nhập, hãy thử lại với tài khoản khác.',
-    'not_support' => 'không được hỗ trợ',
-
-    // button
-    'save' => 'Lưu',
-    'edit' => 'Sửa',
-    'view' => 'Xem',
-    'delete' => 'Xóa',
-    'cancel' => 'Hủy', 
-    'return' => 'Quay lại',
-    'close' => 'Đóng',
-    'send' => 'Gửi bài',
-    'add' => 'Thêm',
-
-    // title
-    'id' => '#ID',
-    'name' => 'Tên',
-    'slug' => 'Slug',
-    'status' => 'Trạng thái',
-    'null' => 'NULL',
-    'comments' => 'Bình luận',
-    'avatar' => 'Avatar',
-    'role' => 'Quyền',
-    'user' => 'Người dùng',
-
-    // Admin
-    'account_error' => 'Bạn không có quyền truy cập',
-    'error' => 'Tài khoản hoặc mật khẩu không tồn tại',
-    'admin' => 'Admin',
-    'category_store' => 'Danh mục đã lưu thành công',
-    'category_updated' => 'Danh mục đã cập nhật thành công',
-    'category_deleted' => 'Danh mục đã được xóa thành công',
-    'question_store' => 'Câu hỏi đã lưu thành công',
-    'question_updated' => 'Câu hỏi đã cập nhật thành công',
-    'question_deleted' => 'Câu hỏi đã được xóa thành công',
-    'role_store' => 'Quyền đã lưu thành công',
-    'role_updated' => 'Quyền đã cập nhật thành công',
-    'role_deleted' => 'Quyền đã được xóa thành công',
-    'topic_store' => 'Đề thi đã lưu thành công',
-    'topic_updated' => 'Đề thi đã cập nhật thành công',
-    'topic_deleted' => 'Đề thi đã được xóa thành công',
-    'user_store' => 'Tài khoản đã lưu thành công',
-    'user_deleted' => 'Tài khoản đã xóa thành công',
-    'content' => 'Nội dung',
-    'create_category' => '| Tạo mới danh mục',
-    'edit_category' => 'Sửa danh mục',
-    'manage_categories' => 'Quản lý danh mục',
-    'all_category' => 'Tất cả danh mục',
-    'del_confirm' => 'Xác nhận xóa',
-    'del_alert' => 'Bạn chắc chắn muốn xóa đúng không?',
-    'create_question' => 'Tạo mới câu hỏi',
-    'edit_question' => 'Sửa câu hỏi',
-    'manage_questions' => 'Quản lý câu hỏi',
-    'all_questions' => 'Tất cả câu hỏi',
-    'detail_question' => 'Chi tiết câu hỏi',
-    'create_role' => 'Tạo mới vai trò',
-    'edit_role' => 'Sửa vai trò',
-    'manage_roles' => 'Quản lý vai trò',
-    'all_roles' => 'Tất cả vai trò',
-    'create_user' => 'Tạo mới tài khoản',
-    'edit_user' => 'Sửa tài khoản',
-    'manage_users' => 'Quản lý tài khoản',
-    'all_users' => 'Tất cả tài khoản',
-    
-    // Create topic from user
-    'request' => 'Yêu cầu của bạn đã được gửi',
-    'request_correct_ans' => 'Có câu hỏi chưa có đáp án đúng',
-    'input_numb' => 'Bạn phải nhập câu hỏi lớn hơn 0',
-    'correct_ans' => 'Đáp án đúng',
-
-    // answers
-    'ans' => 'Đáp án',
-    'ans_a' => 'Đáp án A:',
-    'ans_b' => 'Đáp án B:',
-    'ans_c' => 'Đáp án C:',
-    'ans_d' => 'Đáp án D:',
 ];

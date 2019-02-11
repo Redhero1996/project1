@@ -2,25 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\UserProfileRequest;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Topic;
-use App\Models\Question;
-use DB;
 use App\User;
+use DB;
+use Illuminate\Support\Facades\Auth;
 use Image;
 use Session;
 use Storage;
+use App\Repositories\Repository;
 
 class HomePageController extends Controller
 {
+    protected $rank;
+    protected $category;
 
+    public function __construct(Category $category) {
+        $this->category = new Repository($category);
+    }
+    
     public function home()
     {
-        $categories = Category::all();
+        $categories = $this->category->all();
         $topics = Topic::latest('id')->where('status', 1)->paginate();
+        $ranks = [];
         $select_table = DB::select(
             'select user_id, avg(max_score) as score, count(topic_id) as count_topic
             from ( select user_id, topic_id, max(total) as max_score
@@ -42,16 +48,20 @@ class HomePageController extends Controller
                 }
             }
         }
+
         return view('pages.homepage', compact('categories', 'topics', 'ranks'));
     }
 
-    public function getProfile($username, User $user)
+    public function getProfile($username, $id)
     {
+        $user = User::findOrFail($id);
+
         return view('pages.profile', compact('user'));
     }
 
-    public function postProfile(UserProfileRequest $request, $username, User $user)
+    public function postProfile(UserProfileRequest $request, $username, $id)
     {
+        $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -74,17 +84,9 @@ class HomePageController extends Controller
             }
         }
         $user->save();
-        Session::flash('success', __('translate.succ_acount'));
+        Session::flash('success', trans('translate.succ_acount'));
 
         return redirect()->route('user.profile', [$user->name, $user->id]);
-    }
-
-    public function comments(Question $question)
-    {
-        $topic = $question->topics()->firstOrFail();
-        $user = $topic->users()->where('user_id', Auth::user()->id)->first();
-
-        return view('pages.comments', compact('topic', 'question', 'user'));
     }
 
     public function logout()

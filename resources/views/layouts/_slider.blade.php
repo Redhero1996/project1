@@ -11,17 +11,17 @@
         <div class="carousel-inner" role="listbox">
             <!--First slide-->
             <div class="carousel-item active">
-                <img class="d-block w-100 img" src="{{ config('view.image_paths.images') . 'quiz-background.jpg' }}" alt="First slide">
+                <img class="d-block w-100" src="{{asset('images/quiz-background.jpg')}}" alt="First slide" style="height: 30em;">
             </div>
             <!--/First slide-->
             <!--Second slide-->
             <div class="carousel-item">
-                <img class="d-block w-100 img" src="{{ config('view.image_paths.images') . 'test.jpg' }}" alt="Second slide">
+                <img class="d-block w-100" src="{{asset('images/test.jpg')}}" alt="Second slide" style="height: 30em;">
             </div>
             <!--/Second slide-->
             <!--Third slide-->
             <div class="carousel-item">
-                <img class="d-block w-100 img" src="{{ config('view.image_paths.images') . 'Quiz.jpg' }}" alt="Third slide">
+                <img class="d-block w-100" src="{{asset('images/quiz.jpg')}}" alt="Third slide" style="height: 30em;">
             </div>
             <!--/Third slide-->
         </div>

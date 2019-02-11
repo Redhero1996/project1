@@ -1,7 +1,7 @@
 @extends('main')
-@section('title', '| ' . __('translate.account'))
+@section('title', ' Tài khoản')
 @section('content')
-    <main class="main">
+    <maain class="main">
         <div class="container-fluid">
             <!-- Section: Edit Account -->
             <section class="section">
@@ -14,18 +14,18 @@
                             <div class="card card-cascade narrower">
                                 <!--Card image-->
                                 <div class="view view-cascade gradient-card-header mdb-color lighten-3 avatar">
-                                    <h5 class="mb-0 font-weight-bold">{{ __('translate.avatar') }}</h5>
+                                    <h5 class="mb-0 font-weight-bold">{{ trans('translate.avatar') }}</h5>
                                 </div>
                                 <!--/Card image-->
                                 <!-- Card content -->
                                 <div class="card-body card-body-cascade text-center">
                                     @if ($user->avatar == null )
-                                        <img id="img" class="avatar profile" src="{{ config('view.image_paths.images') . 'avatar-default-icon.png' }}" />
+                                        <img id="img" class="avatar profile" src="{{ config('filesystems.photos_url') }}" />
                                     @else
-                                        <img id="img" class="avatar profile" src="{{ config('view.image_paths.images') . $user->avatar }}" />
+                                        <img id="img" class="avatar profile" src="{{ asset('images/' . $user->avatar) }}" />
                                     @endif
                                     <div class="row flex-center upfile">
-                                        {!! Form::button(__('translate.upload'), ['class' => 'btn btn-info btn-rounded btn-sm']) !!}
+                                        {!! Form::button(trans('translate.upload'), ['class' => 'btn btn-info btn-rounded btn-sm']) !!}
                                         {!! Form::file('avatar', ['class' => 'upload-file']) !!}
                                         <br>
                                     </div>
@@ -38,9 +38,9 @@
                                 <table class="table table-striped table-responsive-md btn-table">
                                     <thead>
                                         <tr>
-                                            <th>{{ __('translate.numb_topic') }}</th>
-                                            <th>{{ __('translate.topic') }}</th>
-                                            <th>{{ __('translate.total_profile') }}</th>
+                                            <th>{{ trans('translate.numb_topic') }}</th>
+                                            <th>{{ trans('translate.topic') }}</th>
+                                            <th>{{ trans('translate.total_profile') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -66,7 +66,7 @@
                             <div class="card card-cascade narrower">
                                 <!--Card image-->
                                 <div class="view view-cascade gradient-card-header mdb-color lighten-3 account">
-                                    <h5 class="mb-0 font-weight-bold">{{ __('translate.info_account') }}</h5>
+                                    <h5 class="mb-0 font-weight-bold">{{ trans('translate.info_account') }}</h5>
                                 </div>
                                 @if(Session::has('success'))
                                  <div class="alert alert-success" role="alert">
@@ -94,7 +94,7 @@
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
                                                 {!! Form::text('name', $user->name, ['class' => 'form-control']) !!}
-                                                {!! Form::label('name', __('translate.username')) !!}
+                                                {!! Form::label('name', trans('translate.username')) !!}
                                                 @if ($errors->has('name'))
                                                     <p class="help-block validated" role="alert">
                                                         <strong>{{ $errors->first('name') }}</strong>
@@ -110,7 +110,7 @@
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
                                                 {!! Form::text('first_name', $user->first_name, ['class' => 'form-control']) !!}
-                                                {!! Form::label('first_name', __('translate.first_name')) !!}
+                                                {!! Form::label('first_name', trans('translate.first_name')) !!}
                                                 @if ($errors->has('first_name'))
                                                     <p class="help-block validated" role="alert">
                                                         <strong>{{ $errors->first('first_name') }}</strong>
@@ -122,7 +122,7 @@
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
                                                 {!! Form::text('last_name', $user->last_name, ['class' => 'form-control']) !!}
-                                                {!! Form::label('last_name', __('translate.last_name')) !!}
+                                                {!! Form::label('last_name', trans('translate.last_name')) !!}
                                                 @if ($errors->has('last_name'))
                                                     <p class="help-block validated" role="alert">
                                                         <strong>{{ $errors->first('last_name') }}</strong>
@@ -138,7 +138,7 @@
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
                                                 {!! Form::text('phone_number', $user->phone_number, ['class' => 'form-control']) !!}
-                                                {!! Form::label('phone_number', __('translate.phone_number')) !!}
+                                                {!! Form::label('phone_number', trans('translate.phone_number')) !!}
                                                 @if ($errors->has('phone_number'))
                                                     <p class="help-block validated" role="alert">
                                                         <strong>{{ $errors->first('phone_number') }}</strong>
@@ -150,7 +150,7 @@
                                         <div class="col-md-6">
                                             <div class="md-form mb-0">
                                                 {!! Form::text('address', $user->address, ['class' => 'form-control']) !!}
-                                                {!! Form::label('address', __('translate.address')) !!}
+                                                {!! Form::label('address', trans('translate.address')) !!}
                                                 @if ($errors->has('address'))
                                                     <p class="help-block validated" role="alert">
                                                         <strong>{{ $errors->first('address') }}</strong>
@@ -162,7 +162,7 @@
                                     <!--/.Second row-->
                                     <div class="row password">
                                         {!! Form::checkbox('change_password', null, null, ['class' => 'form-control change', 'id' => 'change_password']) !!}
-                                        {!! Form::label('change_password', __('translate.change_password')) !!}
+                                        {!! Form::label('change_password', trans('translate.change_password')) !!}
                                     </div>
                                     <!--Third row-->
                                     <div class="row">
@@ -170,7 +170,7 @@
                                         <div class="col-md-12">
                                             <div class="md-form mb-0">
                                                 {!! Form::password('password', ['class' => 'form-control password', 'disabled' => 'disabled']) !!}
-                                                {!! Form::label('password', __('translate.password')) !!}
+                                                {!! Form::label('password', trans('translate.password')) !!}
                                                 @if ($errors->has('password'))
                                                     <p class="help-block validated" role="alert">
                                                         <strong>{{ $errors->first('password') }}</strong>
@@ -184,7 +184,7 @@
                                         <div class="col-md-12">
                                             <div class="md-form mb-0">
                                                 {!! Form::password('password_confirmation', ['class' => 'form-control password', 'disabled' => 'disabled']) !!}
-                                                {!! Form::label('password_confirmation', __('translate.confirm_password')) !!}
+                                                {!! Form::label('password_confirmation', trans('translate.confirm_password')) !!}
                                             </div>
                                         </div>
                                     </div>
@@ -192,7 +192,7 @@
                                     <!-- Fourth row -->
                                     <div class="row">
                                         <div class="col-md-12 text-center my-4">
-                                            {!! Form::submit(__('translate.update_account'), ['class' => 'btn btn-info btn-rounded']) !!}
+                                            {!! Form::submit(trans('translate.update_account'), ['class' => 'btn btn-info btn-rounded']) !!}
                                         </div>
                                     </div>
                                     <!-- /.Fourth row -->
@@ -240,7 +240,7 @@
                     }
                     reader.readAsDataURL(input.files[0]);
                 } else {
-                    $('#img').attr('src', '{{ config('view.image_paths.images') . $user->avatar }}');
+                    $('#img').attr('src', '{{ asset('images/' . $user->avatar) }}');
                 }
             });
         });

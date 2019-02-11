@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{ __('translate.register') }}</title>
+    <title>{{ trans('translate.register') }}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('layouts._head')
@@ -10,8 +10,8 @@
     <div class="container-fluid register">
         <!-- Default form register -->
         {!! Form::open(['route' => 'register', 'method' => 'POST', 'class' => 'text-center border border-light p-5']) !!}
-            <p class="h4 mb-4">{{ __('translate.register') }}</p>
-            {!! Form::text('name', null, ['class' => 'form-control username', 'id' => 'defaultRegisterFormFirstName', 'placeholder' => __('translate.username')]) !!}
+            <p class="h4 mb-4">{{ trans('translate.register') }}</p>
+            {!! Form::text('name', null, ['class' => 'form-control username', 'id' => 'defaultRegisterFormFirstName', 'placeholder' => trans('translate.username')]) !!}
             @if ($errors->has('name'))
                 <p class="help-block validated" role="alert">
                     <strong>{{ $errors->first('name') }}</strong>
@@ -25,31 +25,31 @@
                 </p>
             @endif
             <!-- Password -->
-            {!! Form::password('password', ['class' => 'form-control mt-4 password', 'id' => 'defaultRegisterFormPassword', 'aria-describedby' => 'defaultRegisterFormPasswordHelpBlock', 'placeholder' => __('translate.password')]) !!}
+            {!! Form::password('password', ['class' => 'form-control mt-4 password', 'id' => 'defaultRegisterFormPassword', 'aria-describedby' => 'defaultRegisterFormPasswordHelpBlock', 'placeholder' => trans('translate.password')]) !!}
             @if ($errors->has('password'))
                 <p class="help-block validated" role="alert">
                     <strong>{{ $errors->first('password') }}</strong>
                 </p>
             @endif
-            {!! Form::password('password_confirmation', ['class' => 'form-control mt-4 password-confirm', 'id' => 'defaultRegisterFormConfirmPassword', 'aria-describedby' => 'defaultRegisterFormPasswordHelpBlock', 'placeholder' => __('translate.confirm_password')]) !!}
+            {!! Form::password('password_confirmation', ['class' => 'form-control mt-4 password-confirm', 'id' => 'defaultRegisterFormConfirmPassword', 'aria-describedby' => 'defaultRegisterFormPasswordHelpBlock', 'placeholder' => trans('translate.confirm_password')]) !!}
             <!-- Sign up button -->
-            {!! Form::button(__('translate.register'), ['type' => 'submit', 'class' => 'btn btn-info my-4 btn-block register']) !!}
+            {!! Form::button(trans('translate.register'), ['type' => 'submit', 'class' => 'btn btn-info my-4 btn-block register']) !!}
             <!-- Register -->
-            <p>{{ __('translate.haven') }}
-                <a href="{{ route('login') }}">{{ __('translate.login') }}</a>
+            <p>{{ trans('translate.haven') }}
+                <a href="{{ route('login') }}">{{ trans('translate.login') }}</a>
             </p>
             <!-- Social register -->
-            <p>{{ __('translate.register_social') }}</p>
-            <a class="light-blue-text mx-2" href="{{ route('social.oauth', 'facebook') }}">
+            <p>{{ trans('translate.register_social') }}</p>
+            <a class="light-blue-text mx-2">
                 <i class="fab fa-facebook"></i>
             </a>
-            <a class="light-blue-text mx-2" href="{{ route('social.oauth', 'twitter') }}">
+            <a class="light-blue-text mx-2">
                 <i class="fab fa-twitter"></i>
             </a>
-            <a class="light-blue-text mx-2" href="{{ route('social.oauth', 'google') }}">
-                <i class="fab fa-google"></i>
+            <a class="light-blue-text mx-2">
+                <i class="fab fa-linkedin"></i>
             </a>
-            <a class="light-blue-text mx-2" href="{{ route('social.oauth', 'github') }}">
+            <a class="light-blue-text mx-2">
                 <i class="fab fa-github"></i>
             </a>
         {!! Form::close() !!}

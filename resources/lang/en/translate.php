@@ -35,11 +35,6 @@ return [
     'member' => 'Member',
     'top' => 'Top member',
     'count_topic' => 'All topics',
-    'create_topic' => 'Create topic',
-    'manage_topic' => 'Manage topic',
-    'question_num' => 'Number questions',
-    'create' => 'Create Topic',
-    'answer' => 'Answer',
 
     // test page
     'alert' => 'Are you sure you want to leave?',
@@ -49,7 +44,6 @@ return [
     'warn_alert' => 'Time out',
     'try_again' => 'You have to get 70% to see the answer! Good luck!',
     'explain' => 'Explain',
-    'no_explain' => 'This question has not explain',
 
     // proflie
     'avatar' => 'Avatar',
@@ -66,83 +60,4 @@ return [
     'numb_topic' => 'Number',
     'topic' => 'Topic',
     'total_profile' => 'Total',
-
-    // social
-    'error_login' => 'Login error! Try another account.',
-    'not_support' => 'Have not support',
-
-    // button
-    'save' => 'Save',
-    'edit' => 'Edit',
-    'view' => 'View',
-    'delete' => 'Delete',
-    'cancel' => 'Cancel', 
-    'return' => 'Return',
-    'close' => 'Close',
-    'send' => 'Send',
-    'add' => 'Add',
-
-    // title
-    'id' => '#ID',
-    'name' => 'Name',
-    'slug' => 'Slug',
-    'status' => 'Status',
-    'null' => 'NULL',
-    'comments' => 'Comments',
-    'avatar' => 'Avatar',
-    'role' => 'Role',
-    'user' => 'User',
-
-    // Admin
-    'account_error' => 'You have not admin access',
-    'error' => 'Incorrect email or password',
-    'admin' => 'Admin',
-    'category_store' => 'The category was successfully save!',
-    'category_updated' => 'The category was successfully updated!',
-    'category_deleted' => 'The category was successfully deleted!',
-    'question_store' => 'The question was successfully save!',
-    'question_updated' => 'The question was successfully updated!',
-    'question_deleted' => 'The question was successfully deleted!',
-    'role_store' => 'The role was successfully save!',
-    'role_updated' => 'The role was successfully updated!',
-    'role_deleted' => 'The role was successfully deleted!',
-    'topic_store' => 'The topic was successfully save!',
-    'topic_updated' => 'The topic was successfully updated!',
-    'topic_deleted' => 'The topic was successfully deleted!',
-    'user_store' => 'The user was successfully save!',
-    'user_deleted' => 'The user was successfully deleted!',
-    'content' => 'Content',
-    'create_category' => 'Create New Category',
-    'edit_category' => 'Edit Category',
-    'manage_categories' => 'Manage Categories',
-    'all_categories' => 'All categories',
-    'del_confirm' => 'Delete Confirmation',
-    'del_alert' => 'Are you sure you want to delete?',
-    'create_question' => 'Create New Question',
-    'edit_question' => 'Edit Question',
-    'manage_questions' => 'Manage Questions',
-    'all_questions' => 'All Questions',
-    'detail_question' => 'Detail Question',  
-    'create_role' => 'Create New role',
-    'edit_role' => 'Edit role',
-    'manage_roles' => 'Manage roles',
-    'all_roles' => 'All roles',
-    'create_user' => 'Create New user',
-    'edit_user' => 'Edit user',
-    'manage_users' => 'Manage users',
-    'all_users' => 'All users',
-    
-
-    // Create topic from user
-    'request' => 'Your request was send',
-    'request_correct_ans' => 'Questions need a correct answer',
-    'input_numb' => 'Enter a number greater than 0',
-    'correct_ans' => 'Correct Answer',
-
-    // answers
-    'ans' => 'Answer',
-    'ans_a' => 'Answer A:',
-    'ans_b' => 'Answer B:',
-    'ans_c' => 'Answer C:',
-    'ans_d' => 'Answer D:',
 ];

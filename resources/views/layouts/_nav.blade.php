@@ -6,15 +6,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent-3">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item homepage {{ Request::is('/') ? 'active' : '' }}">
+            <li class="nav-item homepage {{ Request::is('/') ? 'active' : "" }}">
                 <a class="nav-link" href="{{ url('/') }}">{{ __('translate.homepage') }}
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
-            <li class="nav-item about {{ Request::is('about') ? 'active' : '' }}">
+            <li class="nav-item about {{ Request::is('about') ? 'active' : "" }}">
                 <a class="nav-link" href="{{ url('about') }}">{{ __('translate.about') }}</a>
             </li>
-            <li class="nav-item contact {{ Request::is('contact') ? 'active' : '' }}">
+            <li class="nav-item contact {{ Request::is('contact') ? 'active' : "" }}">
                 <a class="nav-link" href="{{ url('contact') }}">{{ __('translate.contact') }}</a>
             </li>
         </ul>
@@ -36,11 +36,6 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-default ml-5" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{{ route('user.profile', [Auth::user()->name, Auth::user()->id]) }}"><i class="fas fa-user"></i> {{ __('translate.account') }}</a>
-                        @if (Auth::user()->role_id == 1)
-                            <a href="{{ route('users.index') }}"><i class="fas fa-user-lock"></i> {{ __('translate.admin') }}</a>
-                        @endif 
-                        <a href="{{ route('create-topics.create') }}"><i class="fas fa-folder-plus"></i> {{ __('translate.create_topic') }}</a>
-                        <a href="{{ route('create-topics.index', Auth::user()->id) }}"><i class="fas fa-folder-open"></i> {{ __('translate.manage_topic') }}</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> {{ __('translate.logout') }}</a>
                     </div>
                 </li>

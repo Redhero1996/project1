@@ -1,5 +1,5 @@
 div.container-fluid {
-	font-family: Rotoco;
+    font-family: Rotoco;
 }
 
 div.container-fluid.login,  div.container-fluid.register{
@@ -30,7 +30,7 @@ p.help-block.validated {
 }
 
 a.chip.chip-lg {
-	width: 100% ;
+    width: 100% ;
     height: 55px ;
     border-radius: 26px ;
     padding-left: 20px ;
@@ -531,12 +531,4 @@ span.help-block {
 
 img.img {
     height: 30em;
-}
-
-div>p.answer {
-    display: inline-block;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-}
-
-label.correct_ans {
-    color: blue;
 }

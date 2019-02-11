@@ -9,15 +9,13 @@ use App\Models\Topic;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\Repository;
 
 class QuizController extends Controller
 {
     public function category($category_id)
     {
-        $topics = Topic::where([
-            ['category_id', $category_id],
-            ['status', 1],
-        ])->latest('id')->get();
+        $topics = Topic::where('category_id', $category_id)->latest('id')->get();
         foreach ($topics as $key => $topic) {
             $topics[$key]['count'] = count($topic->questions);
             foreach ($topic->users as $user) {
@@ -45,12 +43,6 @@ class QuizController extends Controller
             'Z',
         ];
         $questions = $topic->questions()->where('topic_id', $topic->id)->get();
-        if (Auth::check()) {
-            $like = Auth::user()->likes()->where([
-                ['user_id', Auth::user()->id],
-                ['topic_id', $topic->id],
-            ])->first();
-        }
         $data = [];
         foreach ($questions as $key => $question) {
             $answers = Answer::where('question_id', $question->id)->get();
@@ -60,7 +52,7 @@ class QuizController extends Controller
             ];
         }
 
-        return view('pages.quiz', compact('topic', 'data', 'alphabet', 'like'));
+        return view('pages.quiz', compact('topic', 'data', 'alphabet'));
     }
 
     public function handleQuestion(Request $request)

@@ -1,14 +1,15 @@
-@extends('main')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center mt-lg-5 reset-password">
+    <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
-                    {!! Form::open(['route' => 'password.update', 'method' => 'POST']) !!}
+                    <form method="POST" action="{{ route('password.update') }}">
+                        @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">
 
@@ -55,7 +56,7 @@
                                 </button>
                             </div>
                         </div>
-                    {!! Form::close() !!}
+                    </form>
                 </div>
             </div>
         </div>

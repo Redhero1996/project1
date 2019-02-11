@@ -5,19 +5,20 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AdminRequest;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use Session;
 
 class AdminLoginController extends Controller
 {
     function getlogin()
     {
         if (Auth::check()) {
-            // dd(session()->all());
-                if (Auth::user()->role_id == '1') {
+            foreach(session()->all() as $key => $value){
+                if ($value == Auth::user()->id) {
 
                     return redirect('admin/users');
                 }
+            }
         }
+
         return view('admin.login');
     }
 
@@ -51,6 +52,7 @@ class AdminLoginController extends Controller
                 session()->forget($key);
             }
         }
+
         return redirect('admin/login');
     }
 }

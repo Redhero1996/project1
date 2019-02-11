@@ -8,7 +8,7 @@
                             <a class="nav-link active" href="{{ url('/') }}">{{ __('translate.category') }} </a>
                             <!-- Search form -->
                             <form class="form-inline md-form form-sm active-pink-2 mt-2">
-                              <input class="form-control form-control-sm w-90 search" id="search" type="text" placeholder="Search" aria-label="Search">
+                              <input class="form-control form-control-sm w-55 search" id="search" type="text" placeholder="Search" aria-label="Search">
                               <i class="fa fa-search" aria-hidden="true"></i>
                             </form>
                             {{-- <div class="mask rgba-white-slight"></div> --}}
