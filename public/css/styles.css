@@ -3,11 +3,11 @@ div.container-fluid {
 }
 
 div.container-fluid.login,  div.container-fluid.register{
-    width: 50%; 
+    width: 50%;
     margin-top: 20px;
 }
 
-input.username, input.email, input.password, input.password-confirm, button.login, button.register, {
+input.username, input.email, input.password, input.password-confirm, button.login, button.register {
     border-radius: 20px;
 }
 
@@ -100,14 +100,14 @@ ul#menu > li:hover {
 
 div.div-content {
     float: left;
-    display: inline-block; 
+    display: inline-block;
     width: 300px;
     margin-top: 14px;
 }
 
 div.div-quest {
     float: left;
-    display: inline-block;  
+    display: inline-block;
 }
 
 div.quest {
@@ -129,9 +129,9 @@ div.time {
 }
 
 div#line {
-    width: 20px; 
-    height: 1px; 
-    background: #000; 
+    width: 20px;
+    height: 1px;
+    background: #000;
     margin-left: 15px;
 }
 
@@ -155,19 +155,24 @@ a.btn-refresh, span.btn-refresh {
     float: right;
     padding: 10px;
     margin: 0;
-    border-radius: 20px; 
+    border-radius: 20px;
+    display: none;
 }
 
 button.btn-test {
     border-radius: 20px;
+    left: 889px;
+    top: 7px;
+    transition: none 0s ease 0s;
 }
 
 a#restart-test {
     color: #fff;
+    padding: 10px;
 }
 
 li.timer {
-    display: none; 
+    display: none;
     margin: 13px 10px 0px 0px;
     line-height: 17px;
     font-family: Western, cursive;
@@ -176,9 +181,9 @@ li.timer {
 }
 
 h3#title-quiz {
-    text-align: center; 
-    color: #31678f; 
-    background-color: #f2f5f7; 
+    text-align: center;
+    color: #31678f;
+    background-color: #f2f5f7;
     border-color: #bce8f1;
     padding: 15px;
     margin-bottom: 20px;
@@ -218,8 +223,8 @@ ol.questions {
 
 ol > li.title-question {
     padding: 15px 10px 0px 10px;
-    border-radius: 10px;  
-    clear: both;  
+    border-radius: 10px;
+    clear: both;
 }
 
 ol > li.comment {
@@ -235,33 +240,33 @@ button.btn-submit {
 }
 
 div a#btn-menu {
-    float: left; 
+    float: left;
     padding: 7px 15px;
     margin-left: 52px;
 }
 
 ul.answer {
-    list-style: none; 
+    list-style: none;
     margin-bottom: 15px;
 }
 
 span.question-num {
-    font-size: 18px; 
+    font-size: 18px;
     float: left;
 }
 
 span.question {
-    display: inline-block; 
+    display: inline-block;
 }
 
 span.answers {
-    margin: 4px 5px 0px 5px; 
-    display: block; 
+    margin: 4px 5px 0px 5px;
+    display: block;
 }
 
 ul.nav.navbar-nav.test {
-    right: 100px; 
-    position: absolute; 
+    right: 100px;
+    position: absolute;
     margin: 10px 20px 0px 0px;
 }
 
@@ -420,7 +425,7 @@ thead.rank-top > tr > th {
     color: #fff;
 }
 
-li.explain { 
+li.explain {
     display: none;
 }
 
@@ -484,7 +489,7 @@ div.modal-header.delete {
     position: absolute;
     top: 0;
     right: 0;
-    color: #c2ab6a !important; 
+    color: #c2ab6a !important;
 }
 
 button.add {
@@ -502,7 +507,7 @@ button.add {
     opacity: .5;
     font-weight: 700;
     line-height: 1;
-    text-transform: none; 
+    text-transform: none;
 }
 
 button.add:hover {
@@ -531,4 +536,8 @@ span.help-block {
 
 img.img {
     height: 30em;
+}
+
+.check-circle {
+    margin-left: 5% !important;
 }

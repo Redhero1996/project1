@@ -12,4 +12,6 @@ return [
     'fifty' => '50',
     'one_thousand' => '1000',
     'two' => '2',
+    'point_sevent' => '0.7',
+    'hundred' => '100',
 ];

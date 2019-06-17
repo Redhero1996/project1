@@ -8,8 +8,8 @@
                             <a class="nav-link active" href="{{ url('/') }}">{{ __('translate.category') }} </a>
                             <!-- Search form -->
                             <form class="form-inline md-form form-sm active-pink-2 mt-2">
-                              <input class="form-control form-control-sm w-55 search" id="search" type="text" placeholder="Search" aria-label="Search">
-                              <i class="fa fa-search" aria-hidden="true"></i>
+                            <input class="form-control form-control-sm w-55 search" id="search" type="text" placeholder="Search" aria-label="Search">
+                            <i class="fa fa-search" aria-hidden="true"></i>
                             </form>
                             {{-- <div class="mask rgba-white-slight"></div> --}}
                         <div id="show-search">
@@ -49,7 +49,7 @@
                     </div>
                     @foreach ($topic->users as $user)
                         @if (Auth::check() && Auth::user()->id == $user->pivot->user_id)
-                            <i class="fas fa-check-circle text-success"></i>
+                            <i class="fas fa-check-circle text-success check-circle"></i>
                             @break
                         @endif
                     @endforeach
