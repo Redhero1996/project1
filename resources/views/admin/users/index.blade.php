@@ -41,7 +41,7 @@
                                 <th class="th-sm">{{ __('translate.edit') }}
                                     <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                 </th>
-                                <th class="th-sm">{{ __('translate.detele') }}
+                                <th class="th-sm">{{ __('translate.delete') }}
                                     <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                 </th>
                             </tr>
@@ -58,7 +58,7 @@
                                     </td>
                                     <td>
                                         <a class="delete" data-toggle="modal" href="#delete-{{$user->id}}">
-                                        <i class="fa fa-trash"></i> {{ __('translate.detele') }}
+                                        <i class="fa fa-trash"></i> {{ __('translate.delete') }}
                                         </a>
                                         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
                                         <div class="modal fade" id="delete-{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -36,22 +36,22 @@
                             </div>
                             <div class="form-group ml-3">
                                 {!! Form::checkbox('correct_ans[]', config('constants.zero')) !!}
-                                <label>{{ __('translate.ans_a') }}</label>
+                                <label>{{ __('translate.ans_A') }}</label>
                                 {!! Form::text('answer[]', old('answer[0]'), ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group ml-3">
                                 {!! Form::checkbox('correct_ans[]', config('constants.one')) !!}
-                                <label>{{ __('translate.ans_b') }}</label>
+                                <label>{{ __('translate.ans_B') }}</label>
                                 {!! Form::text('answer[]', old('answer[1]'), ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group ml-3">
                                 {!! Form::checkbox('correct_ans[]', config('constants.two')) !!}
-                                <label>{{ __('translate.ans_c') }}</label>
+                                <label>{{ __('translate.ans_C') }}</label>
                                 {!! Form::text('answer[]', old('answer[2]'), ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group ml-3">
                                 {!! Form::checkbox('correct_ans[]', config('constants.three')) !!}
-                                <label>{{ __('translate.ans_d') }}</label>
+                                <label>{{ __('translate.ans_D') }}</label>
                                 {!! Form::text('answer[]', old('answer[3]'), ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group ml-3">

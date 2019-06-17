@@ -1,12 +1,12 @@
 @extends('master')
 
-@section('title', 'Edit Topic')
+@section('title', '| ' . __('translate.edit_topic'))
 
 @section('content')
     <div class="card">
         <div class="tab-content">
             <div class="card-body">
-                <h3 class="page-title">Edit Topic</h3>
+                <h3 class="page-title">{{ __('translate.edit_topic') }}</h3>
                 <div class="portlet-body form">
                     @if(count($errors) > 0)
                         <div class="alert alert-danger">
@@ -56,10 +56,10 @@
                             <div class="form-group">
                                 {!! Form::label('status', 'Status', ['class' => 'col-md-3 control-label']) !!}
                                 <div class="custom-control custom-radio">
-                                    {!! Form::radio('status', 1, $topic->status == 1 ? true : null, ['class' => 'mr-2']) !!}Publish
-                                    {!! Form::radio('status', 0, $topic->status == 0 ? true : null, ['class' => 'ml-5 mr-2']) !!}Waitting
-                                    {!! Form::radio('status', 2, $topic->status == 2 ? true : null, ['class' => 'ml-5 mr-2']) !!}Edit
-                                    {!! Form::radio('status', 3, $topic->status == 3 ? true : null, ['class' => 'ml-5 mr-2']) !!}Close
+                                    {!! Form::radio('status', 1, $topic->status == 1 ? true : null, ['class' => 'mr-2']) !!}{{ __('translate.publish') }}
+                                    {!! Form::radio('status', 0, $topic->status == 0 ? true : null, ['class' => 'ml-5 mr-2']) !!}{{ __('translate.waitting') }}
+                                    {!! Form::radio('status', 2, $topic->status == 2 ? true : null, ['class' => 'ml-5 mr-2']) !!}{{ __('translate.edit') }}
+                                    {!! Form::radio('status', 3, $topic->status == 3 ? true : null, ['class' => 'ml-5 mr-2']) !!}{{ __('translate.close') }}
                                 </div>
                             </div>
                         </div>

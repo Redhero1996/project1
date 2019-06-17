@@ -62,17 +62,17 @@
     <script type="text/javascript">
         var allEditors = document.querySelectorAll('.editor');
         for (var i = 0; i < allEditors.length; ++i) {
-          ClassicEditor.create(allEditors[i]);
+            ClassicEditor.create(allEditors[i]);
         }
         $(document).ready(function() {
             $('div.addQuest').hide();
             var alphabet = @json($alphabet);
-            $('span.add-quest').click(function() { 
+            $('span.add-quest').click(function() {
                 // prevent when reload page
                 window.onbeforeunload = function() {
                     return "{{ __('translate.alert') }}";
                 }
-                var number_quest = parseInt($('input#number_quest').val()); 
+                var number_quest = parseInt($('input#number_quest').val());
                 if (number_quest <= 0) {
                     alert('{{ __('translate.input_numb') }}');
                 }
@@ -81,7 +81,7 @@
                     $(this).hide();
                     // $('input#number_quest').prop('disabled', true);
                     $('div.addQuest').show();
-                    checkAdd(number_quest);                 
+                    checkAdd(number_quest);
                     $('button.close').click(function() {
                         number_quest -= 1;
                         $('input#number_quest').val(number_quest);
@@ -107,13 +107,13 @@
                                     <input type="text" name="answer[`+ number_quest +`][]" class="form-control" value="" required>
                                 </div>
                                 <div class="form-group ml-3">
-                                     <input type="checkbox" name="correct_ans[`+ number_quest +`][]" value="1">
-                                     <label>Đáp án B:</label>
+                                    <input type="checkbox" name="correct_ans[`+ number_quest +`][]" value="1">
+                                    <label>Đáp án B:</label>
                                     <input type="text" name="answer[`+ number_quest +`][]" class="form-control" value="" required>
                                 </div>
                                 <div class="form-group ml-3">
-                                     <input type="checkbox" name="correct_ans[`+ number_quest +`][]" value="2">
-                                     <label>Đáp án C:</label>
+                                    <input type="checkbox" name="correct_ans[`+ number_quest +`][]" value="2">
+                                    <label>Đáp án C:</label>
                                     <input type="text" name="answer[`+ number_quest +`][]" class="form-control" value="" required>
                                 </div>
                                 <div class="form-group ml-3">
@@ -135,7 +135,7 @@
                 window.onbeforeunload = function() {
                     return null;
                 };
-            });   
+            });
         });
         function checkAdd(valueAdd) {
             for (i = 1; i <= valueAdd; i++) {
@@ -156,13 +156,13 @@
                                 <input type="text" name="answer[`+ i +`][]" class="form-control" value="" required>
                             </div>
                             <div class="form-group ml-3">
-                                 <input type="checkbox" name="correct_ans[`+ i +`][]" value="1">
-                                 <label>Đáp án B:</label>
+                                <input type="checkbox" name="correct_ans[`+ i +`][]" value="1">
+                                <label>Đáp án B:</label>
                                 <input type="text" name="answer[`+ i +`][]" class="form-control" value="" required>
                             </div>
                             <div class="form-group ml-3">
-                                 <input type="checkbox" name="correct_ans[`+ i +`][]" value="2">
-                                 <label>Đáp án C:</label>
+                                <input type="checkbox" name="correct_ans[`+ i +`][]" value="2">
+                                <label>Đáp án C:</label>
                                 <input type="text" name="answer[`+ i +`][]" class="form-control" value="" required>
                             </div>
                             <div class="form-group ml-3">
@@ -171,7 +171,7 @@
                                 <input type="text" name="answer[`+ i +`][]" class="form-control" value="" required>
                             </div>
                             <div class="form-group">
-                                <label for="explain" class="ml-3">Explain</label>
+                                <label for="explain" class="ml-3">{{ __('translate.explain') }}</label>
                                 <div class="col-md-12">
                                     <textarea class="editor" name="explain[`+ i +`][]" cols="94" id="explain"></textarea>
                                 </div>
