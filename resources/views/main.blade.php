@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @include('layouts._head')  
+        @include('layouts._head')
     </head>
     <body class="hidden-sn mdb-skin">
         @include('layouts._nav')
         @if(Request::is('/'))
             @include('layouts._slider')
         @endif
-        <div class="container-fluid">
+        <div class="container-fluid main-page">
             @yield('content')
             @include('layouts._footer')
         </div>

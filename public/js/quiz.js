@@ -1,14 +1,14 @@
 var config = quiz_request.config;
 $(document).ready(function() {
     $('button.btn-test').click(function() {
-        $('div.btn-test').hide();
-        $('div.do-test').show();
+        $('button.btn-test').hide();
+        $('a#restart-test').show();
         $('li.timer').show();
         $('.form-check-input').show();
         $('.btn-submit').show();
         $('span.btn-refresh').click(function() {
-            $('div.btn-test').hide();
-            $('div.do-test').show();
+            $('button.btn-test').hide();
+            $('a#restart-test').show();
             window.location.reload(true);
         });
 

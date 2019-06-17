@@ -1,7 +1,7 @@
 @extends('main')
 @section('title', ' Tài khoản')
 @section('content')
-    <maain class="main">
+    <main class="main">
         <div class="container-fluid">
             <!-- Section: Edit Account -->
             <section class="section">
@@ -50,7 +50,7 @@
                                                 <td>
                                                     <a class="review" href="{{ route('review', [$topic->category->slug, $topic->slug, $topic->pivot->id]) }}">{{ $topic->name }}</a>
                                                 </td>
-                                               <td>{{ $topic->pivot->total }}</td>
+                                                <td>{{ $topic->pivot->total }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -69,9 +69,9 @@
                                     <h5 class="mb-0 font-weight-bold">{{ trans('translate.info_account') }}</h5>
                                 </div>
                                 @if(Session::has('success'))
-                                 <div class="alert alert-success" role="alert">
-                                     <strong>{{Session::get('success')}}</strong>
-                                 </div>
+                                <div class="alert alert-success" role="alert">
+                                    <strong>{{Session::get('success')}}</strong>
+                                </div>
                                 @endif
                                 <!--/Card image-->
                                 <!-- Card content -->
