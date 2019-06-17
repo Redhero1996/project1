@@ -1,11 +1,11 @@
 @extends('master')
 
-@section('title', 'All Topics')
+@section('title', '| ' . __('translate.all_topics'))
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h3 class="page-title">Manage Topics</h3>
+            <h3 class="page-title">{{ __('translate.manage_topics') }}</h3>
             <!-- BEGIN PAGE CONTENT-->
             <div class="row">
                 <div class="col-md-12">
@@ -20,7 +20,7 @@
                     <div class="portlet box blue-hoki">
                         <div class="portlet-title">
                             <div class="caption mb-2">
-                                <i class="fa fa-globe"></i>All topics
+                                <i class="fa fa-globe"></i>{{ __('translate.all_topics') }}
                             </div>
                             <div class="tools">
                             </div>
@@ -29,22 +29,22 @@
                             <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                                <th class="th-sm">#ID
+                                <th class="th-sm">#{{ __('translate.id') }}
                                     <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                 </th>
-                                <th class="th-sm">Name
+                                <th class="th-sm">{{ __('translate.name') }}
                                     <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                 </th>
-                                <th class="th-sm">Status
+                                <th class="th-sm">{{ __('translate.status') }}
                                     <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                 </th>
-                                <th class="th-sm">View
+                                <th class="th-sm">{{ __('translate.view') }}
                                     <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                 </th>
-                                <th class="th-sm">Edit
+                                <th class="th-sm">{{ __('translate.edit') }}
                                     <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                 </th>
-                                <th class="th-sm">Delete
+                                <th class="th-sm">{{ __('translate.delete') }}
                                     <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                 </th>
                             </tr>
@@ -54,21 +54,21 @@
                                 <tr>
                                     <td>{{ $topic->id }}</td>
                                     <td>{{ $topic->name }}</td>
-                                    <td>{!! $topic->status == 1 ? '<span class="badge badge-primary">Publish</span>' : 
-                                        ( $topic->status == 0 ? '<span class="badge badge-warning">Pending</span>' : 
-                                        ( $topic->status == 2 ? '<span class="badge badge-default">Need to edit</span>' : 
+                                    <td>{!! $topic->status == 1 ? '<span class="badge badge-primary">Publish</span>' :
+                                        ( $topic->status == 0 ? '<span class="badge badge-warning">Pending</span>' :
+                                        ( $topic->status == 2 ? '<span class="badge badge-default">Need to edit</span>' :
                                         '<span class="badge badge-danger">Close</span>' )) !!}</td>
                                     <td><a class="show" href="{{ route('topics.show', $topic->slug) }}">
-                                        <i class="far fa-eye"></i> View
+                                        <i class="far fa-eye"></i> {{ __('translate.view') }}
                                         </a>
                                     </td>
                                     <td><a class="edit" href="{{ route('topics.edit', $topic->slug) }}">
-                                        <i class="fas fa-edit"></i> Edit
+                                        <i class="fas fa-edit"></i> {{ __('translate.edit') }}
                                         </a>
                                     </td>
                                     <td>
                                         <a class="delete" data-toggle="modal" href="#delete-{{$topic->id}}">
-                                        <i class="fas fa-trash"></i> Delete
+                                        <i class="fas fa-trash"></i> {{ __('translate.delete') }}
                                         </a>
                                         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
                                         <div class="modal fade" id="delete-{{$topic->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

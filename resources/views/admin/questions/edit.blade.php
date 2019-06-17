@@ -41,7 +41,7 @@
                                     @else
                                         {!! Form::checkbox('correct_ans[]', $answer->id) !!}
                                     @endif
-                                        <label>{{ __('translate.ans') }} {{$alphabet[$key]}}:</label>
+                                        <label>{{ __("translate.ans_$alphabet[$key]") }}:</label>
                                         {!! Form::text('answer[]', $answer->content, ['class' => 'form-control']) !!}
                                 </div>
                             @endforeach
@@ -83,7 +83,7 @@
                         $('select[name="topic_id"]').append(
                         "<option value='" + topic.id + "'>" + topic.name + "</option>"
                     );
-                  });
+                });
                 }
             });
         });

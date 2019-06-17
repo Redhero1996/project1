@@ -1,9 +1,9 @@
 @extends('main')
-@section('title', '| ' . __('translate.manage_topic'))
+@section('title', '| ' . __('translate.manage_topics'))
 @section('content')
 	<div class="w-80 card mt-5 ml-2">
         <div class="card-body">
-            <h3 class="text-center mt-3 manage">{{ __('translate.manage_topic') }}</h3>
+            <h3 class="text-center mt-3 manage">{{ __('translate.manage_topics') }}</h3>
             <!-- BEGIN PAGE CONTENT-->
             <div class="row">
                 <div class="col-md-12">
@@ -21,10 +21,10 @@
                         <th class="th-sm">{{ __('translate.id') }}
                             <i class="fa fa-sort float-right" aria-hidden="true"></i>
                         </th>
-                        <th class="th-sm">{{ __('translate.name') }} 
+                        <th class="th-sm">{{ __('translate.name') }}
                             <i class="fa fa-sort float-right" aria-hidden="true"></i>
                         </th>
-                        <th class="th-sm">{{ __('translate.status') }} 
+                        <th class="th-sm">{{ __('translate.status') }}
                             <i class="fa fa-sort float-right" aria-hidden="true"></i>
                         </th>
                         <th class="th-sm">{{ __('translate.view') }}
@@ -33,7 +33,7 @@
                         <th class="th-sm"> {{ __('translate.edit') }}
                             <i class="fa fa-sort float-right" aria-hidden="true"></i>
                         </th>
-                        <th class="th-sm">{{ __('translate.detele') }}
+                        <th class="th-sm">{{ __('translate.delete') }}
                             <i class="fa fa-sort float-right" aria-hidden="true"></i>
                         </th>
                     </tr>
@@ -44,12 +44,12 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $topic->name }}</td>
-                                    <td>{!! $topic->status == 1 ? '<span class="badge badge-primary">Publish</span>' : 
-                                        ( $topic->status == 0 ? '<span class="badge badge-warning">Pending</span>' : 
-                                        ( $topic->status == 2 ? '<span class="badge badge-default">Need to edit</span>' : 
+                                    <td>{!! $topic->status == 1 ? '<span class="badge badge-primary">Publish</span>' :
+                                        ( $topic->status == 0 ? '<span class="badge badge-warning">Pending</span>' :
+                                        ( $topic->status == 2 ? '<span class="badge badge-default">Need to edit</span>' :
                                         '<span class="badge badge-danger">Close</span>' )) !!}</td>
                                     <td><a class="show" href="{{ route('create-topics.show', [$topic->category->slug, $topic->slug, $topic->id]) }}">
-                                        <i class="far fa-eye"></i> {{ __('translate.view') }} 
+                                        <i class="far fa-eye"></i> {{ __('translate.view') }}
                                         </a>
                                     </td>
                                     @if ($topic->status == 1)
@@ -88,19 +88,19 @@
                                             </td>
                                         @else
                                             <td class="status">
-                                                <i class="fas fa-edit"></i> {{ __('translate.edit') }} 
+                                                <i class="fas fa-edit"></i> {{ __('translate.edit') }}
                                             </td>
                                             <td class="status">
-                                                <i class="fas fa-trash"></i> {{ __('translate.delete') }} 
+                                                <i class="fas fa-trash"></i> {{ __('translate.delete') }}
                                             </td>
                                         @endif
                                     @elseif ($topic->status == 3)
                                         <td class="status">
-                                            <i class="fas fa-edit"></i> {{ __('translate.edit') }} 
+                                            <i class="fas fa-edit"></i> {{ __('translate.edit') }}
                                         </td>
                                         <td>
                                             <a class="delete" data-toggle="modal" href="#delete-{{$topic->id}}">
-                                            <i class="fas fa-trash"></i> {{ __('translate.delete') }} 
+                                            <i class="fas fa-trash"></i> {{ __('translate.delete') }}
                                             </a>
                                             <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
                                             <div class="modal fade" id="delete-{{$topic->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

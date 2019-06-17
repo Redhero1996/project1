@@ -9,7 +9,7 @@
                 <h3 class="page-title">{{ __('translate.edit_role') }}</h3>
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
-                    {!! Form::model($roles, ['method' => 'PUT', 'route' => ['roles.update', $role->id], 'class' => 'form-horizontal']) !!}
+                    {!! Form::model($role, ['method' => 'PUT', 'route' => ['roles.update', $role->id], 'class' => 'form-horizontal']) !!}
                         <div class="form-body">
                             <div class="form-group last">
                                 {!! Form::label('name', __('translate.name'), ['class' => 'col-md-3 control-label']) !!}
