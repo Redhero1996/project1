@@ -1,16 +1,25 @@
-<?php 
+<?php
 
 namespace App\Repositories;
 
+/**
+ * Interface BaseRepositoryInterface
+ *
+ * @package App\Repositories
+ */
 interface RepositoryInterface
 {
+    public function findById($id);
+
     public function all();
 
-    public function create(array $data);
+    public function getData();
 
-    public function update(array $data, $id);
+    public function update($id, $data);
 
-    public function delete($id);
+    public function destroy($id);
 
-    public function show($id);
+    public function create($data = []);
+
+    public function slug($str);
 }

@@ -18,13 +18,13 @@ class HomePageController extends Controller
     protected $rank;
     protected $category;
 
-    public function __construct(Category $category) {
-        $this->category = new Repository($category);
-    }
-    
+    // public function __construct(Category $category) {
+    //     $this->category = new Repository($category);
+    // }
+
     public function home()
     {
-        $categories = $this->category->all();
+        $categories = Category::all();
         $topics = Topic::latest('id')->where('status', 1)->paginate();
         $ranks = [];
         $select_table = DB::select(

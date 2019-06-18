@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use App\Http\Requests\UserProfileRequest;
+use App\Repositories\User\UserRepositoryInterface;
 use App\Models\Role;
 use App\User;
 use Illuminate\Http\Request;
-use Image;
 use Session;
-use Storage;
 
 class UserController extends Controller
 {
+    protected $user;
+
+    public function __construct(UserRepositoryInterface $user)
+    {
+        $this->user = $user;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,9 +24,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $with = ['role'];
+        $dataSelect = [
+            'id',
+            'name',
+            'role_id',
+        ];
+        $users = $this->user->getData($with, [], $dataSelect);
 
-        return view('admin.users.index')->withUsers($users);
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -45,24 +55,11 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $user = User::create([
-            'name' => $request->name,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'phone_number' => $request->phone_number,
-            'address' => $request->address,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'role_id' => $request->role_id,
-        ]);
-        if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar');
-            $file_name = time() . '.' . $avatar->getClientOriginalExtension();
-            $location = public_path('images/' . $file_name);
-            Image::make($avatar)->resize(200, 200)->save($location);
-            $user->avatar = $file_name;
-        }
-        $user->save();
+        $data = $request->except(['password_confirmation']);
+        $data['password'] = bcrypt($request->password);
+        $data['avatar'] = $this->user->handleUploadImage(true, $request->file('avatar'));
+        $user = $this->user->create($data);
+
         Session::flash('success', __('translate.user_store'));
 
         return redirect()->route('users.show', $user->id);
@@ -88,7 +85,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $roles = Role::all();
-        $user = User::findOrFail($id);
+        $user = $this->user->findById($id);
 
         return view('admin.users.edit', compact('roles', 'user'));
     }
@@ -100,31 +97,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserProfileRequest $request, User $user)
+    public function update(Request $request, $id)
     {
-        $user->name = $request->name;
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->phone_number = $request->phone_number;
-        $user->address = $request->address;
-        if ($request->change_password == 'on') {
-            $user->password = bcrypt($request->password);
+        $user_id = $this->user->findById($id);
+        $data = $request->all();
+        if (isset($data['change_password']) && $data['change_password'] == 'on') {
+            $data['password'] = $request->validate([
+                'password' => 'required|confirmed|min:6',
+            ]);
+            $data['password'] = bcrypt($request->password);
         }
-        if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar');
-            $file_name = time() . '.' . $avatar->getClientOriginalExtension();
-            $location = public_path('images/' . $file_name);
-            Image::make($avatar)->resize(300, 300)->save($location);
-            if (isset($user->avatar)) {
-                $old_avatar = $user->avatar;
-                $user->avatar = $file_name;
-                Storage::delete($old_avatar);
-            } else {
-                $user->avatar = $file_name;
-            }
-        }
-        $user->save();
+        $data['avatar'] = $this->user->handleUploadImage(false, $request->file('avatar'), $user_id);
+
+        unset($data['change_password'], $data['password_confirmation']);
+
+        $this->user->update($id, $data);
+
         Session::flash('success', __('translate.succ_acount'));
+
+        return redirect()->route('users.show', $user_id);
     }
 
     /**
@@ -138,7 +129,7 @@ class UserController extends Controller
         $user->topics()->detach();
         $user->delete();
         Session::flash('success', __('translate.user_deleted'));
-        
+
         return redirect()->route('users.index');
     }
 }

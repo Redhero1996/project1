@@ -82,10 +82,10 @@
                             {!! Form::password('password_confirmation', ['class' => 'form-control password', 'placeholder' => __('translate.confirm_password')]) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('role', __('translate.role')) !!}
+                            {!! Form::label('role_id', __('translate.role')) !!}
                             <div class="custom-control custom-radio">
-                                {!! Form::radio('role', 1, null, ['class' => 'mr-2']) !!} {{ __('translate.admin') }}
-                                {!! Form::radio('role', 2, true, ['class' => 'ml-5 mr-2']) !!} {{ __('translate.user') }}
+                                {!! Form::radio('role_id', 1, null, ['class' => 'mr-2']) !!} {{ __('translate.admin') }}
+                                {!! Form::radio('role_id', 2, true, ['class' => 'ml-5 mr-2']) !!} {{ __('translate.user') }}
                             </div>
                         </div>
                         <div class="row">

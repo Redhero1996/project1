@@ -71,6 +71,7 @@ return [
     'view' => 'Xem',
     'delete' => 'Xóa',
     'cancel' => 'Hủy',
+    'save' => 'Lưu',
     'manage_roles' => 'Quản lý role',
     'all_roles' => 'Danh sách role',
     'create_role' => 'Thêm role',
@@ -111,4 +112,12 @@ return [
     'del_confirm' => 'Xác nhận xóa',
     'del_alert' => 'Bạn có chắc muốn xóa đề thi này?',
     'return' => 'Quay lại',
+
+    // Flash
+    'user_store' => 'Tài khoản được tạo thành công',
+    'succ_acount' => 'Tài khoản được update thành công',
+    'user_deleted' => 'Tài khoản đã xóa thành công',
+    'category_store' => 'Danh mục được tạo thành công',
+    'category_updated' => 'Danh mục được update thành công',
+    'category_deleted' => 'Danh mục đã xóa thành công',
 ];
