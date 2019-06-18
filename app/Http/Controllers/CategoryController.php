@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
+use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Models\Category;
 use Session;
 
 class CategoryController extends Controller
 {
+    protected $category;
+
+    public function __construct(CategoryRepositoryInterface $category)
+    {
+        $this->category = $category;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $dataSelect = [
+            'id',
+            'name',
+            'slug',
+        ];
+        $categories = $this->category->getData([], [], $dataSelect);
 
         return view('admin.categories.index')->withCategories($categories);
     }
@@ -38,11 +50,12 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        Category::create([
-            'name' => $request->name,
-            'slug' => str_slug($request->name, '-'),
-        ]);
+        $data = $request->all();
+        $data['slug'] = str_slug($request->name, '-');
+        $this->category->create($data);
+
         Session::flash('success', __('translate.category_store'));
+
         return redirect()->route('categories.index');
     }
 
@@ -54,7 +67,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::whereId($id)->firstOrFail();
+        $category = $this->category->findById($id);
 
         return view('admin.categories.edit')->withCategory($category);
     }
@@ -68,11 +81,12 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        $category = Category::whereId($id)->firstOrFail();
-        $category->name = $request->name;
-        $category->slug = str_slug($category->name, '-');
-        $category->save();
+        $data = $request->all();
+        $data['slug'] = str_slug($request->name, '-');
+        $this->category->update($id, $data);
+
         Session::flash('success', __('translate.category_updated'));
+
         return redirect()->route('categories.index');
     }
 
@@ -84,10 +98,12 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
+        $category = $this->category->findById($id);
         $category->topics()->update(['category_id' => null]);
         $category->delete();
+
         Session::flash('success', __('translate.category_deleted'));
+
         return redirect()->route('categories.index');
     }
 }

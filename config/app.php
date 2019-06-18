@@ -162,7 +162,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-
+        App\Providers\RepositoryServiceProvider::class,
 
     ],
 

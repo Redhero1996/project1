@@ -70,6 +70,7 @@ return [
     'view' => 'View',
     'delete' => 'Delete',
     'cancel' => 'Cancel',
+    'save' => 'Save',
     'manage_roles' => 'Manage roles',
     'all_roles' => 'All roles',
     'create_role' => 'Create role',
@@ -110,4 +111,13 @@ return [
     'del_confirm' => 'Delete confirm',
     'del_alert' => 'Do you want to delete this topic?',
     'return' => 'Return',
+
+    // Flash
+    'user_store' => 'The account was saved',
+    'succ_acount' => 'The account was updated',
+    'user_deleted' => 'The account was deteled',
+    'category_store' => 'The category was saved',
+    'category_updated' => 'The category was updated',
+    'category_deleted' => 'The category was deteled',
+
 ];

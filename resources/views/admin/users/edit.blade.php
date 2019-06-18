@@ -8,7 +8,7 @@
                     <h2 class="page-header">{{ __('translate.edit_user') }}</h2>
                 </div>
                 <!-- /.col-lg-12 -->
-                {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT']) !!}
+                {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT', 'files' => true]) !!}
                     <div class="col-md-8 col-md-offset-2">
                         <div class="form-group">
                             <label>{{ __('translate.avatar') }}</label><br>
