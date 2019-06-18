@@ -9,7 +9,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
                 {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT']) !!}
-                    <div class="col-md-8 col-md-offset-2">                 
+                    <div class="col-md-8 col-md-offset-2">
                         <div class="form-group">
                             <label>{{ __('translate.avatar') }}</label><br>
                             @if ($user->avatar == null )
@@ -83,24 +83,24 @@
                                     <strong>{{ $errors->first('password') }}</strong>
                                 </p>
                             @endif
-                        </div> 
+                        </div>
                         <div class="form-group">
                             {!! Form::label('password_confirmation', __('translate.confirm_password')) !!}
                             {!! Form::password('password_confirmation', ['class' => 'form-control password', 'disabled' => 'disabled']) !!}
-                        </div> 
+                        </div>
                         <div class="form-group">
                             {!! Form::label('role', __('translate.role')) !!}
                             {!! Form::radio('role_id', 1, $user->role_id == 1 ? true : null, ['class' => 'mr-2']) !!}{{ __('translate.admin') }}
                             {!! Form::radio('role_id', 2, $user->role_id == 2 ? true : null, ['class' => 'ml-5 mr-2']) !!}{{ __('translate.user') }}
-                        </div>                     
+                        </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 {!! Form::submit('Submit', ['class' => 'btn btn-info']) !!}
                             </div>
-                            <div class="col-sm-6">      
+                            <div class="col-sm-6">
                                 <a href="{{route('users.show', $user->id)}}" class="btn btn-danger btn-block">{{ __('translate.cancel') }}</a>
                             </div>
-                        </div><br>                       
+                        </div><br>
                     </div>
                 {!! Form::close() !!}
             </div>
@@ -131,11 +131,9 @@
                 if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg"))
                 {
                     var reader = new FileReader();
-
                     reader.onload = function (e) {
-                       $('#img').attr('src', e.target.result);
-                       $('#img').css({"width" : "200px", "height" : "200px"});
-
+                        $('#img').attr('src', e.target.result);
+                        $('#img').css({"width" : "200px", "height" : "200px"});
                     }
                     reader.readAsDataURL(input.files[0]);
                 }

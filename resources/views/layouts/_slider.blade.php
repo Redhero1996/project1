@@ -21,7 +21,7 @@
             <!--/Second slide-->
             <!--Third slide-->
             <div class="carousel-item">
-                <img class="d-block w-100" src="{{asset('images/quiz.jpg')}}" alt="Third slide" style="height: 30em;">
+                <img class="d-block w-100" src="{{asset('images/Quiz.jpg')}}" alt="Third slide" style="height: 30em;">
             </div>
             <!--/Third slide-->
         </div>
@@ -32,8 +32,8 @@
             <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
         </a>
         <!--/.Controls-->
     </div>

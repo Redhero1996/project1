@@ -4,7 +4,6 @@
         @include('partials._head')
     </head>
     <body class="grey lighten-3">
-
         <!--Main Navigation-->
         {{-- <header> --}}
             <!-- Navbar -->
