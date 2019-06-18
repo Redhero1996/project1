@@ -73,7 +73,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($ranks as $key => $rank)
+                        {{-- @dd($ranks) --}}
+                        @foreach (array_slice($ranks, 0, 4) as $key => $rank)
                             <tr>
                                 <th scope="row">{{ $key + config('constants.number_ques') }}</th>
                                 <td><img class="avatar" src="{{ config('view.image_paths.images') . $rank['avatar'] }}"> {{ $rank['username'] }}</td>

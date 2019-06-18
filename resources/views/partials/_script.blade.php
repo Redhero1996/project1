@@ -12,10 +12,10 @@
     });
     var allEditors = document.querySelectorAll('.editor');
     for (var i = 0; i < allEditors.length; ++i) {
-	    ClassicEditor.create(allEditors[i], {
-	    	autoParagraph: false,
-		    enterMode: 'br',
-		    ShiftEnterMode: 'br',
-	    });
+        ClassicEditor.create(allEditors[i], {
+            autoParagraph: false,
+            enterMode: 'br',
+            ShiftEnterMode: 'br',
+        });
     }
 </script>

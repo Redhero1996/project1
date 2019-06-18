@@ -66,8 +66,8 @@
                             <div class="col-md-12">
                                 {!! Form::textarea("explain[$question->id][]", $question->explain, ['class' => 'editor']) !!}
                             </div>
-                            </div>  
-                        </div>    
+                            </div>
+                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -90,7 +90,7 @@
     <script type="text/javascript">
         var allEditors = document.querySelectorAll('.editor');
         for (var i = 0; i < allEditors.length; ++i) {
-          ClassicEditor.create(allEditors[i]);
+            ClassicEditor.create(allEditors[i]);
         }
         $(document).ready(function() {
             var number_quest = {!! count($questions) !!}

@@ -141,7 +141,7 @@ div#paginate {
 
 div.quiz {
     margin: auto;
-    margin-top: 65px;
+    margin-top: 85px;
     width: 76%;
 }
 
@@ -152,6 +152,7 @@ h3#currentQuestionNumberText {
 }
 
 a.btn-refresh, span.btn-refresh {
+    width: 146px;
     float: right;
     padding: 10px;
     margin: 0;
@@ -161,14 +162,14 @@ a.btn-refresh, span.btn-refresh {
 
 button.btn-test {
     border-radius: 20px;
-    left: 889px;
-    top: 7px;
+    bottom: 7px;
+    float: right;
     transition: none 0s ease 0s;
 }
 
 a#restart-test {
     color: #fff;
-    padding: 10px;
+    padding: 14px 0px 14px 0px;
 }
 
 li.timer {
@@ -450,6 +451,10 @@ svg.svg-inline--fa.fa-search.fa-w-16 {
     color: #f48fb1;
 }
 
+#search {
+    width: 19em;
+}
+
 form.form-inline.md-form.form-sm {
     margin-bottom: 0.5em !important;
 }
@@ -540,4 +545,12 @@ img.img {
 
 .check-circle {
     margin-left: 5% !important;
+}
+
+div>p.answer {
+    display: inline-block;
+}
+
+label.correct_ans {
+    color: blue;
 }
