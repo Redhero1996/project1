@@ -3,10 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Topic;
+use App\Repositories\Topic\TopicRepositoryInterface;
 
 class TopicEditRequest extends FormRequest
 {
+    protected $topic;
+    public function __construct(TopicRepositoryInterface $topic)
+    {
+        $this->topic = $topic;
+    }
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -29,10 +34,10 @@ class TopicEditRequest extends FormRequest
             'correct_ans' => '',
             'explain.*.*' => '',
         ];
-        $name = $this->request->get('topic_name');
-        if ($name != null && strlen($name) >=3 && strlen($name) <= 255) {
-            $topic = Topic::where('name', $name)->get();
-            foreach ($topic[0]->questions as $key => $question) {
+        $topic_id = $this->request->get('id');
+        if ($topic_id != null) {
+            $topic = $this->topic->findById($topic_id);
+            foreach ($topic->questions as $key => $question) {
                 $rules["correct_ans.$question->id"] = 'required';
             }
         } else {
@@ -43,18 +48,18 @@ class TopicEditRequest extends FormRequest
 
     public function messages()
     {
-        $name = $this->request->get('topic_name');
+        $topic_id = $this->request->get('id');
         $messages = [];
-        if (($name != null) && (strlen($name) >=3) && (strlen($name) <= 255)) {
-            $topic = Topic::where('name', $name)->get();
-            foreach ($topic[0]->questions as $key => $question) {
+        if ($topic_id != null) {
+            $topic = $this->topic->findById($topic_id);
+            foreach ($topic->questions as $key => $question) {
                 $messages["correct_ans.$question->id.required"] = __('translate.request_correct_ans');
             }
         } else {
             $messages['topic_name.required'] = __('validation.required');
             $messages['topic_name.min'] =  __('validation.min');
             $messages['topic_name.max'] =  __('validation.max');
-        }    
+        }
         return $messages;
     }
 }

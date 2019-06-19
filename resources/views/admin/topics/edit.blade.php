@@ -17,11 +17,14 @@
                     @endif
                     <!-- BEGIN FORM-->
                     {!! Form::model($topic, ['method' => 'PUT', 'route' => ['topics.update', $topic->id], 'class' => 'form-horizontal']) !!}
+                        {!! Form::hidden('user_id', $topic->user_id) !!}
+                        {!! Form::hidden('view_count', $topic->view_count) !!}
+                        {!! Form::hidden('id', $topic->id) !!}
                         <div class="form-body">
                             <div class="form-group last">
                                 {!! Form::label('name', 'Name', ['class' => 'col-md-3 control-label']) !!}
                                 <div class="col-md-12">
-                                    {!! Form::text('topic_name', $topic->name, ['class' => 'form-control input-circle', 'placeholder' => 'Enter name', 'required' => 'required']) !!}
+                                    {!! Form::text('name', $topic->name, ['class' => 'form-control input-circle', 'placeholder' => 'Enter name', 'required' => 'required']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -41,7 +44,7 @@
                                     @foreach ($question->answers as $key => $answer)
                                         <div class="form-group ml-4">
                                             {!! Form::checkbox("correct_ans[$question->id][]", $answer->id, in_array($answer->id, $question->correct_ans) ?? true) !!}
-                                            <label>{{ __('translate.answer'). ' ' .$alphabet[$key] }}</label>
+                                            <label>{{ __("translate.ans_$alphabet[$key]") }}</label>
                                             {!! Form::text("answer[$question->id][]", $answer->content, ['class' => 'form-control', 'required' => 'required']) !!}
                                         </div>
                                     @endforeach

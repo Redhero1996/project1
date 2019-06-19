@@ -93,6 +93,7 @@ return [
     'ans_B' => 'Answer B',
     'ans_C' => 'Answer C',
     'ans_D' => 'Answer D',
+    'ans_E' => 'Answer E',
     'manage_topics' => 'Manage topics',
     'all_topics' => 'All topics',
     'create_topic' => 'Create topic',
@@ -101,6 +102,7 @@ return [
     'waitting' => 'Waitting',
     'close' => 'Close',
     'status' => 'Status',
+    'request_correct_ans' => 'The question need correct answer',
 
     // User create topic
     'question_num' => 'Question number',
@@ -119,5 +121,9 @@ return [
     'category_store' => 'The category was saved',
     'category_updated' => 'The category was updated',
     'category_deleted' => 'The category was deteled',
+    'account_error' => 'Email or password not valid',
+    'topic_store' => 'The topic was saved',
+    'topic_updated' => 'The topic was updated',
+    'topic_deleted' => 'The topic was deteled',
 
 ];

@@ -5,16 +5,30 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TopicRequest;
 use App\Http\Requests\TopicEditRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\Topic\TopicRepositoryInterface;
+use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Repositories\Answer\AnswerRepositoryInterface;
+use App\Repositories\Question\QuestionRepositoryInterface;
 use App\Models\Category;
-use App\Models\Question;
 use App\Models\Topic;
-use App\Models\Answer;
-use App\User;
 use Session;
 use Purifier;
 
 class TopicController extends Controller
 {
+    protected $topic, $category, $question, $answer;
+
+    public function __construct(
+        TopicRepositoryInterface $topic,
+        CategoryRepositoryInterface $category,
+        QuestionRepositoryInterface $question,
+        AnswerRepositoryInterface $answer
+    ) {
+        $this->topic = $topic;
+        $this->category = $category;
+        $this->question = $question;
+        $this->answer = $answer;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +36,14 @@ class TopicController extends Controller
      */
     public function index()
     {
-        $topics = Topic::all();
+        $dataSelect = [
+            'id',
+            'name',
+            'slug',
+            'status',
+        ];
+        $topics = $this->topic->getData([], [], $dataSelect);
+
         return view('admin.topics.index')->withTopics($topics);
     }
 
@@ -33,7 +54,11 @@ class TopicController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $dataSelect = [
+            'id',
+            'name',
+        ];
+        $categories = $this->category->getData([], [], $dataSelect);
 
         return view('admin.topics.create', ['categories' => $categories]);
     }
@@ -46,14 +71,12 @@ class TopicController extends Controller
      */
     public function store(TopicRequest $request)
     {
-        Topic::create([
-            'name' => $request->name,
-            'slug' => str_slug($request->name, '-'),
-            'category_id' => $request->category_id,
-            'user_id' => Auth::user()->id,
-            'status' => $request->status,
-        ]);
+        $data = $request->all();
+        $data['slug'] = str_slug($request->name, '-');
+        $this->topic->create($data);
+
         Session::flash('success', __('translate.topic_store'));
+
         return redirect()->route('topics.index');
     }
 
@@ -65,14 +88,7 @@ class TopicController extends Controller
      */
     public function show(Category $category, Topic $topic)
     {
-        $alphabet = [
-            'A', 'B', 'C', 'D', 'E',
-            'F', 'g', 'h', 'i', 'j',
-            'k', 'l', 'm', 'n', 'o',
-            'p', 'q', 'r', 's', 't',
-            'u', 'v', 'w', 'x', 'y',
-            'z',
-        ];
+        $alphabet = alphabet();
         $questions = $topic->questions()->get();
 
         return view('admin.topics.show', compact('category', 'topic', 'questions', 'alphabet'));
@@ -86,15 +102,8 @@ class TopicController extends Controller
      */
     public function edit(Topic $topic)
     {
-        $alphabet = [
-            'A', 'B', 'C', 'D', 'E',
-            'F', 'g', 'h', 'i', 'j',
-            'k', 'l', 'm', 'n', 'o',
-            'p', 'q', 'r', 's', 't',
-            'u', 'v', 'w', 'x', 'y',
-            'z',
-        ];
-        $categories = Category::all();
+        $alphabet = alphabet();
+        $categories = $this->category->getData([], [], ['id', 'name']);
         $questions = $topic->questions()->get();
 
         return view('admin.topics.edit', compact('categories', 'topic', 'questions', 'alphabet'));
@@ -109,32 +118,39 @@ class TopicController extends Controller
      */
     public function update(TopicEditRequest $request, $id)
     {
-        $topic = Topic::findOrFail($id);
-        $topic->name = $request->topic_name;
-        $topic->slug = str_slug($request->topic_name);
-        $topic->category_id = $request->category_id;
-        $topic->status = $request->status;
-        $topic->save();          
+        $data = $request->all();
+        $data['slug'] = str_slug($request->name);
+        $this->topic->update($id, $data);
+        $topic = $this->topic->findById($id);
+
         $questions = $topic->questions()->get();
         foreach ($questions as $key => $question) {
-            $question->correct_ans = null;
-            $correct = $question->correct_ans;
-            $question->content = Purifier::clean($request->content[$question->id]);
-            $question->explain = Purifier::clean($request->explain[$question->id][0]);
+            $data_question = [
+                'content' => Purifier::clean($request->content[$question->id]),
+                'correct_ans' => null,
+                'explain' => Purifier::clean($request->explain[$question->id][0]),
+            ];
+            $correct = $data_question['correct_ans'];
+
             for ($i = 0; $i < count($request->correct_ans[$question->id]); $i++) {
                 $correct[$i] = (int) $request->correct_ans[$question->id][$i];
-                $question->correct_ans = $correct;
+                $data_question['correct_ans'] = $correct;
             }
-            $question->save();
+            $this->question->update($question->id, $data_question);
+
             $question->topics()->sync($topic->id);
+
             // Update all answers was be change
-            $answers = Answer::where('question_id', $question->id)->get();
+            $answers = $this->answer->getData(['question'], ['question_id' => $question->id], ['*'], ['id', 'asc']);
             $all_ans = $request->answer[$question->id];
             for ($i = 0; $i < count($all_ans); $i++) {
-                $answer = Answer::find($answers[$i]->id);
+                $answer = $this->answer->findById($answers[$i]->id);
                 if ($all_ans[$i] != $answers[$i]->content) {
-                    $answer->content = $all_ans[$i];
-                    $answer->save();
+                    $data_ans = [
+                        'content' => $all_ans[$i],
+                        'question_id' => $question->id,
+                    ];
+                    $this->answer->update($answer->id, $data_ans);
                 }
             }
         }
@@ -151,9 +167,10 @@ class TopicController extends Controller
      */
     public function destroy($id)
     {
-        $topic = Topic::findOrFail($id);
+        $topic = $this->topic->findById($id);
         foreach ($topic->questions()->get() as $question) {
-            $answer = Answer::where('question_id', $question->id)->delete();
+            $answer = $this->answer->getData(['question'], ['question_id' => $question->id])->first();
+            $answer->delete();
             $question->topics()->detach();
             $question->delete();
         }
