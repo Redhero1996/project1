@@ -163,6 +163,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
+        App\Providers\HelperServiceProvider::class,
 
     ],
 

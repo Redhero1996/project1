@@ -31,5 +31,17 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Category\CategoryRepositoryInterface::class,
             \App\Repositories\Category\CategoryRepository::class
         );
+        $this->app->bind(
+            \App\Repositories\Topic\TopicRepositoryInterface::class,
+            \App\Repositories\Topic\TopicRepository::class
+        );
+        $this->app->bind(
+            \App\Repositories\Question\QuestionRepositoryInterface::class,
+            \App\Repositories\Question\QuestionRepository::class
+        );
+        $this->app->bind(
+            \App\Repositories\Answer\AnswerRepositoryInterface::class,
+            \App\Repositories\Answer\AnswerRepository::class
+        );
     }
 }

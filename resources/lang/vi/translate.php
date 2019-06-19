@@ -94,6 +94,7 @@ return [
     'ans_B' => 'Đáp án B',
     'ans_C' => 'Đáp án C',
     'ans_D' => 'Đáp án D',
+    'ans_E' => 'Đáp án E',
     'manage_topics' => 'Quản lý đề thi',
     'all_topics' => 'Danh sách đề thi',
     'create_topic' => 'Tạo đề thi',
@@ -102,6 +103,7 @@ return [
     'waitting' => 'Đang duyệt',
     'close' => 'Đóng',
     'status' => 'Trạng thái',
+    'request_correct_ans' => 'Có câu hỏi chưa chọn đáp án đúng',
 
     // User create topic
     'question_num' => 'Số câu hỏi',
@@ -120,4 +122,8 @@ return [
     'category_store' => 'Danh mục được tạo thành công',
     'category_updated' => 'Danh mục được update thành công',
     'category_deleted' => 'Danh mục đã xóa thành công',
+    'account_error' => 'Email hoặc mật khẩu không đúng',
+    'topic_store' => 'Đề tài được tạo thành công',
+    'topic_updated' => 'Đề tài được update thành công',
+    'topic_deleted' => 'Đề tài đã xóa thành công',
 ];

@@ -10,6 +10,8 @@
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
                     {!! Form::open(['method' => 'POST', 'route' => 'topics.store', 'class' => 'form-horizontal']) !!}
+                        {!! Form::hidden('user_id', Auth::id()) !!}
+                        {!! Form::hidden('view_count', 0) !!}
                         <div class="form-body">
                             <div class="form-group last">
                                 {!! Form::label('name', 'Name', ['class' => 'col-md-3 control-label']) !!}
