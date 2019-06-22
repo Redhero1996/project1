@@ -104,6 +104,8 @@ return [
     'close' => 'Đóng',
     'status' => 'Trạng thái',
     'request_correct_ans' => 'Có câu hỏi chưa chọn đáp án đúng',
+    'correct_ans' => 'Đáp án đúng',
+    'detail_question' => 'Nội dung câu hỏi',
 
     // User create topic
     'question_num' => 'Số câu hỏi',
@@ -112,7 +114,7 @@ return [
     'explain' => 'Giải thích',
     'add' => 'Thêm câu hỏi',
     'del_confirm' => 'Xác nhận xóa',
-    'del_alert' => 'Bạn có chắc muốn xóa đề thi này?',
+    'del_alert' => 'Bạn có chắc muốn xóa không?',
     'return' => 'Quay lại',
 
     // Flash
@@ -126,4 +128,7 @@ return [
     'topic_store' => 'Đề tài được tạo thành công',
     'topic_updated' => 'Đề tài được update thành công',
     'topic_deleted' => 'Đề tài đã xóa thành công',
+    'question_store' => 'Câu hỏi được tạo thành công',
+    'question_updated' => 'Câu hỏi được update thành công',
+    'question_deleted' => 'Câu hỏi đã xóa thành công',
 ];

@@ -14,4 +14,6 @@ return [
     'two' => '2',
     'point_sevent' => '0.7',
     'hundred' => '100',
+    'one' => '1',
+    'three' => '3'
 ];

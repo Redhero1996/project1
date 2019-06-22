@@ -103,6 +103,8 @@ return [
     'close' => 'Close',
     'status' => 'Status',
     'request_correct_ans' => 'The question need correct answer',
+    'correct_ans' => 'Correct answer',
+    'detail_question' => 'Detail question',
 
     // User create topic
     'question_num' => 'Question number',
@@ -125,5 +127,7 @@ return [
     'topic_store' => 'The topic was saved',
     'topic_updated' => 'The topic was updated',
     'topic_deleted' => 'The topic was deteled',
-
+    'question_store' => 'The question was saved',
+    'question_updated' => 'The question was updated',
+    'question_deleted' => 'The question was deteled',
 ];

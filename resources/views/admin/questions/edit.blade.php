@@ -12,15 +12,13 @@
                             <div class="form-group">
                                 {!! Form::label('category_id', __('translate.category'), ['class' => 'col-md-3 control-label']) !!}
                                 <div class="col-md-12">
-                                    {{-- @foreach ($question->topics as $topic) --}}
-                                    {!! Form::select('category_id', $categories->pluck('name', 'id'), $category, ['class' => 'browser-default custom-select']) !!}
-                                    {{-- @endforeach --}}
+                                    {!! Form::select('category_id', $categories->pluck('name', 'id'), $question->topics[0]->category->id, ['class' => 'browser-default custom-select']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('topic_id', __('translate.topic'), ['class' => 'col-md-3 control-label']) !!}
                                 <div class="col-md-12">
-                                    {!! Form::select('topic_id', $question->topics->pluck('name', 'id'), $topic_name, ['class' => 'browser-default custom-select']) !!}
+                                    {!! Form::select('topic_id', $question->topics->pluck('name', 'id'), $question->topics[0]->name, ['class' => 'browser-default custom-select']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -34,7 +32,7 @@
                                     @endif
                                 </div>
                             </div>
-                            @foreach ($answers as $key => $answer)
+                            @foreach ($question->answers as $key => $answer)
                                 <div class="form-group ml-3">
                                     @if(in_array($answer->id, $question->correct_ans))
                                         {!! Form::checkbox('correct_ans[]', $answer->id, true) !!}

@@ -167,14 +167,15 @@ class TopicController extends Controller
      */
     public function destroy($id)
     {
-        $topic = $this->topic->findById($id);
+        $topic = $this->topic->find($id, 'questions');
         foreach ($topic->questions()->get() as $question) {
             $answer = $this->answer->getData(['question'], ['question_id' => $question->id])->first();
-            $answer->delete();
+            $this->answer->destroy($answer->id);
             $question->topics()->detach();
-            $question->delete();
+            $this->question->destroy($question->id);
         }
-        $topic->delete();
+        $this->topic->destroy($id);
+
         Session::flash('success', __('translate.topic_deleted'));
 
         return redirect()->route('topics.index');

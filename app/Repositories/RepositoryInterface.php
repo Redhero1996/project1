@@ -11,6 +11,8 @@ interface RepositoryInterface
 {
     public function findById($id);
 
+    public function find($id, $with, $dataSelect = ['*']);
+
     public function all();
 
     public function getData();

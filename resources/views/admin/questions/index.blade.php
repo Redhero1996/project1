@@ -76,7 +76,7 @@
                                     </td>
                                     <td>
                                         <a class="delete" data-toggle="modal" href="#delete-{{$question->id}}">
-                                        <i class="fas fa-trash"></i> {{ __('translate.edit') }}
+                                        <i class="fas fa-trash"></i> {{ __('translate.delete') }}
                                         </a>
                                         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
                                         <div class="modal fade" id="delete-{{$question->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

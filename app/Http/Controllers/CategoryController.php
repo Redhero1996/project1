@@ -100,7 +100,7 @@ class CategoryController extends Controller
     {
         $category = $this->category->findById($id);
         $category->topics()->update(['category_id' => null]);
-        $category->delete();
+        $this->category->destroy($id);
 
         Session::flash('success', __('translate.category_deleted'));
 
