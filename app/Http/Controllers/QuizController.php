@@ -2,20 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Answer;
 use App\Models\Category;
-use App\Models\Question;
 use App\Models\Topic;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Repositories\Repository;
+use App\Repositories\Topic\TopicRepositoryInterface;
+use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Repositories\Question\QuestionRepositoryInterface;
 
 class QuizController extends Controller
 {
+    protected $topic, $category, $question, $answer;
+
+    public function __construct(
+        TopicRepositoryInterface $topic,
+        CategoryRepositoryInterface $category,
+        QuestionRepositoryInterface $question
+    ) {
+        $this->topic = $topic;
+        $this->category = $category;
+        $this->question = $question;
+    }
+
     public function category($category_id)
     {
-        $topics = Topic::where('category_id', $category_id)->latest('id')->get();
+        $topics = $this->topic->getData(['category', 'users', 'questions'], ['category_id' => $category_id]);
         foreach ($topics as $key => $topic) {
             $topics[$key]['count'] = count($topic->questions);
             foreach ($topic->users as $user) {
@@ -24,31 +35,25 @@ class QuizController extends Controller
                 }
             }
         }
-        $category = Category::whereId($category_id)->get();
 
         return response()->json([
             'topics' => $topics,
-            'category_slug' => $category[0]['slug'],
         ]);
     }
 
     public function quiz(Category $category, Topic $topic)
     {
-        $alphabet = [
-            'A', 'B', 'C', 'D', 'E',
-            'F', 'G', 'H', 'I', 'J',
-            'K', 'L', 'M', 'N', 'O',
-            'P', 'Q', 'R', 'S', 'T',
-            'U', 'V', 'W', 'X', 'Y',
-            'Z',
+        $alphabet = alphabet();
+        $with = [
+            'questions',
+            'questions.answers'
         ];
-        $questions = $topic->questions()->where('topic_id', $topic->id)->get();
+        $questions = $this->topic->find($topic->id, $with)->questions;
         $data = [];
         foreach ($questions as $key => $question) {
-            $answers = Answer::where('question_id', $question->id)->get();
             $data[$key] = [
                 'question' => $question,
-                'answers' => $answers,
+                'answers' => $question->answers,
             ];
         }
 
@@ -64,7 +69,7 @@ class QuizController extends Controller
         $correct = [];
         $answered = [];
         foreach ($dataRequest as $key => $value) {
-            $question = Question::findOrFail($value['question_id']);
+            $question = $this->question->findById($value['question_id']);
             if (isset($value['answered'])) {
                 $value['answered'] = array_map(function ($elem) {
                     return intval($elem);
@@ -112,42 +117,38 @@ class QuizController extends Controller
 
     public function reviewQuiz(Category $category, Topic $topic, $id)
     {
-        $alphabet = [
-            'A', 'B', 'C', 'D', 'E',
-            'F', 'G', 'H', 'I', 'J',
-            'K', 'L', 'M', 'N', 'O',
-            'P', 'Q', 'R', 'S', 'T',
-            'U', 'V', 'W', 'X', 'Y',
-            'Z',
+        $alphabet = alphabet();
+        $with = [
+            'questions',
+            'questions.answers'
         ];
-        $questions = $topic->questions()->where('topic_id', $topic->id)->get();
+        $questions = $this->topic->find($topic->id, $with)->questions;
         $data = [];
         foreach ($topic->users as $key => $user) {
             $answered = json_decode($user->pivot->answered, true);
             if ($user->pivot->id == $id) {
                 $data['total'] = $user->pivot->total;
                 foreach ($questions as $key => $question) {
-                    $answers = Answer::where('question_id', $question->id)->get();
                     if (!empty($answered)) {
                         foreach ($answered as $k => $answer) {
                             if ($key == $k) {
                                 $data['topic'][$key] = [
                                     'question' => $question,
-                                    'answers' => $answers,
+                                    'answers' => $question->answers,
                                     'answered' => $answer,
                                 ];
                                 break;
                             } else {
                                 $data['topic'][$key] = [
                                     'question' => $question,
-                                    'answers' => $answers,
+                                    'answers' => $question->answers,
                                 ];
                             }
                         }
                     } else {
                         $data['topic'][$key] = [
                             'question' => $question,
-                            'answers' => $answers,
+                            'answers' => $question->answers,
                         ];
                     }
                 }

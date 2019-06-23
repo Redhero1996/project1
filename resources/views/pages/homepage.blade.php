@@ -11,7 +11,6 @@
                             <input class="form-control form-control-sm w-55 search" id="search" type="text" placeholder="Search" aria-label="Search">
                             <i class="fa fa-search" aria-hidden="true"></i>
                             </form>
-                            {{-- <div class="mask rgba-white-slight"></div> --}}
                         <div id="show-search">
                             @foreach ($categories as $category)
                             <li class="nav-item view overlay z-depth-1-half" value="{{ $category->id }}">
@@ -125,7 +124,7 @@
                             date = topic.created_at;
                             if (topic.user) {
                                 $('#topics').append(
-                                    `<a href="` + data.category_slug + `/` + topic.slug + `" class="chip chip-lg light-blue lighten-4 waves-effect">
+                                    `<a href="` + topic.category.slug + `/` + topic.slug + `" class="chip chip-lg light-blue lighten-4 waves-effect">
                                         <div class="calendar">
                                             <div class="year">` + date.year + `</div>
                                             <div class="day">` + date.day + `
@@ -152,7 +151,7 @@
                                 );
                             } else {
                                 $('#topics').append(
-                                    `<a href="` + data.category_slug + `/` + topic.slug + `" class="chip chip-lg light-blue lighten-4 waves-effect">
+                                    `<a href="` + topic.category.slug + `/` + topic.slug + `" class="chip chip-lg light-blue lighten-4 waves-effect">
                                         <div class="calendar">
                                             <div class="year">` + date.year + `</div>
                                             <div class="day">` + date.day + `
