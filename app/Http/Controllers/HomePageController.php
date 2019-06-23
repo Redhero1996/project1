@@ -3,90 +3,70 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserProfileRequest;
-use App\Models\Category;
-use App\Models\Topic;
-use App\User;
-use DB;
+use App\Repositories\User\UserRepositoryInterface;
+use App\Repositories\Topic\TopicRepositoryInterface;
+use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Repositories\Question\QuestionRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
-use Image;
 use Session;
-use Storage;
-use App\Repositories\Repository;
 
 class HomePageController extends Controller
 {
-    protected $rank;
-    protected $category;
-
-    // public function __construct(Category $category) {
-    //     $this->category = new Repository($category);
-    // }
+    public function __construct(
+        UserRepositoryInterface $user,
+        TopicRepositoryInterface $topic,
+        CategoryRepositoryInterface $category,
+        QuestionRepositoryInterface $question
+    ) {
+        $this->user = $user;
+        $this->topic = $topic;
+        $this->category = $category;
+        $this->question = $question;
+    }
 
     public function home()
     {
-        $categories = Category::all();
-        $topics = Topic::latest('id')->where('status', 1)->paginate();
-        $ranks = [];
-        $select_table = DB::select(
-            'select user_id, avg(max_score) as score, count(topic_id) as count_topic
-            from ( select user_id, topic_id, max(total) as max_score
-                    from topic_user
-                    group by user_id, topic_id
-                ) as tmp
-            group by user_id
-            order by score desc;'
-        );
-        foreach ($select_table as $key => $select) {
-            foreach (Topic::all() as $topic) {
-                foreach ($topic->users as $user) {
-                    if ($select->user_id == $user->id) {
-                        $ranks[$key]['username'] = $user->name;
-                        $ranks[$key]['avatar'] = $user->avatar;
-                        $ranks[$key]['total'] = $select->score;
-                        $ranks[$key]['count'] = $select->count_topic;
-                    }
-                }
-            }
-        }
+        $categories = $this->category->getData(['topics'], [], ['id', 'name']);
+        $data = [
+            'id',
+            'name',
+            'slug',
+            'category_id',
+            'created_at'
+        ];
+        $topics = $this->topic->getDataWithPaginate(['category'], ['status' => 1], $data);
+
+        $ranks = $this->topic->rank();
 
         return view('pages.homepage', compact('categories', 'topics', 'ranks'));
     }
 
     public function getProfile($username, $id)
     {
-        $user = User::findOrFail($id);
+        $user = $this->user->find($id, ['topics', 'topics.category']);
 
         return view('pages.profile', compact('user'));
     }
 
     public function postProfile(UserProfileRequest $request, $username, $id)
     {
-        $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->phone_number = $request->phone_number;
-        $user->address = $request->address;
-        if ($request->change_password == 'on') {
-            $user->password = bcrypt($request->password);
+        $user_id = $this->user->findById($id);
+        $data = $request->all();
+        if (isset($data['change_password']) && $data['change_password'] == 'on') {
+            $data['password'] = $request->validate([
+                'password' => 'required|confirmed|min:6',
+            ]);
+            $data['password'] = bcrypt($request->password);
         }
-        if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar');
-            $file_name = time() . '.' . $avatar->getClientOriginalExtension();
-            $location = public_path('images/' . $file_name);
-            Image::make($avatar)->resize(300, 300)->save($location);
-            if (isset($user->avatar)) {
-                $old_avatar = $user->avatar;
-                $user->avatar = $file_name;
-                Storage::delete($old_avatar);
-            } else {
-                $user->avatar = $file_name;
-            }
-        }
-        $user->save();
+        $data['avatar'] = $this->user->handleUploadImage(false, $request->file('avatar'), $user_id);
+
+        unset($data['change_password'], $data['password_confirmation']);
+
+        $this->user->update($id, $data);
+
         Session::flash('success', trans('translate.succ_acount'));
 
-        return redirect()->route('user.profile', [$user->name, $user->id]);
+        return redirect()->route('user.profile', [$this->user->findById($id)->name, $this->user->findById($id)->id]);
     }
 
     public function logout()

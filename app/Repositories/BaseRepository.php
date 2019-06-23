@@ -37,6 +37,16 @@ abstract class BaseRepository implements RepositoryInterface
             ->get();
     }
 
+    public function getDataWithPaginate($with = [], $data = [], $dataSelect = ['*'], $attribute = ['id', 'desc'])
+    {
+        return $this->model
+            ->select($dataSelect)
+            ->with($with)
+            ->where($data)
+            ->orderBy($attribute[0], $attribute[1])
+            ->paginate();
+    }
+
     public function findById($id)
     {
         return $this->model->findOrFail($id);
