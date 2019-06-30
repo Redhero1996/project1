@@ -5,6 +5,7 @@
 <script src="{!! asset('bower_components/MDBootstrap/js/addons/datatables.min.js') !!}"></script>
 <script src="{!! asset('bower_components/Font-Awesome/svg-with-js/js/fontawesome-all.min.js') !!}"></script>
 <script src="{!! asset('bower_components/ckeditor5-build-classic/build/ckeditor.js') !!}"></script>
+<script src="{!! asset('bower_components/jquery-validation/dist/jquery.validate.min.js') !!}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('#dtBasicExample').DataTable();

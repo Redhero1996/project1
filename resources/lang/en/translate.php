@@ -35,6 +35,7 @@ return [
     'member' => 'Member',
     'top' => 'Top member',
     'count_topic' => 'All topics',
+    'quest' => 'Question',
 
     // test page
     'alert' => 'Are you sure you want to leave?',

@@ -168,7 +168,7 @@ class TopicController extends Controller
     public function destroy($id)
     {
         $topic = $this->topic->find($id, 'questions');
-        foreach ($topic->questions()->get() as $question) {
+        foreach ($topic->questions as $question) {
             $answer = $this->answer->getData(['question'], ['question_id' => $question->id])->first();
             $this->answer->destroy($answer->id);
             $question->topics()->detach();

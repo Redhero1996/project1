@@ -10,7 +10,7 @@ $('select[name="category_id"]').on('click', function() {
                 $('select[name="topic_id"]').append(
                 "<option value='" + topic.id + "'>" + topic.name + "</option>"
             );
-          });
+        });
         }
     });
 });

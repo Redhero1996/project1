@@ -35,7 +35,9 @@
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-default ml-5" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{ route('user.profile', [Auth::user()->name, Auth::user()->id]) }}"><i class="fas fa-user"></i> {{ __('translate.account') }}</a>
+                        <a class="dropdown-item" href="{{ route('user.profile', [Auth::user()->name, Auth::id()]) }}"><i class="fas fa-user"></i> {{ __('translate.account') }}</a>
+                        <a class="dropdown-item" href="{{ route('create-topics.create') }}"><i class="fas fa-plus-circle"></i> {{ __('Tạo đề thi') }}</a>
+                        <a class="dropdown-item" href="{{ route('create-topics.index', Auth::id()) }}"><i class="fas fa-clipboard-list"></i> {{ __('Quản lý đề thi tự tạo') }}</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> {{ __('translate.logout') }}</a>
                     </div>
                 </li>

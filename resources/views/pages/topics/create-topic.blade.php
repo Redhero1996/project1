@@ -11,7 +11,10 @@
                     @endforeach
                 </div>
             @endif
-            {!! Form::open(['route' => 'create-topics.store', 'method' => 'POST', 'class' => 'form-horizontal created']) !!}
+            {!! Form::open(['route' => 'create-topics.store', 'method' => 'POST', 'class' => 'form-horizontal created', 'id' => 'created']) !!}
+                {!! Form::hidden('user_id', Auth::id()) !!}
+                {!! Form::hidden('status', 0) !!}
+                {!! Form::hidden('view_count', 0) !!}
                 <div class="form-body">
                     <div class="form-group">
                         {!! Form::label('category_id', __('translate.category'), ['class' => 'col-md-3 control-label']) !!}
@@ -22,7 +25,7 @@
                     <div class="form-group">
                         {!! Form::label('topic_id', __('translate.topic'), ['class' => 'col-md-3 control-label']) !!}
                         <div class="col-md-12">
-                            {!! Form::text('topic_name', old('topic_name'), ['class' => 'form-control input-circle', 'placeholder' => 'Enter name of topic']) !!}
+                            {!! Form::text('name', old('name'), ['class' => 'form-control input-circle', 'id' => 'topic-name', 'placeholder' => 'Enter name of topic']) !!}
                         </div>
                     </div>
                     <div class="form-group">
@@ -64,6 +67,34 @@
         for (var i = 0; i < allEditors.length; ++i) {
             ClassicEditor.create(allEditors[i]);
         }
+        // $('#created').validate({
+        //     rules: {
+        //         "topic_name": {
+        //             required: true,
+        //             minlength: 3,
+        //             maxlength: 255,
+        //         },
+        //         'answer[][]': {
+        //             required: true,
+        //         },
+        //         'correct_ans[][]': {
+        //             required: true,
+        //         },
+        //     },
+        //     messages: {
+        //         "topic_name": {
+        //             required: '<p class="help-block validated mt-2">Yêu cầu nhập tên đề thi</p>',
+        //             minlength: '<p class="help-block validated mt-2">Tiêu đề ít nhất 3 ký tự</p>',
+        //             maxlength: '<p class="help-block validated mt-2">Tiêu đề dài nhất 255 ký tự</p>',
+        //         },
+        //         'answer[][]': {
+        //             required: '<p class="help-block validated mt-2">Yêu cầu nhập đáp án</p>',
+        //         },
+        //         'correct_ans[][]': {
+        //             required: '<p class="help-block validated mt-2">Vui lòng chọn đáp án đúng</p>',
+        //         },
+        //     },
+        // });
         $(document).ready(function() {
             $('div.addQuest').hide();
             var alphabet = @json($alphabet);
@@ -91,7 +122,7 @@
                     number_quest += 1;
                     $('input#number_quest').val(number_quest);
                     $('div.question-form').append(`
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <div class="alert alert-warning alert-dismissible fade show" id="add-new" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true"><i class="fas fa-times"></i></span>
                                 </button>
@@ -140,7 +171,7 @@
         function checkAdd(valueAdd) {
             for (i = 1; i <= valueAdd; i++) {
                 $('div.question-form').append(`
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <div class="alert alert-warning alert-dismissible fade show" id="add-new" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close" data-id="close_`+i+`">
                                 <span aria-hidden="true"><i class="fas fa-times"></i></span>
                             </button>
@@ -178,15 +209,7 @@
                             </div>
                         </div>
                 `);
-                // $('#formQuest').validate({
-                //     rules: {
-                //         "correct_ans[]": {
-                //             required: true,
-                //             minlength: 1
-                //         },
-                //     },
-                // });
             }
-        }
+        };
     </script>
 @endsection

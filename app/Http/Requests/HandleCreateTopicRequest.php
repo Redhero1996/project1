@@ -26,8 +26,8 @@ class HandleCreateTopicRequest extends FormRequest
     {
         $request = $this->request->get('number_quest');
         $rules = [
-            'topic_name' => 'required|min:3|max:255',
-            'content.*' => 'required',
+            'name' => 'required|min:3|max:255',
+            'content' => 'required|max:255',
             'answer.*' => 'required',
             'correct_ans' => '',
             'explain.*' => '',

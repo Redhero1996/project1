@@ -15,17 +15,17 @@
                 <div class="form-group">
                     {!! Form::label('category_id', __('translate.category'), ['class' => 'col-md-3 control-label']) !!}
                     <div class="col-md-12">
-                        {!! Form::text('category_id', $category->name, ['class' => 'form-control input-circle', 'disabled' => 'disabled']) !!}
+                        {!! Form::text('category_id', $topic->category->name, ['class' => 'form-control input-circle', 'disabled' => 'disabled']) !!}
                     </div>
                 </div>
                 <div class="form-group">
                     {!! Form::label('topic_id', __('translate.topic'), ['class' => 'col-md-3 control-label']) !!}
                     <div class="col-md-12">
-                        {!! Form::text('topic_name', $topic->name, ['class' => 'form-control input-circle', 'disabled' => 'disabled']) !!}
+                        {!! Form::text('name', $topic->name, ['class' => 'form-control input-circle', 'disabled' => 'disabled']) !!}
                     </div>
                 </div>
                 <div class="form-body question-form">
-                    @foreach ($questions as $k => $question)
+                    @foreach ($topic->questions as $k => $question)
                         <div class="form-group">
                             <label for="question" class="ml-3 question">{!! __('translate.question'). ' ' . $k+=1 !!}: </label>
                             <span class="content">{!! strip_tags(htmlspecialchars_decode($question->content)) !!}</span>
@@ -44,7 +44,7 @@
                                 {!! strip_tags(htmlspecialchars_decode($question->explain)) !!}
                             @else
                                 {{ __('translate.no_explain') }}
-                            @endif    
+                            @endif
                         </span>
                     </div>
                     @endforeach
