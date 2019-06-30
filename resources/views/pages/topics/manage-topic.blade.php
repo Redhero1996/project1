@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
                         @foreach ( $topics as $key => $topic )
-                            @if (Auth::user()->id == $topic->user_id)
+                            @if (Auth::id() == $topic->user_id)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $topic->name }}</td>

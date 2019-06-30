@@ -554,3 +554,8 @@ div>p.answer {
 label.correct_ans {
     color: blue;
 }
+
+.addQuest {
+    padding: 12px;
+    margin-bottom: 15px;
+}

@@ -19,26 +19,29 @@
                 </div>
             @endif
             {!! Form::open(['route' => ['create-topics.update', $topic->id], 'method' => 'PUT', 'class' => 'form-horizontal created']) !!}
+                {!! Form::hidden('user_id', Auth::id()) !!}
+                {!! Form::hidden('status', 0) !!}
+                {!! Form::hidden('view_count', 0) !!}
                 <div class="form-body">
                     <div class="form-group">
                         {!! Form::label('category_id', __('translate.category'), ['class' => 'col-md-3 control-label']) !!}
                         <div class="col-md-12">
-                            {!! Form::select('category_id', $categories->pluck('name', 'id'), $topic->category_id, ['class' => 'browser-default custom-select']) !!}
+                            {!! Form::select('category_id', $categories->pluck('name', 'id'), $topic->category->id, ['class' => 'browser-default custom-select']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('topic_id', __('translate.topic'), ['class' => 'col-md-3 control-label']) !!}
                         <div class="col-md-12">
-                            {!! Form::text('topic_name', $topic->name, ['class' => 'form-control input-circle', 'placeholder' => 'Enter name of topic']) !!}
-                            @if($errors->has('topic_name'))
+                            {!! Form::text('name', $topic->name, ['class' => 'form-control input-circle', 'placeholder' => 'Enter name of topic']) !!}
+                            @if($errors->has('name'))
                                 <span class="help-block" style="color: red;">
-                                    <strong>{{ $errors->first('topic_name') }}</strong>
+                                    <strong>{{ $errors->first('name') }}</strong>
                                 </span>
                             @endif
                         </div>
                     </div>
                     <div class="form-body question-form">
-                        @foreach ($questions as $k => $question)
+                        @foreach ($topic->questions as $k => $question)
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true"><i class="fas fa-times"></i></span>
@@ -57,7 +60,7 @@
                             @foreach ($question->answers as $key => $answer)
                                 <div class="form-group ml-4">
                                     {!! Form::checkbox("correct_ans[$question->id][]", $answer->id, in_array($answer->id, $question->correct_ans) ?? true) !!}
-                                    <label>{{ __('translate.answer'). ' ' .$alphabet[$key] }}</label>
+                                    <label>{{ __("translate.ans_$alphabet[$key]") }}</label>
                                     {!! Form::text("answer[$question->id][]", $answer->content, ['class' => 'form-control']) !!}
                                 </div>
                             @endforeach
@@ -93,7 +96,7 @@
             ClassicEditor.create(allEditors[i]);
         }
         $(document).ready(function() {
-            var number_quest = {!! count($questions) !!}
+            var number_quest = {!! count($topic->questions) !!}
             $("#message").fadeTo(2000, 500).slideUp(500, function(){
                 $("#message").slideUp(500);
             });

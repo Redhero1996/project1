@@ -31,7 +31,7 @@ Route::get('/', 'HomePageController@home');
 Route::view('about', 'pages.about');
 Route::view('contact', 'pages.contact');
 
-// Comment 
+// Comment
 Route::get('comments/{question}', 'HomePageController@comments')->name('comments');
 
 // OAuth Routes (Social)

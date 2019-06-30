@@ -36,6 +36,7 @@ return [
     'member' => 'Thành viên',
     'top' => 'Bảng xếp hạng',
     'count_topic' => 'Số đề thi đã làm',
+    'quest' => 'Câu hỏi',
 
     // test page
     'alert' => 'Những thay đổi sẽ không được lưu. Bạn chắc muốn rời không?',
