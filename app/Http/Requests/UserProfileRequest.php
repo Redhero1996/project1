@@ -39,11 +39,11 @@ class UserProfileRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => __('validation.required'),
-            'name.min' => __('validation.min'),
-            'password.min' => __('validation.min'),
-            'password.confirmed' => __('validation.confirmed'),
-            'avatar.image' => __('validation.image'),
+            'name.required' => trans('validation.required'),
+            'name.min' => trans('validation.min'),
+            'password.min' => trans('validation.min'),
+            'password.confirmed' => trans('validation.confirmed'),
+            'avatar.image' => trans('validation.image'),
         ];
     }
 }
