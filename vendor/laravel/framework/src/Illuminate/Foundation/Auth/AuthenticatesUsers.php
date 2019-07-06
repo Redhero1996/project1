@@ -58,17 +58,15 @@ trait AuthenticatesUsers
      *
      * @param  \Illuminate\Http\Request  $request
      * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     protected function validateLogin(Request $request)
     {
-        $this->validate(
-            $request,
-            [
-                $this->username() => 'required|string',
-                'email' => 'required|email',
-                'password' => 'required|min:6',
-            ]
-        );
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ]);
     }
 
     /**
@@ -80,8 +78,7 @@ trait AuthenticatesUsers
     protected function attemptLogin(Request $request)
     {
         return $this->guard()->attempt(
-            $this->credentials($request),
-            $request->filled('remember')
+            $this->credentials($request), $request->filled('remember')
         );
     }
 
@@ -109,7 +106,7 @@ trait AuthenticatesUsers
         $this->clearLoginAttempts($request);
 
         return $this->authenticated($request, $this->guard()->user())
-        ?: redirect()->intended($this->redirectPath());
+                ?: redirect()->intended($this->redirectPath());
     }
 
     /**
