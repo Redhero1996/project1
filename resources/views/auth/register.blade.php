@@ -40,16 +40,16 @@
             </p>
             <!-- Social register -->
             <p>{{ trans('translate.register_social') }}</p>
-            <a class="light-blue-text mx-2">
+            <a class="light-blue-text mx-2" href="{{ route('social.oauth', 'facebook') }}">
                 <i class="fab fa-facebook"></i>
             </a>
-            <a class="light-blue-text mx-2">
+            <a class="light-blue-text mx-2" href="{{ route('social.oauth', 'twitter') }}">
                 <i class="fab fa-twitter"></i>
             </a>
-            <a class="light-blue-text mx-2">
-                <i class="fab fa-linkedin"></i>
+            <a class="light-blue-text mx-2" href="{{ route('social.oauth', 'google') }}">
+                <i class="fab fa-google"></i>
             </a>
-            <a class="light-blue-text mx-2">
+            <a class="light-blue-text mx-2" href="{{ route('social.oauth', 'github') }}">
                 <i class="fab fa-github"></i>
             </a>
         {!! Form::close() !!}

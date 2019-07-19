@@ -164,6 +164,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
+        // Laravel\Socialite\SocialiteServiceProvider::class,
 
     ],
 
@@ -217,6 +218,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        // 'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 
